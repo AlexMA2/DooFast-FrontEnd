@@ -4,8 +4,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: #F6EECE;
     border-radius: 1rem;
+    border: 1px solid #cacaca;
 }
 
 .dining_table_info {
@@ -21,12 +22,13 @@
     margin: 0;
     position: relative;
     display: block;
-    color: rgb(190, 7, 53);
+    color: #fff;
     padding: 0.85rem;
-    border-radius: 0.5rem;
+    border-radius: 12px 0 12px 0;
     text-align: center;
-    bottom: 20px;
+    bottom: 16px;
     left: 0px;
+    background-color: rgb(190, 7, 53);
 }
 
 .dining_table_state {

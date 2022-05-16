@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { EMPTY, UNATTENDED, WAITING, SERVED } from '../../constants/dining-table-states'
 
+interface Order {
+  id: number;
+  table: number;
+  starter: string;
+  maindish: string; 
+  dessert: string;
+  drink: string;
+}
+
 @Component({
   selector: 'app-dining-table',
   templateUrl: './dining-table.component.html',
@@ -12,7 +21,8 @@ export class DiningTableComponent implements OnInit {
   number : number = 1;
   state : string = EMPTY;
   time: number = 0
-
+  orders?: Order[] = [];
+   
   display : string = "00m 00s "
   interval : any;
 

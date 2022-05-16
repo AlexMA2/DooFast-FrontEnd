@@ -9,6 +9,7 @@
         </div>
     </div>
     <div class="dining_table_order">
-        <button> Take order </button>
+        <button *ngIf="orders?.length === 0 "> Take order </button>
+        <button *ngIf="orders?.length !== 0 "> Show order </button>
     </div>
 </div>
