@@ -16,8 +16,11 @@ interface Order {
   styleUrls: ['./dining-table.component.css']
 })
 export class DiningTableComponent implements OnInit {
+  // Angular cannot use the imported constants from constants.ts in HTML
+  EMPTY = EMPTY
+  WAITING = WAITING
+  SERVED = SERVED
 
-  WAITING = WAITING; // Angular cannot use the imported constants from constants.ts in HTML
   number : number = 1;
   state : string = EMPTY;
   time: number = 0
@@ -26,8 +29,7 @@ export class DiningTableComponent implements OnInit {
   display : string = "00m 00s "
   interval : any;
 
- startTimer() {
-    console.log("=====>");
+ startTimer() {   
     this.interval = setInterval(() => {
       if (this.time === 0) {
         this.time++;
@@ -50,4 +52,23 @@ export class DiningTableComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  orderTaked() {
+    this.state = WAITING;
+    this.startTimer();
+  }
+
+  orderServed() {
+    this.state = SERVED;
+    this.pauseTimer();
+  }
+
+  showOrder() {
+    console.log("Dropdown a modal with the order to edit or cancel");
+  }
+
+  payOrder(){
+    console.log("Go to the page with the amount and details to pay");
+  }
+
 }

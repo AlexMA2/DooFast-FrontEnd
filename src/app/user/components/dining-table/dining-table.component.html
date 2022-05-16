@@ -9,7 +9,11 @@
         </div>
     </div>
     <div class="dining_table_order">
-        <button *ngIf="orders?.length === 0 "> Take order </button>
-        <button *ngIf="orders?.length !== 0 "> Show order </button>
+        <button *ngIf="state === EMPTY" (click)="orderTaked()"> Take order </button>
+        <div *ngIf="state === WAITING">
+            <button (click)="showOrder()"> Show order </button>
+            <button (click)="orderServed()"> Order served </button>
+        </div>
+        <button *ngIf="state === SERVED" (click)="payOrder()"> Payment </button>
     </div>
 </div>
