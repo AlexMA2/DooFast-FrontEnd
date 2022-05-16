@@ -1,6 +1,14 @@
-<div>
-    <h1>
-        {{ number }}
-    </h1>
-    <p> {{ state }}</p>
+<div class="dining_table">
+    <div class="dining_table_info">
+        <h1>
+            {{number}}
+        </h1>
+        <div class="dining_table_state">
+            <p> Dining Table {{state}} </p>
+            <p *ngIf="state === WAITING"> {{display}} </p>
+        </div>
+    </div>
+    <div class="dining_table_order">
+        <button> Take order </button>
+    </div>
 </div>
