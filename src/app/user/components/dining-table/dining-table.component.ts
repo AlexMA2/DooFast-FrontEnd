@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPTY, UNATTENDED, WAITING, SERVED } from '../../constants/dining-table-states'
+import { EMPTY, WAITING, SERVED } from '../../constants/dining-table-states'
 
 interface Order {
   id: number;
@@ -53,7 +53,7 @@ export class DiningTableComponent implements OnInit {
     
   }
 
-  orderTaked() {
+  takeOrder() {
     this.state = WAITING;
     this.startTimer();
   }

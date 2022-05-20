@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+
 .dining_table {
-    max-width: 250px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #F6EECE;
+    background-color: #F5F3F4;
     border-radius: 1rem;
-    border: 1px solid #cacaca;
+
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.25));
 }
 
 .dining_table_info {
@@ -24,30 +27,65 @@
     padding: 0.85rem;
     border-radius: 12px 0 12px 0;
     text-align: center;
-    background-color: rgb(190, 7, 53);
+    background-color: #A4161A;
+    width: 71px;
+    height: 67px;
+    font-family: 'Jost', sans-serif;
 }
 
 .dining_table_state {
-    width: 100%;
+    width: 155px;
     text-align: center;
-    margin-right: 1rem;
-    font-size: 1.5rem;
+
     line-height: normal;
+}
+
+.dining_table_number {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+.dining_table_state h4 {
+    font-family: 'Jost', sans-serif;
+    color: #011627;
 }
 
 .dining_table_state p {
     margin: 0;
     margin-top: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Jost', sans-serif;
+}
+
+.dining_table_order {
+    width: 100%;
+}
+
+.button_group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .dining_table_order button {
     border: none;
-    background-color: #F6EECE;
+    background-color: #A4161A;
     font-size: 1rem;
     cursor: pointer;
     padding: 0.5rem;
-}
+    font-family: 'Jost', sans-serif;
+    color: #fff;
 
-.dining_table_order button:hover {
-    background-color: #E7D381
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0.5rem 0;
 }

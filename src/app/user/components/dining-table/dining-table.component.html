@@ -4,16 +4,27 @@
             {{number}}
         </h1>
         <div class="dining_table_state">
-            <p> Dining Table {{state}} </p>
-            <p *ngIf="state === WAITING"> {{display}} </p>
+            <div class="dining_table_number">
+                <h4> Dining Table </h4>
+            </div>
+
+            <p *ngIf="state === WAITING"> {{state}} {{display}} </p>
+            <p *ngIf="state !== WAITING"> {{state}} </p>
         </div>
     </div>
     <div class="dining_table_order">
-        <button *ngIf="state === EMPTY" (click)="orderTaked()"> Take order </button>
-        <div *ngIf="state === WAITING">
+        <div *ngIf="state === EMPTY" class="button_group">
+            <button (click)="takeOrder()"> Take order</button>
+        </div>
+
+        <div *ngIf="state === WAITING" class="button_group">
             <button (click)="showOrder()"> Show order </button>
             <button (click)="orderServed()"> Order served </button>
         </div>
-        <button *ngIf="state === SERVED" (click)="payOrder()"> Payment </button>
+        <div *ngIf="state === SERVED" class="button_group">
+            <button (click)="takeOrder()"> Take order </button>
+            <button (click)="payOrder()"> Payment </button>
+        </div>
+
     </div>
 </div>
