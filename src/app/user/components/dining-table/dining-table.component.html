@@ -14,7 +14,7 @@
     </div>
     <div class="dining_table_order">
         <div *ngIf="state === EMPTY" class="button_group">
-            <button routerLink="/waitress/take-order"> Take ordersss</button>
+            <button [routerLink]="'/waitress/take-order/' + number"> Take ordersss</button>
         </div>
 
         <div *ngIf="state === WAITING" class="button_group">
@@ -22,7 +22,7 @@
             <button (click)="orderServed()"> Order served </button>
         </div>
         <div *ngIf="state === SERVED" class="button_group">
-            <button routerLink="/take-order"> Take order </button>
+            <button [routerLink]="'/waitress/take-order/' + number"> Take order </button>
             <button (click)="payOrder()"> Payment </button>
         </div>
 

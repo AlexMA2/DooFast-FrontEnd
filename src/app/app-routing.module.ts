@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DiningTableContainerComponent } from './user/components/dining-table-container/dining-table-container.component';
+import { DiningTableContainerComponent } from './user/pages/dining-table-container/dining-table-container.component';
 import { TakeOrderComponent } from './user/pages/take-order/take-order.component';
 
 const WaitressRoutes: Routes = [
@@ -14,7 +14,7 @@ const WaitressRoutes: Routes = [
     component: DiningTableContainerComponent,
   },
   {
-    path: 'take-order',
+    path: 'take-order/:id',
     component: TakeOrderComponent,
   }
 ];
