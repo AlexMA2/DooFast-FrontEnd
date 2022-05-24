@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DiningTableComponent } from './components/dining-table/dining-table.component';
 import { DiningTableContainerComponent } from './components/dining-table-container/dining-table-container.component';
-
-
+import { TakeOrderComponent } from './pages/take-order/take-order.component';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
     DiningTableComponent,
-    DiningTableContainerComponent
+    DiningTableContainerComponent,
+    TakeOrderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UserRoutingModule
   ],
   exports: [
-    DiningTableContainerComponent
+    DiningTableContainerComponent,
+    TakeOrderComponent
   ]
 })
 export class UserModule { }
