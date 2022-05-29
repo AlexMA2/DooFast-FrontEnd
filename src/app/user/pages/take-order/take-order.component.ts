@@ -15,7 +15,7 @@ export class TakeOrderComponent implements OnInit {
   mainDishes: Product[] = []
   drinks: Product[] = []
   desserts: Product[] = []
-
+  error?: string
   constructor(
     private productService: ProductService
   
@@ -26,7 +26,7 @@ export class TakeOrderComponent implements OnInit {
    }
  
    separateProducts(products: any[]) {
-     console.log(products)
+    
       this.starters = products[0];
       this.mainDishes =  products[1];
       this.drinks =  products[2];
@@ -35,6 +35,6 @@ export class TakeOrderComponent implements OnInit {
 
    getAllProducts(): void {  
      this.productService.getAll()
-       .subscribe(products => this.separateProducts(products));
+       .subscribe(products => this.separateProducts(products), error => this.error = error);
    }
 }

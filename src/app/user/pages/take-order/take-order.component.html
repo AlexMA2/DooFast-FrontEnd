@@ -1,6 +1,7 @@
 <div>
+    <h1 class="error" *ngIf="error !== ''"> {{error}}</h1>
     <div class="d-flex flex-row">
-        <mat-tab-group animationDuration="0ms" [disablePagination]="true">
+        <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector col-sm-8">
             <mat-tab label="Entradas" color="success">
                 <app-product-container [products]="this.starters"></app-product-container>
             </mat-tab>
@@ -14,12 +15,10 @@
                 <app-product-container [products]="this.desserts"></app-product-container>
             </mat-tab>
         </mat-tab-group>
-        <div>
-            <app-order-details></app-order-details>
-        </div>
+        <app-order-details class="col-sm-4"></app-order-details>
     </div>
-    <div>
-        <button mat-stroked-button color="primary">Guardar y Salir </button>
-        <button mat-raised-button> Salir sin guardar </button>
+    <div class="w-100 d-flex flex-row row buttons">
+        <button class="col-5" mat-raised-button>Guardar y Salir </button>
+        <button class="col-5" mat-raised-button> Salir sin guardar </button>
     </div>
 </div>
