@@ -6,18 +6,22 @@ import { TakeOrderComponent } from './pages/take-order/take-order.component';
 import { UserRoutingModule } from './user-routing.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProductContainerComponent } from './components/product-container/product-container.component'; 
+import {MatButtonModule} from '@angular/material/button';
+import { OrderDetailsComponent } from './components/order-details/order-details.component'; 
 
 @NgModule({
   declarations: [
     DiningTableComponent,
     DiningTableContainerComponent,
     TakeOrderComponent,
-    ProductContainerComponent
+    ProductContainerComponent,
+    OrderDetailsComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonModule
   ],
   exports: [
     DiningTableContainerComponent,

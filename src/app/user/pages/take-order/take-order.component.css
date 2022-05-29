@@ -1,0 +1,38 @@
+.mat-tab-label {
+
+    min-width: 120px !important;
+    padding: none !important;
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 16px 16px 0px 0px;
+    background-color: var(--backgroundTab);
+}
+
+.mat-tab-labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: var(--backgroundPrimary);
+    height: 80px;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label-active {
+    background-color: var(--backgroundTabActive);
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background-color: var(--redHard) !important;
+}
+
+.mat-tab-body-wrapper {
+    background-color: var(--backgroundTabActive);
+    min-height: 40rem;
+}
+
+.mat-tab-group {
+    width: 60%;
+}
