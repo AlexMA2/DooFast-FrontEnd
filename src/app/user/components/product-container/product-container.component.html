@@ -1,0 +1,7 @@
+<div>
+    <p class="error-message" *ngIf="products.length < 1"> No hay productos en esta categoria. </p>
+    <div *ngFor="let prod of products" (click)="pickFood(prod)">
+        <h1> {{prod.nombreProducto}}</h1>
+        <p> {{prod.precio}}</p>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.order-details {
+    width: 100%;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--backgroundSecondary);
+}
+
+.title {
+    width: 85%;
+    margin: 0rem auto;
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted #000;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #000;
+    margin: 0;
+
+}
+
+.categories {
+
+    width: 85%;
+    margin: 0.5rem auto;
+}
+
+.category>p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.75rem;
+
+}
+
+.products {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.products>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.products>div>p {
+    font-size: 1rem;
+}
