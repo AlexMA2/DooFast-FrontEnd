@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DiningTableContainerComponent } from './user/components/dining-table-container/dining-table-container.component';
+import { LoginComponent } from './user/components/login/login.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,10 @@ const routes: Routes = [{
   {
     path: 'mesas',
     component: DiningTableContainerComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

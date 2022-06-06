@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { DiningTableComponent } from './components/dining-table/dining-table.component';
 import { DiningTableContainerComponent } from './components/dining-table-container/dining-table-container.component';
 
-
-
 @NgModule({
   declarations: [
     DiningTableComponent,
-    DiningTableContainerComponent
+    DiningTableContainerComponent,
   ],
   imports: [
     CommonModule
