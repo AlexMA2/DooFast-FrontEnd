@@ -3,7 +3,7 @@
 
     <img src="./assets/user.png">
 
-    <form class="custom-form" method="post">
+    <form [formGroup]="formLogin" (ngSubmit)="Login()" class="custom-form">
     
         <h5>
             Correo electrónico
@@ -31,7 +31,7 @@
             placeholder="Contraseña"
             required="required"
         />
-        <button type="submit">Iniciar sesion</button>
+        <button [disabled]="!formLogin.valid" type="submit">Iniciar sesion</button>
         <div style="display: flex; justify-content: center;">
             <p class="nota">No compartas tus datos personales con nadie.</p>
         </div>
