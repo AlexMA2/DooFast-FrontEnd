@@ -43,7 +43,10 @@ export class TakeOrderComponent implements OnInit {
    openDialog(): void {
     const dialogRef = this.dialog.open(ConfirmationComponent, {
       width: '350px',
-      
+      data: {
+        title: '¿Estás seguro de salir sin guardar?',
+        message: 'Esta acción eliminará los cambios recientes que hiciste en la orden.'
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

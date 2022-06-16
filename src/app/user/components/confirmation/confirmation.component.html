@@ -1,6 +1,6 @@
-<h1 mat-dialog-title class="text-center"> &iquest;Est&aacute;s seguro de salir sin guardar?</h1>
+<h1 mat-dialog-title class="text-center"> {{data.title}}</h1>
 <div mat-dialog-content class="text-center">
-    <p>Esta acción eliminará los cambios recientes que hiciste en la orden.</p>
+    <p>{{data.message}}</p>
 </div>
 <div mat-dialog-actions class="buttons">
     <button class="btn-normal" mat-button (click)=" onNoClick()">No</button>
