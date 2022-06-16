@@ -7,7 +7,10 @@ import { UserRoutingModule } from './user-routing.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProductContainerComponent } from './components/product-container/product-container.component'; 
 import {MatButtonModule} from '@angular/material/button';
-import { OrderDetailsComponent } from './components/order-details/order-details.component'; 
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatFormFieldModule} from '@angular/material/form-field'; 
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     DiningTableContainerComponent,
     TakeOrderComponent,
     ProductContainerComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   exports: [
     DiningTableContainerComponent,
