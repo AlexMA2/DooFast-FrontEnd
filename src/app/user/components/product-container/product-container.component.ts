@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { SimpleChanges } from '@angular/core';
 
@@ -10,13 +10,13 @@ import { SimpleChanges } from '@angular/core';
 export class ProductContainerComponent implements OnInit {
 
   @Input() products!: Product[]; 
-
+  @Output() foodPicked: EventEmitter<any> = new EventEmitter();
   constructor(   ) { }
 
   ngOnInit(): void {
   }
 
   pickFood(prod : Product) : void {
-    console.log("pick food");
+    this.foodPicked.emit(prod);
   }
 }
