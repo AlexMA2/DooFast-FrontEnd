@@ -1,7 +1,14 @@
-<div>
-    <p class="error-message" *ngIf="products.length < 1"> No hay productos en esta categoria. </p>
+<p class="error-message" *ngIf="products.length < 1"> No hay productos en esta categoria. </p>
+<div class="container-food-card">
     <div *ngFor="let prod of products" (click)="pickFood(prod)" class="food-card">
-        <h1> {{prod.nombreProducto}}</h1>
-        <p> {{prod.precio}}</p>
+
+        <div>
+            <img src="../../../../assets/products/standard_food.png" alt="Imagen de un plato de comida">
+        </div>
+        <div class="details">
+            <h1> {{prod.nombreProducto}}</h1>
+            <p> {{prod.precio}}</p>
+        </div>
+
     </div>
 </div>

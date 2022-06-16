@@ -1,6 +1,6 @@
-<div>
+<div class="take-order">
     <h1 class="error" *ngIf="error !== ''"> {{error}}</h1>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row productos">
         <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector col-sm-8">
             <mat-tab label="Entradas" color="success">
                 <app-product-container [products]="this.starters"></app-product-container>

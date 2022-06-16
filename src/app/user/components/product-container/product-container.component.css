@@ -7,7 +7,48 @@
 .food-card {
     background-color: var(--backgroundSecondary);
     border-radius: 0.5rem;
-    width: 157px;
-    margin: 1rem;
     padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 45%;
+    min-height: 275px;
+}
+
+
+.food-card>div img {
+    width: 100%;
+    object-fit: fill !important;
+}
+
+.details {
+    display: flex;
+    margin: 0.75rem 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.food-card h1 {
+
+    min-height: 45px;
+    font-size: 1.25rem;
+    line-height: 20px;
+}
+
+.food-card p {
+    font-size: 1rem;
+}
+
+.container-food-card {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0.75rem;
 }
