@@ -10,4 +10,24 @@
     padding: 0;
 }
 
-.mat-focus-indicator {}
+.btn-filled {
+    background-color: var(--redCustom);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-normal {
+    background-color: #fff;
+    color: var(--redCustom);
+    border: 1px solid var(--redCustom);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}

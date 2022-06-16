@@ -1,8 +1,9 @@
-<h1 mat-dialog-title> &iquest;Est&aacute;s seguro de que deseas salir?</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title class="text-center"> &iquest;Est&aacute;s seguro de salir sin guardar?</h1>
+<div mat-dialog-content class="text-center">
     <p>Esta acción eliminará los cambios recientes que hiciste en la orden.</p>
 </div>
 <div mat-dialog-actions class="buttons">
-    <button class="" (click)="onNoClick()">No, no quiero salir</button>
-    <button class="" cdkFocusInitial>Si, quiero salir</button>
+    <button class="btn-normal" mat-button (click)=" onNoClick()">No</button>
+    <button class="btn-filled" mat-button (click)=" onNoClick()" [routerLink]="'/waitress/dining-tables/'"
+        cdkFocusInitial>Si</button>
 </div>

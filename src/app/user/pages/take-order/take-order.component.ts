@@ -3,7 +3,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
 import { ViewEncapsulation } from '@angular/core';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
-
+import { menu_fake } from '../../constants/menu-fake';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-take-order',
@@ -37,12 +37,12 @@ export class TakeOrderComponent implements OnInit {
 
    getAllProducts(): void {  
      this.productService.getAll()
-       .subscribe(products => this.separateProducts(products), error => this.error = error);
+       .subscribe(products => this.separateProducts(products), error => {this.error = error; this.separateProducts(menu_fake)});
    }
 
    openDialog(): void {
     const dialogRef = this.dialog.open(ConfirmationComponent, {
-      width: '400px',
+      width: '350px',
       
     });
 
