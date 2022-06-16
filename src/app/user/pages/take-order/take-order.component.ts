@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
 import { ViewEncapsulation } from '@angular/core';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
 import { menu_fake } from '../../constants/menu-fake';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-take-order',
   templateUrl: './take-order.component.html',
@@ -18,13 +20,17 @@ export class TakeOrderComponent implements OnInit {
   drinks: Product[] = []
   desserts: Product[] = []
   error?: string
+  tableNumber: number = -1;
   constructor(
     private productService: ProductService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.tableNumber = this.route.snapshot.params.id
+    
    }
  
    separateProducts(products: any[]) {

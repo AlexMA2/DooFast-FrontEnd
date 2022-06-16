@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EMPTY, WAITING, SERVED } from '../../constants/dining-table-states'
 
 interface Order {
@@ -20,8 +20,7 @@ export class DiningTableComponent implements OnInit {
   EMPTY = EMPTY
   WAITING = WAITING
   SERVED = SERVED
-
-  number : number = 1;
+  @Input() tableNumber!: number;  
   state : string = EMPTY;
   time: number = 0
   orders?: Order[] = [];

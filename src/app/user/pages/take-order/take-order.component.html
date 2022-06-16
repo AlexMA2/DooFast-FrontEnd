@@ -3,19 +3,19 @@
     <div class="d-flex flex-row productos">
         <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector col-sm-8">
             <mat-tab label="Entradas" color="success">
-                <app-product-container [products]="this.starters"></app-product-container>
+                <app-product-container [tableNumber]="tableNumber" [products]="this.starters"></app-product-container>
             </mat-tab>
             <mat-tab label="Platos">
-                <app-product-container [products]="this.mainDishes"></app-product-container>
+                <app-product-container [tableNumber]="tableNumber" [products]="this.mainDishes"></app-product-container>
             </mat-tab>
             <mat-tab label="Bebidas">
-                <app-product-container [products]="this.drinks"></app-product-container>
+                <app-product-container [tableNumber]="tableNumber" [products]="this.drinks"></app-product-container>
             </mat-tab>
             <mat-tab label="Postres">
-                <app-product-container [products]="this.desserts"></app-product-container>
+                <app-product-container [tableNumber]="tableNumber" [products]="this.desserts"></app-product-container>
             </mat-tab>
         </mat-tab-group>
-        <app-order-details class="col-sm-4"></app-order-details>
+        <app-order-details [tableNumber]="tableNumber" class="col-sm-4"></app-order-details>
     </div>
     <div class="w-100 d-flex flex-row row buttons">
 
