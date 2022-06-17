@@ -1,28 +1,23 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/Product';
-import { SimpleChanges } from '@angular/core';
-import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-product-container',
   templateUrl: './product-container.component.html',
-  styleUrls: ['./product-container.component.css']
+  styleUrls: ['./product-container.component.css'],
 })
 export class ProductContainerComponent implements OnInit {
-
   @Input() tableNumber!: number;
-  @Input() products!: Product[]; 
+  @Input() products!: Product[];
+  @Input() category!: string;
   @Output() foodPicked: EventEmitter<any> = new EventEmitter();
-  
-  constructor(  
-    private orderService: OrderService
-   ) { }
 
-  ngOnInit(): void {
-    this.orderService.setTableId(1);
-  }
+  constructor() {}
 
-  pickFood(prod : Product) : void {
-    
+  ngOnInit(): void {}
+
+  pickFood(prod: Product): void {
+    prod.nombreCategoria = this.category;
+    this.foodPicked.emit(prod);
   }
 }

@@ -1,7 +1,10 @@
-
 export interface Product {
-    id: number;
-    nombreProducto: string;
-    precio: number;
-    imagePath: string;
-  }
+  id: number;
+  nombreComida: string;
+  precio: number;
+  costo: number;
+  imagen: string;
+  imagePath: string;
+  nombreCategoria: string;
+  fechaCreacion: Date;
+}
