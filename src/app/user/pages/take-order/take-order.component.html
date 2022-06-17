@@ -1,5 +1,5 @@
 <div class="take-order">
-    <h1 class="error" *ngIf="error !== ''"> {{error}}</h1>
+    <h1 class="error" [ngClass]="{'hidden': !isError, 'visible': isError}" *ngIf="error !== ''"> {{error}}</h1>
     <div class="productos">
         <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector">
             <mat-tab label="Entradas" color="success">

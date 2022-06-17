@@ -22,6 +22,8 @@ export class TakeOrderComponent implements OnInit {
   tableNumber: number = -1;
   pedido?: Product;
 
+  isError: boolean = false;
+
   constructor(
     private productService: ProductService,
     public dialog: MatDialog,
@@ -49,6 +51,7 @@ export class TakeOrderComponent implements OnInit {
       (products) => this.separateProducts(products),
       (error) => {
         this.error = error;
+        this.isError = true;
         this.separateProducts(menu_fake);
       }
     );
