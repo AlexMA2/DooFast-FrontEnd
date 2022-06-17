@@ -45,6 +45,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
+}
+
+.products>div:active {
+    background-color: var(--backgroundSecondary);
 }
 
 .products>div>p {

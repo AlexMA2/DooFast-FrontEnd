@@ -5,11 +5,7 @@ import { Product } from 'src/app/models/Product';
 import { ViewEncapsulation } from '@angular/core';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
 import { menu_fake } from '../../constants/menu-fake';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-take-order',
@@ -71,5 +67,9 @@ export class TakeOrderComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
+  }
+
+  saveOrder(): void {
+    console.log('Guardar orden');
   }
 }

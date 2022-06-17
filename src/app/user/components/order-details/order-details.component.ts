@@ -52,5 +52,24 @@ export class OrderDetailsComponent implements OnInit {
     }
   }
 
+  deleteFood(product: Product) {
+    const category = product.nombreCategoria;
+
+    switch (category) {
+      case 'Entrada':
+        this.Entradas = this.Entradas?.filter((p) => p.id !== product.id);
+        break;
+      case 'Principal':
+        this.Principales = this.Principales?.filter((p) => p.id !== product.id);
+        break;
+      case 'Bebida':
+        this.Bebidas = this.Bebidas?.filter((p) => p.id !== product.id);
+        break;
+      case 'Postre':
+        this.Postres = this.Postres?.filter((p) => p.id !== product.id);
+        break;
+    }
+  }
+
   ngOnInit(): void {}
 }

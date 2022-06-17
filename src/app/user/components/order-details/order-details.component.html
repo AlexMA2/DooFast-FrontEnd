@@ -6,7 +6,7 @@
         <div class="category">
             <p> Entradas </p>
             <div class="products">
-                <div *ngFor="let food of Entradas">
+                <div (click)="deleteFood(food)" *ngFor="let food of Entradas">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio}}</p>
