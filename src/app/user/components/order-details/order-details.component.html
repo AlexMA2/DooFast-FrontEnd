@@ -9,7 +9,7 @@
                 <div (click)="deleteFood(food)" *ngFor="let food of Entradas">
                     <p> {{food.nombreComida}} </p>
 
-                    <p> {{food.precio}}</p>
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div *ngFor="let food of Principales">
                     <p> {{food.nombreComida}} </p>
 
-                    <p> {{food.precio}}</p>
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <div *ngFor="let food of Bebidas">
                     <p> {{food.nombreComida}} </p>
 
-                    <p> {{food.precio}}</p>
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div *ngFor="let food of Postres">
                     <p> {{food.nombreComida}} </p>
 
-                    <p> {{food.precio}}</p>
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
                 </div>
             </div>
         </div>

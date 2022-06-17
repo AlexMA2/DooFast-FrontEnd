@@ -3,24 +3,24 @@ export const menu_fake = [
     {
       id: 1,
       nombreComida: 'Papa a la huancaina',
-      precio: 'S/. 0.00',
+      precio: 0.0,
     },
     {
       id: 2,
       nombreComida: 'Sopa de morón',
-      precio: 'S/. 0.00',
+      precio: 0.0,
     },
   ],
   [
     {
       id: 1,
       nombreComida: 'Arroz con Pollo',
-      precio: 'S/. 8.00',
+      precio: 8.0,
     },
     {
       id: 2,
       nombreComida: 'Aji de Pollo',
-      precio: 'S/. 8.00',
+      precio: 8.0,
     },
   ],
   [

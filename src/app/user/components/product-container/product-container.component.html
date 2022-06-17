@@ -7,7 +7,7 @@
         </div>
         <div class="details">
             <h1> {{prod.nombreComida}}</h1>
-            <p> {{prod.precio}}</p>
+            <p> {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
         </div>
 
     </div>

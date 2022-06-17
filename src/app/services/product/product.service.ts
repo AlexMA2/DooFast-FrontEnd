@@ -1,28 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product';
 
-import { catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-const baseUrl = 'https://21d2-190-237-151-210.sa.ngrok.io/api/Menu';
+const baseUrl = 'https://6c29-190-237-151-210.sa.ngrok.io/api/Carta';
 let errorMsg: string;
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class ProductService {
- 
-  constructor(private http: HttpClient) { }
-  
-  getAll(): Observable<any[]> {
-    return this.http
-      .get<any[]>(baseUrl)
-      .pipe(catchError(this.handleError));
+  constructor(private http: HttpClient) {}
 
-  }  
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(baseUrl).pipe(catchError(this.handleError));
+  }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -32,11 +26,12 @@ export class ProductService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
     // return an observable with a user-facing error message
     return throwError(
-      'No se pudo conectar con el servidor. Por favor intente más tarde.');
+      'No se pudo conectar con el servidor. Por favor intente más tarde.'
+    );
   }
 }
