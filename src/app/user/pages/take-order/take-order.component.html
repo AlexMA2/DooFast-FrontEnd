@@ -19,7 +19,8 @@
                     (foodPicked)="getFoodPicked($event)" [products]="this.desserts"></app-product-container>
             </mat-tab>
         </mat-tab-group>
-        <app-order-details style="flex-grow: 0.9;" [tableNumber]="tableNumber" [pedido]="pedido"></app-order-details>
+        <app-order-details style="flex-grow: 0.9;" [saving]="savingOrder " [tableNumber]="tableNumber"
+            [pedido]="pedido"></app-order-details>
     </div>
     <div class="w-100 d-flex flex-row row buttons">
 

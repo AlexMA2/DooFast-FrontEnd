@@ -14,16 +14,16 @@
     </div>
     <div class="dining_table_order">
         <div *ngIf="state === EMPTY" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Take orders</button>
+            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Tomar orden</button>
         </div>
 
         <div *ngIf="state === WAITING" class="button_group">
-            <button (click)="showOrder()"> Show order </button>
-            <button (click)="orderServed()"> Order served </button>
+            <button (click)="showOrder()"> Mostrar Orden </button>
+            <button (click)="orderServed()"> Orden Servida </button>
         </div>
         <div *ngIf="state === SERVED" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Take order </button>
-            <button (click)="payOrder()"> Payment </button>
+            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Tomar orden </button>
+            <button (click)="payOrder()"> Pago </button>
         </div>
 
     </div>

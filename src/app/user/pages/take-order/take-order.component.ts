@@ -21,11 +21,13 @@ export class TakeOrderComponent implements OnInit {
   error?: string;
   tableNumber: number = -1;
   pedido?: Product;
+  savingOrder: boolean = false;
 
   isError: boolean = false;
 
   constructor(
     private productService: ProductService,
+
     public dialog: MatDialog,
     private route: ActivatedRoute
   ) {}
@@ -74,5 +76,6 @@ export class TakeOrderComponent implements OnInit {
 
   saveOrder(): void {
     console.log('Guardar orden');
+    this.savingOrder = true;
   }
 }

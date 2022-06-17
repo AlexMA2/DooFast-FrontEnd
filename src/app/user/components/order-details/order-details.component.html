@@ -16,7 +16,7 @@
         <div class="category">
             <p> Platos Principales: </p>
             <div class="products">
-                <div *ngFor="let food of Principales">
+                <div (click)="deleteFood(food)" *ngFor="let food of Principales">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
@@ -26,7 +26,7 @@
         <div class="category">
             <p> Bebidas: </p>
             <div class="products">
-                <div *ngFor="let food of Bebidas">
+                <div (click)="deleteFood(food)" *ngFor="let food of Bebidas">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
@@ -36,7 +36,7 @@
         <div class="category">
             <p> Postres: </p>
             <div class="products">
-                <div *ngFor="let food of Postres">
+                <div (click)="deleteFood(food)" *ngFor="let food of Postres">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>

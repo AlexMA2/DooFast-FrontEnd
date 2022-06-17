@@ -11,16 +11,19 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    height: 45%;
-    min-height: 275px;
+    height: auto;
+    max-height: 280px;
 }
 
+.food-card_image {
+    height: 70%;
+}
 
 .food-card>div img {
     width: 100%;
-    object-fit: fill !important;
+    height: 100%;
+    object-fit: contain;
 }
 
 .details {
