@@ -1,6 +1,6 @@
 .order-details {
+    flex-grow: 0.9;
     width: 100%;
-    margin-left: 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: var(--backgroundSecondary);

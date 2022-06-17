@@ -1,6 +1,6 @@
 <div class="take-order">
     <h1 class="error" *ngIf="error !== ''"> {{error}}</h1>
-    <div class="d-flex flex-row productos">
+    <div class="productos">
         <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector">
             <mat-tab label="Entradas" color="success">
                 <app-product-container category="Entrada" [tableNumber]="tableNumber"
@@ -19,7 +19,7 @@
                     (foodPicked)="getFoodPicked($event)" [products]="this.desserts"></app-product-container>
             </mat-tab>
         </mat-tab-group>
-        <app-order-details [tableNumber]="tableNumber" [pedido]="pedido"></app-order-details>
+        <app-order-details style="flex-grow: 0.9;" [tableNumber]="tableNumber" [pedido]="pedido"></app-order-details>
     </div>
     <div class="w-100 d-flex flex-row row buttons">
 
