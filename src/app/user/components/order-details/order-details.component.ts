@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { Order } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 
 @Component({
@@ -6,17 +6,13 @@ import { Product } from 'src/app/models/Product';
   templateUrl: './product-container.component.html',
   styleUrls: ['./product-container.component.css'],
 })
-export class ProductContainerComponent implements OnInit {
+export class ProductContainerComponent {
   @Input() tableNumber!: number;
   @Input() products!: Product[];
   @Input() category!: string;
   @Output() foodPicked: EventEmitter<any> = new EventEmitter();
 
   counter: number = 0;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   pickFood(prod: Product): void {
     let newProduct: Product;
