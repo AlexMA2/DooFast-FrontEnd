@@ -9,17 +9,15 @@ import { Router } from '@angular/router';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderDetailsComponent {
   @Input() tableNumber!: number;
   @Input() pedido?: Product;
   @Input() saving: boolean = false;
 
-  voucherEntries = ['Entradas', 'Platos Principales', 'Bebidas', 'Postres'];
-
-  Entradas?: Product[] = [];
-  Principales?: Product[] = [];
-  Bebidas?: Product[] = [];
-  Postres?: Product[] = [];
+  Entradas: Product[] = [];
+  Principales: Product[] = [];
+  Bebidas: Product[] = [];
+  Postres: Product[] = [];
 
   constructor(private orderService: OrderService, private route: Router) {}
 
@@ -27,7 +25,7 @@ export class OrderDetailsComponent implements OnInit {
     if (changes.pedido) {
       this.pedido = changes.pedido.currentValue;
 
-      const category = this.pedido?.nombreCategoria || 'Entradas';
+      const category = this.pedido?.nombreCategoria || 'Entrada';
 
       switch (category) {
         case 'Entrada':
@@ -55,68 +53,42 @@ export class OrderDetailsComponent implements OnInit {
     }
 
     if (changes?.saving?.currentValue) {
-      const arrayOrden = this.createArrayOrden();
+      const voucher = this.createVoucher();
 
-      for (let orden of arrayOrden) {
-        // this.orderService.addOrder(orden).subscribe((response) => {
+      for (let item of voucher) {
+        // this.orderService.addOrder(item).subscribe((response) => {
         //   console.log(response);
         // });
-
-        this.route.navigate(['/waitress']);
       }
+      this.route.navigate(['/waitress']);
     }
   }
 
-  createArrayOrden() {
-    const arrayOrden: Order[] = [];
-    const idComidasJuntadas: number[] = [];
+  createVoucher() {
+    const voucher: Order[] = [];
+    let foodsGroupById: any = {};
 
-    this.Entradas?.forEach((e) => {
-      idComidasJuntadas.push(e.idComida);
-    });
-    this.Principales?.forEach((e) => {
-      idComidasJuntadas.push(e.idComida);
-    });
-    this.Bebidas?.forEach((e) => {
-      idComidasJuntadas.push(e.idComida);
-    });
-    this.Postres?.forEach((e) => {
-      idComidasJuntadas.push(e.idComida);
-    });
+    foodsGroupById = this.Entradas.concat(
+      this.Principales,
+      this.Bebidas,
+      this.Postres
+    ).reduce(function (rv: any, x) {
+      (rv[x.idComida] = rv[x.idComida] || []).push(x);
+      return rv;
+    }, {});
 
-    idComidasJuntadas.sort(function (a, b) {
-      return a - b;
-    });
-
-    let idComidasJuntadasConCantidad: any[] = [];
-
-    let idComidaPrev = -999;
-
-    idComidasJuntadas.forEach((id) => {
-      if (id !== idComidaPrev) {
-        idComidasJuntadasConCantidad.push({
-          idComida: id,
-          cantidad: 1,
-        });
-      } else {
-        idComidasJuntadasConCantidad[idComidasJuntadasConCantidad.length - 1]
-          .cantidad++;
-      }
-      idComidaPrev = id;
-    });
-
-    for (let i = 0; i < idComidasJuntadasConCantidad.length; i++) {
-      const idComida = idComidasJuntadasConCantidad[i].idComida;
-      const cantidad = idComidasJuntadasConCantidad[i].cantidad;
+    for (let id in foodsGroupById) {
+      const idProducto = Number(id);
+      const cantidad = foodsGroupById[id].length;
       const orden: Order = {
         idMesa: this.tableNumber,
-        idProducto: idComida,
-        cantidad: cantidad,
+        idProducto,
+        cantidad,
       };
-      arrayOrden.push(orden);
+      voucher.push(orden);
     }
 
-    return arrayOrden;
+    return voucher;
   }
 
   deleteFood(product: Product) {
@@ -145,6 +117,4 @@ export class OrderDetailsComponent implements OnInit {
         break;
     }
   }
-
-  ngOnInit(): void {}
 }
