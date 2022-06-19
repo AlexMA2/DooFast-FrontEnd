@@ -59,7 +59,7 @@ export class TakeOrderComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmationComponent, {
+    this.dialog.open(ConfirmationComponent, {
       width: '350px',
       data: {
         title: '¿Estás seguro de salir sin guardar?',
