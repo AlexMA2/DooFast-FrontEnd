@@ -12,12 +12,22 @@ export class ProductContainerComponent implements OnInit {
   @Input() category!: string;
   @Output() foodPicked: EventEmitter<any> = new EventEmitter();
 
+  counter: number = 0;
+
   constructor() {}
 
   ngOnInit(): void {}
 
   pickFood(prod: Product): void {
-    prod.nombreCategoria = this.category;
-    this.foodPicked.emit(prod);
+    let newProduct: Product;
+    newProduct = {
+      ...prod,
+      nombreCategoria: this.category,
+      idPedido: this.category[0] + this.category[1] + this.counter,
+    };
+
+    this.counter++;
+
+    this.foodPicked.emit(newProduct);
   }
 }

@@ -27,7 +27,6 @@ export class TakeOrderComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-
     public dialog: MatDialog,
     private route: ActivatedRoute
   ) {}
@@ -68,14 +67,9 @@ export class TakeOrderComponent implements OnInit {
           'Esta acción eliminará los cambios recientes que hiciste en la orden.',
       },
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
   }
 
   saveOrder(): void {
-    console.log('Guardar orden');
     this.savingOrder = true;
   }
 }

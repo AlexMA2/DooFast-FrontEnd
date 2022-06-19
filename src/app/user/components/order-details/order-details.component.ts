@@ -26,6 +26,7 @@ export class OrderDetailsComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.pedido) {
       this.pedido = changes.pedido.currentValue;
+
       const category = this.pedido?.nombreCategoria || 'Entradas';
 
       switch (category) {
@@ -55,12 +56,12 @@ export class OrderDetailsComponent implements OnInit {
 
     if (changes?.saving?.currentValue) {
       const arrayOrden = this.createArrayOrden();
-      console.log('IMPRIMIENDO ARRAY');
+
       for (let orden of arrayOrden) {
         // this.orderService.addOrder(orden).subscribe((response) => {
         //   console.log(response);
         // });
-        console.log(orden);
+
         this.route.navigate(['/waitress']);
       }
     }
@@ -69,33 +70,23 @@ export class OrderDetailsComponent implements OnInit {
   createArrayOrden() {
     const arrayOrden: Order[] = [];
     const idComidasJuntadas: number[] = [];
-    console.log(this.Entradas);
+
     this.Entradas?.forEach((e) => {
-      console.log(e.idComida);
       idComidasJuntadas.push(e.idComida);
     });
     this.Principales?.forEach((e) => {
-      console.log(e.idComida);
       idComidasJuntadas.push(e.idComida);
     });
     this.Bebidas?.forEach((e) => {
-      console.log(e.idComida);
       idComidasJuntadas.push(e.idComida);
     });
     this.Postres?.forEach((e) => {
-      console.log(e.idComida);
       idComidasJuntadas.push(e.idComida);
     });
-
-    console.log('ID COMIDAS JUNTADAS');
-    console.log(idComidasJuntadas);
 
     idComidasJuntadas.sort(function (a, b) {
       return a - b;
     });
-
-    console.log('ID COMIDAS JUNTADAS ORDENADAS');
-    console.log(idComidasJuntadas);
 
     let idComidasJuntadasConCantidad: any[] = [];
 
@@ -134,22 +125,22 @@ export class OrderDetailsComponent implements OnInit {
     switch (category) {
       case 'Entrada':
         this.Entradas = this.Entradas?.filter(
-          (p) => p.idComida !== product.idComida
+          (p) => p.idPedido !== product.idPedido
         );
         break;
       case 'Principal':
         this.Principales = this.Principales?.filter(
-          (p) => p.idComida !== product.idComida
+          (p) => p.idPedido !== product.idPedido
         );
         break;
       case 'Bebida':
         this.Bebidas = this.Bebidas?.filter(
-          (p) => p.idComida !== product.idComida
+          (p) => p.idPedido !== product.idPedido
         );
         break;
       case 'Postre':
         this.Postres = this.Postres?.filter(
-          (p) => p.idComida !== product.idComida
+          (p) => p.idPedido !== product.idPedido
         );
         break;
     }
