@@ -7,5 +7,4 @@ export interface Product {
   imagePath: string;
   nombreCategoria: string;
   fechaCreacion: Date;
-  idPedido: string;
 }

@@ -6,6 +6,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
 import { menu_fake } from '../../constants/menu-fake';
 import { MatDialog } from '@angular/material/dialog';
+import { OrderData } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-take-order',
@@ -20,7 +21,7 @@ export class TakeOrderComponent implements OnInit {
   desserts: Product[] = [];
   error?: string;
   tableNumber: number = -1;
-  pedido?: Product;
+  pedido?: OrderData;
   savingOrder: boolean = false;
 
   isError: boolean = false;
@@ -36,7 +37,7 @@ export class TakeOrderComponent implements OnInit {
     this.tableNumber = this.route.snapshot.params.id;
   }
 
-  getFoodPicked(product: Product) {
+  getFoodPicked(product: OrderData) {
     this.pedido = product;
   }
 

@@ -4,13 +4,14 @@ import { DiningTableComponent } from './components/dining-table/dining-table.com
 import { DiningTableContainerComponent } from './pages/dining-table-container/dining-table-container.component';
 import { TakeOrderComponent } from './pages/take-order/take-order.component';
 import { UserRoutingModule } from './user-routing.module';
-import {MatTabsModule} from '@angular/material/tabs';
-import { ProductContainerComponent } from './components/product-container/product-container.component'; 
-import {MatButtonModule} from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ProductContainerComponent } from './components/product-container/product-container.component';
+import { MatButtonModule } from '@angular/material/button';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
-import { ConfirmationComponent } from './components/confirmation/confirmation.component'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatFormFieldModule} from '@angular/material/form-field'; 
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     TakeOrderComponent,
     ProductContainerComponent,
     OrderDetailsComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
   ],
   imports: [
     CommonModule,
@@ -27,11 +28,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTabsModule,
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule,
   ],
-  exports: [
-    DiningTableContainerComponent,
-    TakeOrderComponent
-  ]
+  exports: [DiningTableContainerComponent, TakeOrderComponent],
 })
-export class UserModule { }
+export class UserModule {}

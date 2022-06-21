@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/Product';
+import { OrderData } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-product-container',
@@ -15,15 +16,21 @@ export class ProductContainerComponent {
   counter: number = 0;
 
   pickFood(prod: Product): void {
-    let newProduct: Product;
-    newProduct = {
-      ...prod,
-      nombreCategoria: this.category,
-      idPedido: this.category[0] + this.category[1] + this.counter,
+    let newOrder: OrderData;
+    newOrder = {
+      idMesa: this.tableNumber,
+      nombreComida: prod.nombreComida,
+      nombreCategoria: prod.nombreCategoria,
+      precio: prod.precio,
+      idOrden: null,
+      fechaCreacion: null,
+      cantidad: 1,
+      estadoOrden: 'Por servir',
+      idComida: prod.idComida,
+      saved: false,
     };
 
     this.counter++;
-
-    this.foodPicked.emit(newProduct);
+    this.foodPicked.emit(newOrder);
   }
 }
