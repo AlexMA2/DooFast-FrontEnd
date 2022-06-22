@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
-
 .dining_table {
     width: 250px;
     display: flex;
@@ -8,7 +6,6 @@
     align-items: center;
     background-color: #F5F3F4;
     border-radius: 1rem;
-
     filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.25));
 }
 
@@ -36,7 +33,6 @@
 .dining_table_state {
     width: 155px;
     text-align: center;
-
     line-height: normal;
 }
 
@@ -48,12 +44,15 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-
+    height: 24px;
 }
 
 .dining_table_state h4 {
     font-family: 'Jost', sans-serif;
     color: #011627;
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
 }
 
 .dining_table_state p {
@@ -83,7 +82,6 @@
     padding: 0.5rem;
     font-family: 'Jost', sans-serif;
     color: #fff;
-
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
