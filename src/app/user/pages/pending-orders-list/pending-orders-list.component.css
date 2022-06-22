@@ -1,0 +1,41 @@
+.app-status{
+    height: 80%;
+    margin: 20px;
+    padding: 10px;
+    background-color: #AEE538;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.waiting-wrapper{
+    height: 80%;
+    margin: 20px;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.number-waiting-orders {
+    margin: 0 20px;
+    height: 50px;
+    width: 50px;
+    background-color: #E5383B;
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    /* padding: auto; */
+}
+
+.text-number-waiting-orders{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap
+}

@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div class="row ">
+        <div *ngFor="let i of [0,1,2,3,4,5,6]; let indice=index"
+            class=" col-xl-3 col-md-4 col-sm-6 d-flex justify-content-center align-items-center">
+            <div class="mt-4">
+                <app-pending-order></app-pending-order>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row d-flex align-items-center">
+        <div class="app-status col-md-5 col-sm-12">
+            😊 La aplicación está funcionando correctamente
+        </div>
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center waiting-wrapper">
+            <div class="row">
+                <div class="text-number-waiting-orders col-9">Número Total de pedidos en espera =></div>
+                <div class="number-waiting-orders ">11</div>
+            </div>
+        </div>
+    </div>
+</div>
