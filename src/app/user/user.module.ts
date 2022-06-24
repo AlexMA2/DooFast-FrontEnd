@@ -12,6 +12,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PendingOrdersListComponent } from './pages/pending-orders-list/pending-orders-list.component';
+import { PendingOrderComponent } from './components/pending-order/pending-order.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProductContainerComponent,
     OrderDetailsComponent,
     ConfirmationComponent,
+    PendingOrdersListComponent,
+    PendingOrderComponent,
   ],
   imports: [
     CommonModule,
