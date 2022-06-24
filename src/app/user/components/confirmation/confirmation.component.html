@@ -1,0 +1,9 @@
+<h1 mat-dialog-title class="text-center"> {{data.title}}</h1>
+<div mat-dialog-content class="text-center">
+    <p>{{data.message}}</p>
+</div>
+<div mat-dialog-actions class="buttons">
+    <button class="btn-normal" mat-button (click)=" onNoClick()">No</button>
+    <button class="btn-filled" mat-button (click)=" onNoClick()" [routerLink]="'/waitress/dining-tables/'"
+        cdkFocusInitial>Si</button>
+</div>

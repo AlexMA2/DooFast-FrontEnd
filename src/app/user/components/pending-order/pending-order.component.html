@@ -1,0 +1,32 @@
+<div (click)="removeOrder()" class="pending-order">
+    <div class="pending-order-title">
+        <!-- <h1>
+             {{tableNumber}} 
+        </h1> -->
+        <div class="dining_table_state">
+            <h2> {{index+1}}. {{ order.nombreComida }} </h2>
+        </div>
+    </div>
+
+    <div>
+        <img class="pending-order-image"
+            src="https://decomidaperuana.com/wp-content/uploads/2018/04/tallarines-verdes-receta-peruana.png"
+            alt="Tallarines verdes">
+    </div>
+    <div class="pending-order-table-wrapper">
+        <div class="pending-order-parallelogram">
+        </div>
+        <div class="pending-order-table-text">
+            Mesa {{order.idMesa}}
+        </div>
+    </div>
+
+    <div class="pending-order-info-wrapper">
+        <div>
+            <!-- <div>
+                <fa-icon [icon]="faCoffee"></fa-icon>
+            </div> -->
+            <div class="pending-order-timer">🕓 {{DisplayedTime}} </div>
+        </div>
+    </div>
+</div>
