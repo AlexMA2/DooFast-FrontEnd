@@ -17,13 +17,6 @@ const WaitressRoutes: Routes = [
     path: 'take-order/:id',
     component: TakeOrderComponent,
   },
-<<<<<<< HEAD
-=======
-  {
-    path: 'cocina',
-    component: PendingOrdersListComponent,
-  },
->>>>>>> 5816c9e58f1afee16c92c3b9778b037a4a57a116
 ];
 
 const routes: Routes = [
