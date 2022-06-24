@@ -1,0 +1,47 @@
+<div class="order-details">
+    <div class="title">
+        <h1> Orden - Mesa {{tableNumber}}</h1>
+    </div>
+    <div class="categories">
+        <div class="category">
+            <p> Entradas </p>
+            <div class="products">
+                <div (click)="deleteFood(food)" *ngFor="let food of Entradas">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Platos Principales: </p>
+            <div class="products">
+                <div (click)="deleteFood(food)" *ngFor="let food of Principales">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Bebidas: </p>
+            <div class="products">
+                <div (click)="deleteFood(food)" *ngFor="let food of Bebidas">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Postres: </p>
+            <div class="products">
+                <div (click)="deleteFood(food)" *ngFor="let food of Postres">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
