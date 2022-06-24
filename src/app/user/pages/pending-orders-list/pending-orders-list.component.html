@@ -4,7 +4,7 @@
         <div *ngFor="let order of pendingOrders; let i = index" 
             class=" col-xl-3 col-md-4 col-sm-6 d-flex justify-content-center align-items-center">
             <div class="mt-4">
-                <app-pending-order [order]="order" (removed)="removeOrder($event)"></app-pending-order>
+                <app-pending-order [index]= "i" [order]="order" (removed)="removeOrder($event)"></app-pending-order>
             </div>
         </div>
 

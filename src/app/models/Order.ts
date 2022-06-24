@@ -12,7 +12,7 @@ export interface OrderData {
   nombreCategoria: string;
   precio: number | null;
   cantidad: number | 0;
-  fechaCreacion: Date | null;
+  fechaCreacion: string | null;
   estadoOrden: string | null;
   saved: boolean;
 }

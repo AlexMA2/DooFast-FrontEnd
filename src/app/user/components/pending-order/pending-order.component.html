@@ -4,7 +4,7 @@
              {{tableNumber}} 
         </h1> -->
         <div class="dining_table_state">
-            <h2> {{ order.nombreComida }} </h2>
+            <h2> {{index+1}}. {{ order.nombreComida }} </h2>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
         <div class="pending-order-parallelogram">
         </div>
         <div class="pending-order-table-text">
-            {{order.idMesa}}
+            Mesa {{order.idMesa}}
         </div>
     </div>
 
