@@ -7,7 +7,7 @@ import { handleError } from '../handleError';
 
 import { catchError } from 'rxjs/operators';
 
-const API_URL = BASE_URL + 'api/Carta';
+const API_URL = BASE_URL + 'api/ComidaCarta';
 
 @Injectable({
   providedIn: 'root',

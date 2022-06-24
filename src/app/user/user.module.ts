@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DiningTableComponent } from './components/dining-table/dining-table.component';
-
+import { SharedModule } from '../shared/shared.module';
 import { DiningTableContainerComponent } from './pages/dining-table-container/dining-table-container.component';
 import { TakeOrderComponent } from './pages/take-order/take-order.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -31,6 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    SharedModule,
   ],
   exports: [DiningTableContainerComponent, TakeOrderComponent],
 })

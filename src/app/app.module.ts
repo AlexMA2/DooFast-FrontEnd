@@ -7,21 +7,21 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
-  declarations: [    
-    AppComponent    
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule ,
+    SharedModule,
     UserModule,
     BrowserAnimationsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    AdminModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
