@@ -21,7 +21,11 @@ const WaitressRoutes: Routes = [
   {
     path: 'pending-orders',
     component: PendingOrdersListComponent,
-  }
+  },
+  {
+    path: 'cocina',
+    component: PendingOrdersListComponent,
+  },
 ];
 
 const routes: Routes = [
