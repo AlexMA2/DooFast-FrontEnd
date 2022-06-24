@@ -1,10 +1,10 @@
-<div class="pending-order">
+<div (click)="removeOrder()" class="pending-order">
     <div class="pending-order-title">
         <!-- <h1>
              {{tableNumber}} 
         </h1> -->
         <div class="dining_table_state">
-            <h2>Tallarines verdes</h2>
+            <h2> {{ order.nombreComida }} </h2>
         </div>
     </div>
 

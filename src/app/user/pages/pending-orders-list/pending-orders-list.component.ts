@@ -10,19 +10,31 @@ import { orders } from '../../constants/orders-fake';
 })
 export class PendingOrdersListComponent implements OnInit {
 
-  isServerOn: boolean = false;
-  pendingOrders: OrderData[];
-
+  isServerOn!: boolean | null;
+  pendingOrders!: OrderData[];
+  numberPendingOrders: number = 0;
 
   constructor(
     private orderService: OrderService) {
-    this.pendingOrders = JSON.parse(JSON.stringify(orders));
+    // this.pendingOrders = JSON.parse(JSON.stringify(orders));
   }
 
   ngOnInit(): void {
-    this.isServerOn = true;
-    this.orderService.getAllOrders();
-    print();
+      this.orderService.getAllOrders().subscribe(
+        (data) => {
+          this.pendingOrders = data,
+          this.isServerOn = true;
+        },
+        (error) => {
+          console.log(error);
+          this.isServerOn = false;
+          this.pendingOrders = orders;
+        }
+      );
   }
 
+  removeOrder(idOrder: number) {
+    this.pendingOrders = this.pendingOrders.filter(o => o.idOrden !== idOrder);
+    this.numberPendingOrders--;
+  }
 }
