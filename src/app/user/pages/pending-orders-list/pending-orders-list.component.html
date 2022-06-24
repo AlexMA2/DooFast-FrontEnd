@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="row ">
+        <div *ngFor="let order of pendingOrders; let i = index" 
+            class=" col-xl-3 col-md-4 col-sm-6 d-flex justify-content-center align-items-center">
+            <div class="mt-4">
+                <app-pending-order [index]= "i" [order]="order" (removed)="removeOrder($event)"></app-pending-order>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row d-flex align-items-center">
+        <div *ngIf="isServerOn === false" class="app-status-error col-md-5 col-sm-12">
+            😢 El servidor no se encuentra disponible
+        </div>
+        <div *ngIf="isServerOn === true" class="app-status-ok col-md-5 col-sm-12">
+            😊 La aplicación está funcionando correctamente
+        </div>
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center waiting-wrapper">
+            <div class="row">
+                <div class="text-number-waiting-orders col-9">Número Total de pedidos en espera =></div>
+                <div class="number-waiting-orders ">{{ numberPendingOrders }}</div>
+            </div>
+        </div>
+    </div>
+</div>
