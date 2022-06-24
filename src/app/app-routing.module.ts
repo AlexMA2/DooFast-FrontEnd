@@ -7,7 +7,7 @@ const WaitressRoutes: Routes = [
   {
     path: '',
     redirectTo: 'dining-tables',
-    pathMatch: 'full',  
+    pathMatch: 'full',
   },
   {
     path: 'dining-tables',
@@ -16,14 +16,18 @@ const WaitressRoutes: Routes = [
   {
     path: 'take-order/:id',
     component: TakeOrderComponent,
-  }
+  },
+  {
+    path: 'cocina',
+    component: PendingOrdersListComponent,
+  },
 ];
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'waitress',
-    pathMatch: 'full',  
+    pathMatch: 'full',
   },
   {
     path: 'waitress',
@@ -32,11 +36,11 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'waitress',
-  }  
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
