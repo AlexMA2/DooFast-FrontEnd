@@ -5,14 +5,14 @@ export interface Order {
 }
 
 export interface OrderData {
-  idOrden: number | null;
   idMesa: number;
-  idComida: number;
-  nombreComida: string;
   nombreCategoria: string;
+  nombreComida: string;
+  idOrden: number | null;
   precio: number | null;
+  fechaCreacion: Date | null;
   cantidad: number | 0;
-  fechaCreacion: string | null;
+  idComida: number;
   estadoOrden: string | null;
   saved: boolean;
 }
