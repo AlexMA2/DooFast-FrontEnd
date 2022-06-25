@@ -1,8 +1,8 @@
 <div class="take-order">
     <h1 class="error" [ngClass]="{'hidden': !isError, 'visible': isError}" *ngIf="error !== ''"> {{error}}</h1>
     <div class="productos">
-        <app-menu-panel style="flex-grow: 0.9;" [getFoodPicked]="getFoodPicked()"></app-menu-panel>
-        <app-order-details style="flex-grow: 0.1;" [saving]="savingOrder " [tableNumber]="tableNumber"
+        <app-menu-panel style="max-width: 70%;" (pedido)="getFoodPicked($event)"></app-menu-panel>
+        <app-order-details style="flex-grow: 0.9;" [saving]="savingOrder " [tableNumber]="tableNumber"
             [pedido]="pedido"></app-order-details>
     </div>
     <div class="w-100 d-flex flex-row row buttons">

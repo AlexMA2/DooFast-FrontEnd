@@ -9,6 +9,7 @@ export interface OrderData {
   nombreCategoria: string;
   nombreComida: string;
   idOrden: number | null;
+  idPedido: string;
   precio: number | null;
   fechaCreacion: Date | null;
   cantidad: number | 0;

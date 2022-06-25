@@ -28,6 +28,7 @@ export class ProductContainerComponent {
       estadoOrden: 'Por servir',
       idComida: prod.idComida,
       saved: false,
+      idPedido: prod.nombreCategoria.substring(0, 2) + this.counter,
     };
 
     this.counter++;

@@ -160,25 +160,33 @@ export class OrderDetailsComponent implements OnInit {
 
     switch (category) {
       case 'Entrada':
-        this.Entradas = this.Entradas?.filter(
-          (p) => p.idOrden !== product.idOrden
-        );
+        this.Entradas = this.Entradas?.filter((p) => {
+          return this.isSaved(p, product);
+        });
         break;
       case 'Principal':
-        this.Principales = this.Principales?.filter(
-          (p) => p.idOrden !== product.idOrden
-        );
+        this.Principales = this.Principales?.filter((p) => {
+          return this.isSaved(p, product);
+        });
         break;
       case 'Bebida':
-        this.Bebidas = this.Bebidas?.filter(
-          (p) => p.idOrden !== product.idOrden
-        );
+        this.Bebidas = this.Bebidas?.filter((p) => {
+          return this.isSaved(p, product);
+        });
         break;
       case 'Postre':
-        this.Postres = this.Postres?.filter(
-          (p) => p.idOrden !== product.idOrden
-        );
+        this.Postres = this.Postres?.filter((p) => {
+          return this.isSaved(p, product);
+        });
         break;
+    }
+  }
+
+  isSaved(p: OrderData, product: OrderData) {
+    if (!p.saved) {
+      return p.idPedido !== product.idPedido;
+    } else {
+      return p.idOrden !== product.idOrden;
     }
   }
 }

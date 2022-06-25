@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
@@ -19,10 +19,9 @@ export class MenuPanelComponent implements OnInit {
   desserts: Product[] = [];
   error?: string;
   tableNumber: number = -1;
-  pedido?: OrderData;
-  savingOrder: boolean = false;
+  @Output() pedido: EventEmitter<OrderData> = new EventEmitter();
 
-  @Input() getFoodPicked: any;
+  savingOrder: boolean = false;
 
   isError: boolean = false;
   constructor(
@@ -33,6 +32,10 @@ export class MenuPanelComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts();
     this.tableNumber = this.route.snapshot.params.id;
+  }
+
+  getFoodPicked(product: OrderData) {
+    this.pedido.emit(product);
   }
 
   separateProducts(products: any[]) {
