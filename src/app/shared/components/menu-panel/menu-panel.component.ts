@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
 import { ViewEncapsulation } from '@angular/core';
@@ -20,18 +20,26 @@ export class MenuPanelComponent implements OnInit {
   error?: string;
   tableNumber: number = -1;
   @Output() pedido: EventEmitter<OrderData> = new EventEmitter();
+  @Output() emitOpenModal: EventEmitter<any> = new EventEmitter();
 
+  admin: boolean = false;
   savingOrder: boolean = false;
 
   isError: boolean = false;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getAllProducts();
     this.tableNumber = this.route.snapshot.params.id;
+    // TODO
+    // VALIDAR SI ES ADMIN UTILIZANDO EL KEY DEL LOGIN
+    if (this.router.url.split('/')[1] === 'admin') {
+      this.admin = true;
+    }
   }
 
   getFoodPicked(product: OrderData) {
@@ -43,6 +51,10 @@ export class MenuPanelComponent implements OnInit {
     this.mainDishes = products[1];
     this.drinks = products[2];
     this.desserts = products[3];
+  }
+
+  openModal(category: string) {
+    this.emitOpenModal.emit(category);
   }
 
   getAllProducts(): void {

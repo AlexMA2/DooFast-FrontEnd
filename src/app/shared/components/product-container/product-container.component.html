@@ -3,7 +3,16 @@
     <div *ngFor="let prod of products" (click)="pickFood(prod)" class="food-card">
 
         <div class="food-card_image">
-            <img src="../../../../assets/products/standard_food.png" alt="Imagen de un plato de comida">
+            <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+                <img [src]="prod.imagen" alt="Imagen de un plato de comida b">
+
+            </ng-template>
+
+            <ng-template #noImage>
+                <img src="../../../../assets/products/standard_food.png" alt="Imagen de un plato de comida">
+            </ng-template>
+
+
         </div>
         <div class="details">
             <h1> {{prod.nombreComida}}</h1>
@@ -11,4 +20,17 @@
         </div>
 
     </div>
+    <div (click)="openModal()" class="food-card">
+
+        <div class="food-card_image">
+            <img src="../../../../assets/add-product.png" alt="Imagen de un plato de comida">
+
+
+        </div>
+        <div class="details">
+            <h1> Agregar comida </h1>
+        </div>
+
+    </div>
+
 </div>

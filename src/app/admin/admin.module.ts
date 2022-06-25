@@ -4,10 +4,13 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { EconomyComponent } from './pages/economy/economy.component';
 import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from '../shared/shared.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProductListComponent } from './component/product-list/product-list.component';
 
 @NgModule({
-  declarations: [EmployeesComponent, MenuComponent, EconomyComponent],
-  imports: [CommonModule, MatTableModule],
+  declarations: [EmployeesComponent, MenuComponent, EconomyComponent, ProductListComponent],
+  imports: [CommonModule, MatTableModule, SharedModule, MatDialogModule],
   exports: [EmployeesComponent, MenuComponent, EconomyComponent],
 })
 export class AdminModule {}

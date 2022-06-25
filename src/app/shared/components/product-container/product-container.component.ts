@@ -11,7 +11,9 @@ export class ProductContainerComponent {
   @Input() tableNumber!: number;
   @Input() products!: Product[];
   @Input() category!: string;
+  @Input() admin!: boolean;
   @Output() foodPicked: EventEmitter<any> = new EventEmitter();
+  @Output() emitOpenModal: EventEmitter<any> = new EventEmitter();
 
   counter: number = 0;
 
@@ -34,5 +36,9 @@ export class ProductContainerComponent {
     this.counter++;
     console.log(newOrder.idPedido);
     this.foodPicked.emit(newOrder);
+  }
+
+  openModal(): void {
+    this.emitOpenModal.emit(this.category);
   }
 }
