@@ -1,3 +1,4 @@
+<h1 class="error" [ngClass]="{'hidden': !isError, 'visible': isError}" *ngIf="error !== ''"> {{error}}</h1>
 <mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector">
     <mat-tab label="Entradas" color="success">
         <app-product-container category="Entrada" [tableNumber]="tableNumber" (foodPicked)="getFoodPicked($event)"
