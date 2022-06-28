@@ -1,8 +1,8 @@
 <div class="take-order">
     <div class="productos">
-        <app-menu-panel style="max-width: 70%;" (pedido)="getFoodPicked($event)"></app-menu-panel>
-        <app-order-details style="flex-grow: 0.9;" [saving]="savingOrder " [tableNumber]="tableNumber"
-            [pedido]="pedido"></app-order-details>
+        <app-menu-panel style=" flex-grow: 1" (pedido)="getFoodPicked($event)"></app-menu-panel>
+        <app-order-details style=" flex-grow: 0.9;
+        margin-left: 1rem;" [saving]="savingOrder " [tableNumber]="tableNumber" [pedido]="pedido"></app-order-details>
     </div>
     <div class="w-100 d-flex flex-row row buttons">
         <button class="col-5" mat-raised-button (click)="openDialog()"> Salir sin guardar </button>

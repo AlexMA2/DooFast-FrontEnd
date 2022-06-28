@@ -7,10 +7,22 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductListComponent } from './component/product-list/product-list.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [EmployeesComponent, MenuComponent, EconomyComponent, ProductListComponent],
-  imports: [CommonModule, MatTableModule, SharedModule, MatDialogModule],
+  declarations: [
+    EmployeesComponent,
+    MenuComponent,
+    EconomyComponent,
+    ProductListComponent,
+  ],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    SharedModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
   exports: [EmployeesComponent, MenuComponent, EconomyComponent],
 })
 export class AdminModule {}

@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+}
+
+th {
+    font-size: 1.25rem;
+}
+
+tr {
+    cursor: pointer;
+
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}

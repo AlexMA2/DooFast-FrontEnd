@@ -6,7 +6,6 @@ import { DiningTableContainerComponent } from './pages/dining-table-container/di
 import { TakeOrderComponent } from './pages/take-order/take-order.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ProductContainerComponent } from './components/product-container/product-container.component';
 import { MatButtonModule } from '@angular/material/button';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
@@ -19,7 +18,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DiningTableComponent,
     DiningTableContainerComponent,
     TakeOrderComponent,
-    ProductContainerComponent,
     OrderDetailsComponent,
     ConfirmationComponent,
   ],
