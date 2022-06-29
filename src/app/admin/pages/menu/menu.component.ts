@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit {
 
   getAllProducts(): void {
     this.productService.getAllFood().subscribe((data) => {
+      console.log('GET', data);
       this.separateProducts(data);
     });
   }

@@ -54,24 +54,25 @@ export class MenuPanelComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.productToAdd) {
       const p: Product = changes.productToAdd.currentValue;
+      console.log('TO ADD', p);
       if (p) {
         switch (p.nombreCategoria) {
           case 'Entrada':
-            if (this.starters.find((x) => x.idComida === p.idComida))
+            if (!this.starters.find((x) => x.idComida === p.idComida))
               this.starters.push(p);
 
             break;
           case 'Principal':
-            if (this.mainDishes.find((x) => x.idComida === p.idComida))
+            if (!this.mainDishes.find((x) => x.idComida === p.idComida))
               this.mainDishes.push(p);
 
             break;
           case 'Bebida':
-            if (this.drinks.find((x) => x.idComida === p.idComida))
+            if (!this.drinks.find((x) => x.idComida === p.idComida))
               this.drinks.push(p);
             break;
           case 'Postre':
-            if (this.desserts.find((x) => x.idComida === p.idComida))
+            if (!this.desserts.find((x) => x.idComida === p.idComida))
               this.desserts.push(p);
             break;
         }
