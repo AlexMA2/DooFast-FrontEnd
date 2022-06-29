@@ -17,6 +17,8 @@ export class MenuComponent implements OnInit {
     Postre: [] as Product[],
   };
 
+  newProduct?: Product;
+
   constructor(
     public dialog: MatDialog,
     private productService: ProductService
@@ -54,6 +56,7 @@ export class MenuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.newProduct = result;
         this.addFoodToMenu(result);
       }
     });

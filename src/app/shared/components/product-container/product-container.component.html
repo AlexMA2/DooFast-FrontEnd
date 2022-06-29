@@ -20,7 +20,7 @@
         </div>
 
     </div>
-    <div (click)="openModal()" class="food-card">
+    <div *ngIf="admin" (click)="openModal()" class="food-card">
 
         <div class="food-card_image">
             <img src="../../../../assets/add-product.png" alt="Imagen de un plato de comida">
