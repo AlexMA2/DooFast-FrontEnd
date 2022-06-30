@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class OrderDetailsComponent implements OnInit {
   @Input() tableNumber!: number;
-  @Input() pedido?: OrderData;
+  @Input() pedido!: OrderData;
   @Input() saving: boolean = false;
 
   Entradas: OrderData[] = [];
@@ -35,12 +35,12 @@ export class OrderDetailsComponent implements OnInit {
     if (orders && orders.length > 0) {
       for (let order of orders) {
         const category = order.nombreCategoria;
-        this.addProductToListToSaved(category, order);
+        this.addOrderFromDatabase(category, order);
       }
     }
   }
 
-  addProductToListToSaved(category: string, order: OrderData) {
+  addOrderFromDatabase(category: string, order: OrderData) {
     switch (category) {
       case 'Entrada':
         if (this.Entradas && order) {
@@ -103,25 +103,17 @@ export class OrderDetailsComponent implements OnInit {
   addOrder(category: string = 'Entrada') {
     switch (category) {
       case 'Entrada':
-        if (this.Entradas && this.pedido) {
-          this.Entradas.push(this.pedido);
-        }
+        this.Entradas.push(this.pedido);
 
         break;
       case 'Principal':
-        if (this.Principales && this.pedido) {
-          this.Principales.push(this.pedido);
-        }
+        this.Principales.push(this.pedido);
         break;
       case 'Bebida':
-        if (this.Bebidas && this.pedido) {
-          this.Bebidas.push(this.pedido);
-        }
+        this.Bebidas.push(this.pedido);
         break;
       case 'Postre':
-        if (this.Postres && this.pedido) {
-          this.Postres.push(this.pedido);
-        }
+        this.Postres.push(this.pedido);
         break;
     }
   }
