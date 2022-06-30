@@ -10,8 +10,8 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http.post('https://0a2c-190-237-151-210.sa.ngrok.io/api/Auth', {
-      correo: 'string@gmail.com',
-      contrasenia: '123',
+      correo: email,
+      contrasenia: password,
     });
   }
 }

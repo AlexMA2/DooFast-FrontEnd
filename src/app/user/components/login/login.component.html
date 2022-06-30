@@ -5,18 +5,18 @@
 
     <form [formGroup]="formLogin" (ngSubmit)="Login()" class="custom-form">
 
-        <h5>
+        <h5 class="form-title">
             Correo electrónico
         </h5>
-        <p id="label">
+        <p class="form-description">
             El correo electrónico lo brinda la empresa y debe estar en su correo personal. Este tiene la siguiente
             forma: <span>[ApellidoPaterno].[PrimerNombre].[Numero]@doofast.com</span>
         </p>
         <input type="email" name="email" placeholder="Correo" formControlName="correo" required="required" />
-        <h5>
+        <h5 class="form-title">
             Contraseña
         </h5>
-        <p id="label">
+        <p class="form-description">
             La contraseña es una serie de numeros y letras. Esta debe estar en un correo enviado a su correo personal.
         </p>
         <input type="password" name="password" placeholder="Contraseña" formControlName="password"

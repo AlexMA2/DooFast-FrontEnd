@@ -27,11 +27,12 @@ img {
     border: 0 none;
     background: #ebf5fc;
 }
+
 .custom-form button {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: white;
     font-weight: bold;
     background-color: #ab2732;
@@ -43,25 +44,26 @@ img {
 }
 
 h5, p {
-    color:white;
+    color: white;
 }
 
-#label{
-    font-size: 0.8rem;
-    font-style: italic;
-}
 
-p span{
-    font-size: 0.7rem;
-}
-
-.nota{
-    font-size: 0.9rem;
+.nota {
+    font-size: 1rem;
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 1rem;
     width: 70%;
 
+}
+
+.form-title {
+    font-size: 1.5rem;
+}
+
+.form-description {
+    font-size: 1rem;
+    font-style: italic;
 }
 
 @media only screen and (max-width: 843px) {

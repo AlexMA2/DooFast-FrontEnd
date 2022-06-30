@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
   Login() {
     console.log(
-      'HOLA',
       this.formLogin.get('correo')?.value,
       this.formLogin.get('password')?.value
     );

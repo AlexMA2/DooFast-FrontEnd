@@ -47,7 +47,7 @@ const AdminRoutes: Routes = [
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'waitress',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -68,7 +68,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'waitress',
+    redirectTo: 'login',
   },
 ];
 

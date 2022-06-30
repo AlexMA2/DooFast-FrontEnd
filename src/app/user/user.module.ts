@@ -14,8 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PendingOrdersListComponent } from './pages/pending-orders-list/pending-orders-list.component';
 import { PendingOrderComponent } from './components/pending-order/pending-order.component';
-
+import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     DiningTableComponent,
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ConfirmationComponent,
     PendingOrdersListComponent,
     PendingOrderComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -37,10 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
   ],
-  exports: [
-    DiningTableContainerComponent,
-    TakeOrderComponent,
-    ReactiveFormsModule,
-  ],
+  exports: [DiningTableContainerComponent, TakeOrderComponent],
 })
 export class UserModule {}
