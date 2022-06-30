@@ -1,0 +1,75 @@
+.custom-form {
+    min-width: 350px;
+    max-width: 30%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 2rem 0.5rem 2rem;
+    margin: auto;
+    border-radius: 1rem;
+    background-color: #262a2d;
+    color: black;
+}
+
+img {
+    position: absolute;
+    width: 8%;
+    height: 14%;
+    top: 6%;
+    left: 46%;
+}
+
+.custom-form input {
+    display: block;
+    margin: 1rem 0;
+    width: 100%;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    border: 0 none;
+    background: #ebf5fc;
+}
+.custom-form button {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    font-size: 0.875rem;
+    color: white;
+    font-weight: bold;
+    background-color: #ab2732;
+    width: 100%;
+    display: block;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+h5, p {
+    color:white;
+}
+
+#label{
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+p span{
+    font-size: 0.7rem;
+}
+
+.nota{
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 70%;
+
+}
+
+@media only screen and (max-width: 843px) {
+    img {
+        position: absolute;
+        width: 10%;
+        height: 12%;
+        top: 6%;
+        left: 46%;
+    }
+}

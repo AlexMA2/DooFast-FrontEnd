@@ -6,6 +6,7 @@ import { EconomyComponent } from './admin/pages/economy/economy.component';
 import { EmployeesComponent } from './admin/pages/employees/employees.component';
 import { MenuComponent } from './admin/pages/menu/menu.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
+import { LoginComponent } from './user/components/login/login.component';
 
 const WaitressRoutes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'cocina',
     component: PendingOrdersListComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: '**',
