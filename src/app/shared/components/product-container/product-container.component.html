@@ -1,0 +1,40 @@
+<p class="error-message" *ngIf="products.length < 1"> No hay productos en esta categoria. </p>
+<div class="container-food-card">
+    <div *ngFor="let prod of products" (click)="pickFood(prod)" class="food-card">
+
+        <div class="food-card_image">
+            <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+                <img [src]="prod.imagen" alt="Imagen de un plato de comida b">
+
+            </ng-template>
+
+            <ng-template #noImage>
+                <img src="../../../../assets/products/standard_food.png"
+                    [alt]="'Foto de un plato de ' + prod.nombreComida">
+            </ng-template>
+
+
+        </div>
+        <div class="details">
+            <h1> {{prod.nombreComida}}</h1>
+            <p> {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        </div>
+        <div *ngIf="admin" class="btn-delete">
+            <button mat-raised-button (click)="deleteFoodFromMenu(prod)">Eliminar</button>
+        </div>
+
+    </div>
+    <div *ngIf="admin" (click)="openModal()" class="food-card">
+
+        <div class="food-card_image">
+            <img src="../../../../assets/add-product.png" alt="Imagen de un plato de comida">
+
+
+        </div>
+        <div class="details">
+            <h1> Agregar comida </h1>
+        </div>
+
+    </div>
+
+</div>

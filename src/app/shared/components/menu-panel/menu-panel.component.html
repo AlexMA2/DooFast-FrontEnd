@@ -1,0 +1,23 @@
+<h1 class="error" [ngClass]="{'hidden': !isError, 'visible': isError}" *ngIf="error !== ''"> {{error}}</h1>
+<mat-tab-group animationDuration="0ms" [disablePagination]="true" class="food-selector">
+    <mat-tab label="Entradas" color="success">
+        <app-product-container category="Entrada" [admin]="admin" (emitOpenModal)="openModal($event)"
+            [tableNumber]="tableNumber" (foodPicked)="getFoodPicked($event)" [products]="this.starters">
+        </app-product-container>
+    </mat-tab>
+    <mat-tab label="Platos">
+        <app-product-container category="Principal" [admin]="admin" (emitOpenModal)="openModal($event)"
+            [tableNumber]="tableNumber" (foodPicked)="getFoodPicked($event)" [products]="this.mainDishes">
+        </app-product-container>
+    </mat-tab>
+    <mat-tab label="Bebidas">
+        <app-product-container category="Bebida" [admin]="admin" (emitOpenModal)="openModal($event)"
+            [tableNumber]="tableNumber" (foodPicked)="getFoodPicked($event)" [products]="this.drinks">
+        </app-product-container>
+    </mat-tab>
+    <mat-tab label="Postres">
+        <app-product-container category="Postre" [admin]="admin" (emitOpenModal)="openModal($event)"
+            [tableNumber]="tableNumber" (foodPicked)="getFoodPicked($event)" [products]="this.desserts">
+        </app-product-container>
+    </mat-tab>
+</mat-tab-group>

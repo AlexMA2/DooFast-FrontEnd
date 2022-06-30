@@ -7,7 +7,7 @@ import { handleError } from '../handleError';
 import { catchError } from 'rxjs/operators';
 
 // Change LOCAL_URL to BASE_URL to use the server
-const API_URL = LOCAL_URL + 'api/Ordenes';
+const API_URL = BASE_URL + 'api/Ordenes';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +25,9 @@ export class OrderService {
 
   getOrderByTableNumber(tableNumber: number): Observable<OrderData[]> {
     return this.http.get<OrderData[]>(`${API_URL}/${tableNumber}`);
+  }
+
+  deleteOrder(id: number): Observable<OrderData> {
+    return this.http.delete<OrderData>(`${API_URL}/${id}`);
   }
 }

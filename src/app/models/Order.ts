@@ -4,15 +4,16 @@ export interface Order {
   cantidad: number;
 }
 
-export interface OrderData {
-  idOrden: number | null;
-  idMesa: number;
-  idComida: number;
-  nombreComida: string;
-  nombreCategoria: string;
-  precio: number | null;
-  cantidad: number | 0;
-  fechaCreacion: string | null;
-  estadoOrden: string | null;
-  saved: boolean;
+export class OrderData {
+  idOrden: number | null = null;
+  idMesa: number = 1;
+  idComida: number = 1;
+  nombreComida: string = '';
+  nombreCategoria: string = 'Entrada';
+  idPedido: string | null = 'A05';
+  precio: number | null = 0;
+  cantidad: number = 0;
+  fechaCreacion: Date = new Date();
+  estadoOrden: string | null = null;
+  saved: boolean = false;
 }
