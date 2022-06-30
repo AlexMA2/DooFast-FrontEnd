@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
 import { OrderData } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';
 import { orders } from '../../constants/orders-fake';
@@ -14,14 +13,13 @@ export class PendingOrdersListComponent implements OnInit {
   pendingOrders!: OrderData[];
   numberPendingOrders: number = 0;
 
-  constructor(private orderService: OrderService) {
-    // this.pendingOrders = JSON.parse(JSON.stringify(orders));
-  }
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe(
       (data) => {
-        (this.pendingOrders = data), (this.isServerOn = true);
+        this.pendingOrders = data;
+        this.isServerOn = true;
         this.numberPendingOrders = data.length;
       },
       (error) => {

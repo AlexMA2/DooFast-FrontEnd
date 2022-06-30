@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { Product } from 'src/app/models/Product';
 import { Order, OrderData } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';
 import { Router } from '@angular/router';
@@ -36,42 +35,46 @@ export class OrderDetailsComponent implements OnInit {
     if (orders && orders.length > 0) {
       for (let order of orders) {
         const category = order.nombreCategoria;
-        switch (category) {
-          case 'Entrada':
-            if (this.Entradas && order) {
-              order.saved = true;
-              for (let i = 0; i < order.cantidad; i++) {
-                this.Entradas.push(order);
-              }
-            }
-
-            break;
-          case 'Principal':
-            if (this.Principales && order) {
-              order.saved = true;
-              for (let i = 0; i < order.cantidad; i++) {
-                this.Principales.push(order);
-              }
-            }
-            break;
-          case 'Bebida':
-            if (this.Bebidas && order) {
-              order.saved = true;
-              for (let i = 0; i < order.cantidad; i++) {
-                this.Bebidas.push(order);
-              }
-            }
-            break;
-          case 'Postre':
-            if (this.Postres && order) {
-              order.saved = true;
-              for (let i = 0; i < order.cantidad; i++) {
-                this.Postres.push(order);
-              }
-            }
-            break;
-        }
+        this.addProductToListToSaved(category, order);
       }
+    }
+  }
+
+  addProductToListToSaved(category: string, order: OrderData) {
+    switch (category) {
+      case 'Entrada':
+        if (this.Entradas && order) {
+          order.saved = true;
+          for (let i = 0; i < order.cantidad; i++) {
+            this.Entradas.push(order);
+          }
+        }
+
+        break;
+      case 'Principal':
+        if (this.Principales && order) {
+          order.saved = true;
+          for (let i = 0; i < order.cantidad; i++) {
+            this.Principales.push(order);
+          }
+        }
+        break;
+      case 'Bebida':
+        if (this.Bebidas && order) {
+          order.saved = true;
+          for (let i = 0; i < order.cantidad; i++) {
+            this.Bebidas.push(order);
+          }
+        }
+        break;
+      case 'Postre':
+        if (this.Postres && order) {
+          order.saved = true;
+          for (let i = 0; i < order.cantidad; i++) {
+            this.Postres.push(order);
+          }
+        }
+        break;
     }
   }
 
@@ -80,42 +83,46 @@ export class OrderDetailsComponent implements OnInit {
       this.pedido = changes.pedido.currentValue;
 
       const category = this.pedido?.nombreCategoria;
-      switch (category) {
-        case 'Entrada':
-          if (this.Entradas && this.pedido) {
-            this.Entradas.push(this.pedido);
-          }
-
-          break;
-        case 'Principal':
-          if (this.Principales && this.pedido) {
-            this.Principales.push(this.pedido);
-          }
-          break;
-        case 'Bebida':
-          if (this.Bebidas && this.pedido) {
-            this.Bebidas.push(this.pedido);
-          }
-          break;
-        case 'Postre':
-          if (this.Postres && this.pedido) {
-            this.Postres.push(this.pedido);
-          }
-          break;
-      }
+      this.addOrder(category);
     }
 
     if (changes?.saving?.currentValue) {
       const voucher = this.createVoucher();
-      let res = '';
+
       for (let item of voucher) {
         this.orderService.addOrder(item).subscribe((response) => {
-          res = response;
+          console.log(response);
         });
       }
 
       this.openSnackBar('Se ha guardado correctamente', 'Cerrar');
       this.route.navigate(['/waitress']);
+    }
+  }
+
+  addOrder(category: string = 'Entrada') {
+    switch (category) {
+      case 'Entrada':
+        if (this.Entradas && this.pedido) {
+          this.Entradas.push(this.pedido);
+        }
+
+        break;
+      case 'Principal':
+        if (this.Principales && this.pedido) {
+          this.Principales.push(this.pedido);
+        }
+        break;
+      case 'Bebida':
+        if (this.Bebidas && this.pedido) {
+          this.Bebidas.push(this.pedido);
+        }
+        break;
+      case 'Postre':
+        if (this.Postres && this.pedido) {
+          this.Postres.push(this.pedido);
+        }
+        break;
     }
   }
 

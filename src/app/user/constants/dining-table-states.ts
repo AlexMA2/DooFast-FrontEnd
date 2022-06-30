@@ -1,11 +1,9 @@
-import { EmptyError } from "rxjs";
-
-export const EMPTY= 'Empty';
+export const EMPTY = 'Empty';
 export const WAITING = 'Waiting';
 export const SERVED = 'Served';
 
 export enum TableState {
-    Empty,
-    Waiting,
-    Served,
+  Empty,
+  Waiting,
+  Served,
 }

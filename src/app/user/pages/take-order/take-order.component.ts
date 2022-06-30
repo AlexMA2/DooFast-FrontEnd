@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ViewEncapsulation } from '@angular/core';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderData } from 'src/app/models/Order';

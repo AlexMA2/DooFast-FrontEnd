@@ -1,8 +1,6 @@
 <div (click)="removeOrder()" class="pending-order">
     <div class="pending-order-title">
-        <!-- <h1>
-             {{tableNumber}} 
-        </h1> -->
+
         <div class="dining_table_state">
             <h2> {{index+1}}. {{ order.nombreComida }} </h2>
         </div>
@@ -23,9 +21,7 @@
 
     <div class="pending-order-info-wrapper">
         <div>
-            <!-- <div>
-                <fa-icon [icon]="faCoffee"></fa-icon>
-            </div> -->
+
             <div class="pending-order-timer">🕓 {{DisplayedTime}} </div>
         </div>
     </div>

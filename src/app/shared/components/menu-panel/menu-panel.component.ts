@@ -5,11 +5,11 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
-import { ViewEncapsulation } from '@angular/core';
 import { menu_fake } from 'src/app/shared/utils/menu_fake';
 import { OrderData } from 'src/app/models/Order';
 
@@ -44,7 +44,7 @@ export class MenuPanelComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts();
     this.tableNumber = this.route.snapshot.params.id;
-    // TODO
+    // Por hacer
     // VALIDAR SI ES ADMIN UTILIZANDO EL KEY DEL LOGIN
     if (this.router.url.split('/')[1] === 'admin') {
       this.admin = true;
@@ -56,27 +56,31 @@ export class MenuPanelComponent implements OnInit {
       const p: Product = changes.productToAdd.currentValue;
 
       if (p) {
-        switch (p.nombreCategoria) {
-          case 'Entrada':
-            if (!this.starters.find((x) => x.idComida === p.idComida))
-              this.starters.push(p);
-
-            break;
-          case 'Principal':
-            if (!this.mainDishes.find((x) => x.idComida === p.idComida))
-              this.mainDishes.push(p);
-
-            break;
-          case 'Bebida':
-            if (!this.drinks.find((x) => x.idComida === p.idComida))
-              this.drinks.push(p);
-            break;
-          case 'Postre':
-            if (!this.desserts.find((x) => x.idComida === p.idComida))
-              this.desserts.push(p);
-            break;
-        }
+        this.addProductToList(p);
       }
+    }
+  }
+
+  addProductToList(p: Product) {
+    switch (p.nombreCategoria) {
+      case 'Entrada':
+        if (!this.starters.find((x) => x.idComida === p.idComida))
+          this.starters.push(p);
+
+        break;
+      case 'Principal':
+        if (!this.mainDishes.find((x) => x.idComida === p.idComida))
+          this.mainDishes.push(p);
+
+        break;
+      case 'Bebida':
+        if (!this.drinks.find((x) => x.idComida === p.idComida))
+          this.drinks.push(p);
+        break;
+      case 'Postre':
+        if (!this.desserts.find((x) => x.idComida === p.idComida))
+          this.desserts.push(p);
+        break;
     }
   }
 

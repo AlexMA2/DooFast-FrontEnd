@@ -28,7 +28,7 @@
     border-radius: 0px;
 }
 
-.pending-order-info{
+.pending-order-info {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -36,12 +36,12 @@
     border-radius: 0px;
 }
 
-.pending-order-table-wrapper{
+.pending-order-table-wrapper {
     margin: 0.5rem 0;
     position: relative;
 }
 
-.pending-order-parallelogram{
+.pending-order-parallelogram {
     margin: auto;
     width: 70%;
     height: 25px;
@@ -51,7 +51,7 @@
     background-color: #F26466;
 }
 
-.pending-order-table-text{
+.pending-order-table-text {
     width: 100%;
     height: 100%;
     font-size: 15px;
@@ -63,20 +63,19 @@
     top: 2px;
 }
 
-.pending-order-info-wrapper{
+.pending-order-info-wrapper {
     width: 100%;
     /* padding: 0 20%; */
     height: 30px;
-    
+
     text-align: center;
 }
 
-.pending-order-timer{
+.pending-order-timer {
     margin: auto;
     color: rgb(255, 111, 92);
     font-size: 18px;
     font-weight: bold;
     width: 50%;
-    margin: auto;
     text-align: center;
 }

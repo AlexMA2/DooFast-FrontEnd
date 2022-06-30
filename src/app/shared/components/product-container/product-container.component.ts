@@ -55,6 +55,8 @@ export class ProductContainerComponent {
       (product) => product.idComida !== p.idComida
     );
 
-    this.productService.deleteFoodFromMenu(p.idComida).subscribe((data) => {});
+    this.productService.deleteFoodFromMenu(p.idComida).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

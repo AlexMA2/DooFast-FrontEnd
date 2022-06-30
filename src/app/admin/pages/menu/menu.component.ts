@@ -35,7 +35,9 @@ export class MenuComponent implements OnInit {
   }
 
   addFoodToMenu(food: Product): void {
-    this.productService.addFoodToMenu(food.idComida).subscribe((data) => {});
+    this.productService.addFoodToMenu(food.idComida).subscribe((data) => {
+      console.log('Comida agregada');
+    });
   }
 
   separateProducts(products: Product[]) {

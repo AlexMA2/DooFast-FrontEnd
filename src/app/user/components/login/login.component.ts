@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   formLogin!: FormGroup;
 
   constructor(
@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-
-  ngOnInit(): void {}
 
   Login() {
     console.log(
@@ -49,7 +47,9 @@ export class LoginComponent implements OnInit {
               break;
           }
         },
-        (error) => {}
+        (error) => {
+          console.log(error);
+        }
       );
   }
 }
