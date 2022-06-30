@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminModule } from './admin/admin.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule,
     FontAwesomeModule,
     AdminModule,
-    SharedModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

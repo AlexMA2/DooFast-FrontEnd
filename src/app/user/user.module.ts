@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PendingOrdersListComponent } from './pages/pending-orders-list/pending-orders-list.component';
 import { PendingOrderComponent } from './components/pending-order/pending-order.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     DiningTableComponent,
@@ -34,7 +35,12 @@ import { PendingOrderComponent } from './components/pending-order/pending-order.
     MatFormFieldModule,
     MatSnackBarModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
-  exports: [DiningTableContainerComponent, TakeOrderComponent],
+  exports: [
+    DiningTableContainerComponent,
+    TakeOrderComponent,
+    ReactiveFormsModule,
+  ],
 })
 export class UserModule {}
