@@ -43,37 +43,32 @@ export class OrderDetailsComponent implements OnInit {
   addOrderFromDatabase(category: string, order: OrderData) {
     switch (category) {
       case 'Entrada':
-        if (this.Entradas && order) {
-          order.saved = true;
-          for (let i = 0; i < order.cantidad; i++) {
-            this.Entradas.push(order);
-          }
+        order.saved = true;
+        for (let i = 0; i < order.cantidad; i++) {
+          this.Entradas.push(order);
         }
 
         break;
       case 'Principal':
-        if (this.Principales && order) {
-          order.saved = true;
-          for (let i = 0; i < order.cantidad; i++) {
-            this.Principales.push(order);
-          }
+        order.saved = true;
+        for (let i = 0; i < order.cantidad; i++) {
+          this.Principales.push(order);
         }
+
         break;
       case 'Bebida':
-        if (this.Bebidas && order) {
-          order.saved = true;
-          for (let i = 0; i < order.cantidad; i++) {
-            this.Bebidas.push(order);
-          }
+        order.saved = true;
+        for (let i = 0; i < order.cantidad; i++) {
+          this.Bebidas.push(order);
         }
+
         break;
       case 'Postre':
-        if (this.Postres && order) {
-          order.saved = true;
-          for (let i = 0; i < order.cantidad; i++) {
-            this.Postres.push(order);
-          }
+        order.saved = true;
+        for (let i = 0; i < order.cantidad; i++) {
+          this.Postres.push(order);
         }
+
         break;
     }
   }
