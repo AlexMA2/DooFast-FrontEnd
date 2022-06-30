@@ -48,6 +48,14 @@
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
+    height: 32px;
+
+}
+
+.products>div p:first-child {
+    width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .products>div:active {

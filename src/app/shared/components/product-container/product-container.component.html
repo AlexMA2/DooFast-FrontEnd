@@ -9,7 +9,8 @@
             </ng-template>
 
             <ng-template #noImage>
-                <img src="../../../../assets/products/standard_food.png" alt="Imagen de un plato de comida">
+                <img src="../../../../assets/products/standard_food.png"
+                    [alt]="'Foto de un plato de ' + prod.nombreComida">
             </ng-template>
 
 
@@ -17,6 +18,9 @@
         <div class="details">
             <h1> {{prod.nombreComida}}</h1>
             <p> {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        </div>
+        <div *ngIf="admin" class="btn-delete">
+            <button mat-raised-button (click)="deleteFoodFromMenu(prod)">Eliminar</button>
         </div>
 
     </div>

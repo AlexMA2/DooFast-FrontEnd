@@ -14,6 +14,20 @@ export const menu_fake = [
       costo: 0.0,
       nombreCategoria: 'Entrada',
     },
+    {
+      idComida: 3,
+      nombreComida: 'Sopa de tomate',
+      precio: 0.0,
+      costo: 0.0,
+      nombreCategoria: 'Entrada',
+    },
+    {
+      idComida: 4,
+      nombreComida: 'Cebiche',
+      precio: 0.0,
+      costo: 0.0,
+      nombreCategoria: 'Entrada',
+    },
   ],
   [
     {
@@ -33,7 +47,7 @@ export const menu_fake = [
   ],
   [
     {
-      idComida: 4,
+      idComida: 15,
       nombreComida: 'Limonada 1L',
       precio: 2.0,
       costo: 0.0,

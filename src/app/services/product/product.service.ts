@@ -30,9 +30,9 @@ export class ProductService {
       .pipe(catchError(handleError));
   }
 
-  deleteFoodFromMenu(idComida: number): Observable<Product> {
+  deleteFoodFromMenu(idComida: number, idCarta: number) {
     return this.http
-      .delete<Product>(API_URL + '/' + idComida)
+      .delete(`${API_URL}/${idComida}/${idCarta}`)
       .pipe(catchError(handleError));
   }
 }
