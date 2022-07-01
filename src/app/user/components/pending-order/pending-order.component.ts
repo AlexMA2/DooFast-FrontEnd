@@ -54,5 +54,6 @@ export class PendingOrderComponent {
     this.time = minutes * 60 + seconds;
 
     this.DisplayedTime = this.transform(this.time);
+    this.startTimer();
   }
 }
