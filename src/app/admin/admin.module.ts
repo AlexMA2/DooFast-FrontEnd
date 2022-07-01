@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
+import { DishManagementComponent } from './dish-management/dish-management.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     MenuComponent,
     EconomyComponent,
     ProductListComponent,
+    DishManagementComponent,
   ],
   imports: [
     CommonModule,
