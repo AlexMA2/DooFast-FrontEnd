@@ -12,7 +12,19 @@ import { OrderData } from 'src/app/models/Order';
 })
 export class TakeOrderComponent implements OnInit {
   tableNumber: number = -1;
-  pedido?: OrderData;
+  pedido: OrderData = {
+    idOrden: null,
+    idMesa: 1,
+    idComida: 1,
+    nombreComida: '',
+    nombreCategoria: 'No definido',
+    idPedido: 'A00',
+    precio: 0,
+    cantidad: 0,
+    fechaCreacion: new Date(),
+    estadoOrden: null,
+    saved: false,
+  };
   savingOrder: boolean = false;
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute) {}
