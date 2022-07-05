@@ -1,28 +1,38 @@
-<p>Estamos en el login</p>
-<div>
+<div class="login">
 
-    <img src="./assets/user.png" alt="Human Image">
 
     <form [formGroup]="formLogin" (ngSubmit)="Login()" class="custom-form">
-
-        <h5 class="form-title">
-            Correo electrónico
-        </h5>
-        <p class="form-description">
-            El correo electrónico lo brinda la empresa y debe estar en su correo personal. Este tiene la siguiente
-            forma: <span>[ApellidoPaterno].[PrimerNombre].[Numero]@doofast.com</span>
-        </p>
-        <input type="email" name="email" placeholder="Correo" formControlName="correo" required="required" />
-        <h5 class="form-title">
-            Contraseña
-        </h5>
-        <p class="form-description">
-            La contraseña es una serie de numeros y letras. Esta debe estar en un correo enviado a su correo personal.
-        </p>
-        <input type="password" name="password" placeholder="Contraseña" formControlName="password"
-            required="required" />
-        <button type="submit">Iniciar sesion</button>
-        <div style="display: flex; justify-content: center;">
+        <img src="./assets/user.png" alt="Human Image">
+        <div class="form-input mt">
+            <h5 class="form-title">
+                Correo electrónico
+            </h5>
+            <p class="form-description">
+                El correo electrónico lo brinda la empresa y debe estar en su correo personal. Este tiene la siguiente
+                forma: <span>[ApellidoPaterno].[PrimerNombre].[Numero]@doofast.com</span>
+            </p>
+            <input type="email" name="email" (blur)="validateInput('correo')" (focus)="valids.correo = false"
+                placeholder="Correo" formControlName="correo" required="required" />
+            <div class="error" *ngIf="valids.correo">
+                Por favor, escriba un correo v&aacute;lido.
+            </div>
+        </div>
+        <div class="form-input">
+            <h5 class="form-title">
+                Contraseña
+            </h5>
+            <p class="form-description">
+                La contraseña es una serie de numeros y letras. Esta debe estar en un correo enviado a su correo
+                personal.
+            </p>
+            <input type="password" name="password" (blur)="validateInput('password')" (focus)="valids.password = false"
+                placeholder="Contraseña" formControlName="password" required="required" />
+            <div class="error" *ngIf="valids.password">
+                La contraseña debe tener al menos 8 caracteres.
+            </div>
+        </div>
+        <button type="submit" [disabled]="formLogin.invalid">Iniciar sesion</button>
+        <div class="form-footer">
             <p class="nota">No compartas tus datos personales con nadie.</p>
         </div>
 

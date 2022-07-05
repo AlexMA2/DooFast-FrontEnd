@@ -7,22 +7,45 @@
     border-radius: 1rem;
     background-color: #262a2d;
     color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 img {
     position: absolute;
-    width: 8%;
-    height: 14%;
-    top: 6%;
-    left: 46%;
+    top: 0px;
+    width: 100px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+
 }
 
-.custom-form input {
-    display: block;
-    margin: 1rem 0;
+.form-input {
+    margin: 0.5rem 0;
+}
+
+.mt {
+    margin-top: 1.75rem;
+}
+
+.form-title {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.form-description {
+    color: #fff;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.form-input input {
     width: 100%;
     border-radius: 0.4rem;
-    padding: 0.4rem;
+    padding: 0.5rem;
     border: 0 none;
     background: #ebf5fc;
 }
@@ -42,35 +65,39 @@ img {
     cursor: pointer;
 }
 
-h5, p {
-    color: white;
+.custom-form button:hover {
+    background-color: #ad3943;
 }
 
+.form-footer {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
 
-.nota {
+.form-footer p {
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 1rem;
-    width: 70%;
-
+    width: 100%;
 }
 
-.form-title {
-    font-size: 1.5rem;
+.error {
+    color: #f33848;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0.25rem 0;
+    text-transform: uppercase;
 }
 
-.form-description {
-    font-size: 1rem;
-    font-style: italic;
-}
+@media (max-width: 400px) {
+    .custom-form {
+        min-width: 100%;
+        padding: 1rem;
+    }
 
-@media only screen and (max-width: 843px) {
-    img {
-        position: absolute;
-        width: 10%;
-        height: 12%;
-        top: 6%;
-        left: 46%;
+    .mt {
+        margin-top: 2.5rem;
     }
 }
