@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,11 +15,7 @@ export class LoginComponent {
     password: false,
   };
 
-  constructor(
-    formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor(formBuilder: FormBuilder, private authService: AuthService) {
     this.formLogin = formBuilder.group({
       correo: ['', Validators.email],
       password: ['', Validators.minLength(8)],
@@ -51,13 +41,13 @@ export class LoginComponent {
             console.log(data);
             switch (data[0].rol) {
               case 'Administrador':
-                this.router.navigate(['admin']);
+                this.authService.setUserRole = 'Administrador';
                 break;
               case 'Mozo':
-                this.router.navigate(['waitress']);
+                this.authService.setUserRole = 'Mozo';
                 break;
               case 'Cocina':
-                this.router.navigate(['cocina']);
+                this.authService.setUserRole = 'Cocina';
                 break;
             }
           },

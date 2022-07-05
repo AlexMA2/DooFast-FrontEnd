@@ -7,6 +7,7 @@ import { EmployeesComponent } from './admin/pages/employees/employees.component'
 import { MenuComponent } from './admin/pages/menu/menu.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
 import { LoginComponent } from './user/components/login/login.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 const WaitressRoutes: Routes = [
   {
@@ -52,14 +53,17 @@ const routes: Routes = [
   },
   {
     path: 'waitress',
+    canActivate: [AuthGuard],
     children: WaitressRoutes,
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
     children: AdminRoutes,
   },
   {
     path: 'cocina',
+    canActivate: [AuthGuard],
     component: PendingOrdersListComponent,
   },
   {
