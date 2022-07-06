@@ -1,2 +1,3 @@
 <h1> DooFast </h1>
+<app-disconnected-alert *ngIf="!isConnected && showModal" (onClickEvent)="noShowModal()"></app-disconnected-alert>
 <router-outlet></router-outlet>
