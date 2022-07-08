@@ -63,7 +63,6 @@ const routes: Routes = [
   },
   {
     path: 'cocina',
-    canActivate: [AuthGuard],
     component: PendingOrdersListComponent,
   },
   {

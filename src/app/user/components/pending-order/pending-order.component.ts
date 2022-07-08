@@ -19,7 +19,7 @@ export class PendingOrderComponent {
 
   @Output() removed = new EventEmitter<number>();
 
-  constructor(private orderServices: OrderService) {}
+  constructor() {}
 
   startTimer() {
     setInterval(() => {
@@ -33,9 +33,6 @@ export class PendingOrderComponent {
 
   removeOrder() {
     this.removed.emit(this.order.idOrden!);
-    this.orderServices.deleteOrder(this.order.idOrden!).subscribe(() => {
-      console.log('Order deleted');
-    });
   }
 
   transform(value: number): string {
@@ -45,7 +42,6 @@ export class PendingOrderComponent {
 
   ngOnInit(): void {
     var startDate = new Date();
-
     var endDate = new Date(this.order.fechaCreacion);
 
     const minutes = startDate.getMinutes() - endDate.getMinutes();

@@ -33,15 +33,6 @@ export class AuthGuard implements CanActivate {
     if (value.length === 0) {
       return this.router.navigate(['/login']).then(() => false);
     }
-    if (value === 'Administrador') {
-      return this.router.navigate(['/admin']).then(() => true);
-    }
-    if (value === 'Mozo') {
-      return this.router.navigate(['/waitress']).then(() => true);
-    }
-    if (value === 'Cocina') {
-      return this.router.navigate(['/kitchen']).then(() => true);
-    }
     return true;
   }
 }

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +18,12 @@ export class LoginComponent {
     password: false,
   };
 
-  constructor(formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(
+    formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {
     this.formLogin = formBuilder.group({
       correo: ['', Validators.email],
       password: ['', Validators.minLength(8)],
@@ -38,21 +46,35 @@ export class LoginComponent {
         )
         .subscribe(
           (data: any) => {
-            console.log(data);
+            if (data[0].rol === undefined) {
+              this._snackBar.open(
+                'Usuario no encontrado. Compruebe los datos introducidos.',
+                'Cerrar',
+                {
+                  duration: 3000,
+                }
+              );
+              return;
+            }
             switch (data[0].rol) {
               case 'Administrador':
                 this.authService.setUserRole = 'Administrador';
+                this.router.navigate(['/admin']);
                 break;
               case 'Mozo':
                 this.authService.setUserRole = 'Mozo';
+                this.router.navigate(['/waitress']);
                 break;
               case 'Cocina':
                 this.authService.setUserRole = 'Cocina';
+                this.router.navigate(['/cocina']);
                 break;
             }
           },
           (error) => {
-            alert(error.error.message);
+            this._snackBar.open(error.name, 'Cerrar', {
+              duration: 3000,
+            });
           }
         );
     }

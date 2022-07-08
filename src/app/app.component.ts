@@ -8,7 +8,7 @@ import { AuthService } from './services/auth/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'DooFast';
-  showModal = true;
+  showModal = false;
   isConnected: boolean = false;
 
   constructor(public authService: AuthService) {}
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
       },
       (error) => {
         this.isConnected = false;
+        this.showModal = true;
       }
     );
   }
