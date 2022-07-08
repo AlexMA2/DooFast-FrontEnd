@@ -14,9 +14,17 @@
     align-items: center;
 }
 
+.login {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 img {
-    position: absolute;
-    top: 0px;
+    position: relative;
+    top: 50px;
     width: 100px;
     border: 6px solid #fff;
     border-radius: 50%;
