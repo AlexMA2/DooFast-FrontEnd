@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class DiningTableContainerComponent {
   diningTableAmount: number = 10;
+  date: Date = new Date();
+
+  interval = setInterval(() => {
+    this.date = new Date();
+  }, 1000);
 }

@@ -53,7 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'waitress',
-    canActivate: [AuthGuard],
+
     children: WaitressRoutes,
   },
   {
@@ -63,6 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'cocina',
+    canActivate: [AuthGuard],
     component: PendingOrdersListComponent,
   },
   {
