@@ -5,12 +5,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './disconnected-alert.component.html',
   styleUrls: ['./disconnected-alert.component.css'],
 })
-export class DisconnectedAlertComponent implements OnInit {
+export class DisconnectedAlertComponent {
   @Output() onClickEvent = new EventEmitter<any>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onClick() {
     this.onClickEvent.emit();

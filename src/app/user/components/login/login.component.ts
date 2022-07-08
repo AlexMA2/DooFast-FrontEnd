@@ -46,7 +46,7 @@ export class LoginComponent {
         )
         .subscribe(
           (data: any) => {
-            if (data[0].rol === undefined) {
+            if (!data[0]) {
               this._snackBar.open(
                 'Usuario no encontrado. Compruebe los datos introducidos.',
                 'Cerrar',

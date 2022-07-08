@@ -48,7 +48,10 @@ export class PendingOrdersListComponent implements OnInit {
 
     snackBar.onAction().subscribe(() => {
       clearTimeout(this.timeout);
-      this.pendingOrders.splice(this.indexOrdenRemoved, 0, this.ordenRemoved!);
+      if (this.ordenRemoved) {
+        this.pendingOrders.splice(this.indexOrdenRemoved, 0, this.ordenRemoved);
+      }
+
       this.numberPendingOrders++;
     });
   }

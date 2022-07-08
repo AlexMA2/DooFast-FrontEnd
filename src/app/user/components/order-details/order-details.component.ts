@@ -124,7 +124,10 @@ export class OrderDetailsComponent implements OnInit {
         this.Postres.filter((p) => !p.saved)
       )
       .reduce(function (rv: any, x) {
-        (rv[x.idComida] = rv[x.idComida] || []).push(x);
+        if (!rv[x.idComida]) {
+          rv[x.idComida] = [];
+        }
+        rv[x.idComida].push(x);
         return rv;
       }, {});
 

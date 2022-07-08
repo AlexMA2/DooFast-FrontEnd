@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { OrderData } from 'src/app/models/Order';
-import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-pending-order',
@@ -18,8 +17,6 @@ export class PendingOrderComponent {
   DisplayedTime: string = '00m 00s ';
 
   @Output() removed = new EventEmitter<number>();
-
-  constructor() {}
 
   startTimer() {
     setInterval(() => {
