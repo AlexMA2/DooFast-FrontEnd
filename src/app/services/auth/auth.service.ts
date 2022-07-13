@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from '../BASE_URL';
 import { BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/models/User';
 
 const API_URL = BASE_URL + 'api/Auth';
 
@@ -10,7 +11,10 @@ const API_URL = BASE_URL + 'api/Auth';
   providedIn: 'root',
 })
 export class AuthService {
-  private userRole: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private user: BehaviorSubject<User> = new BehaviorSubject<User>({
+    role: '',
+    username: '',
+  });
 
   constructor(private http: HttpClient) {}
 
@@ -21,11 +25,11 @@ export class AuthService {
     });
   }
 
-  set setUserRole(role: string) {
-    this.userRole.next(role);
+  set setUser(user: User) {
+    this.user.next(user);
   }
 
-  get getUserRole() {
-    return this.userRole.asObservable();
+  get getUser() {
+    return this.user.asObservable();
   }
 }
