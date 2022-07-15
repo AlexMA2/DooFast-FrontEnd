@@ -8,18 +8,13 @@ describe('DisconnectedAlertComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisconnectedAlertComponent ]
-    })
-    .compileComponents();
+      declarations: [DisconnectedAlertComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DisconnectedAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

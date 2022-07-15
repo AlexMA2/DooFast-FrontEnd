@@ -8,18 +8,13 @@ describe('DiningTableContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiningTableContainerComponent ]
-    })
-    .compileComponents();
+      declarations: [DiningTableContainerComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DiningTableContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

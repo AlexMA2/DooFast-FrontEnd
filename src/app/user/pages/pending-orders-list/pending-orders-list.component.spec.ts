@@ -8,18 +8,13 @@ describe('PendingOrdersListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PendingOrdersListComponent ]
-    })
-    .compileComponents();
+      declarations: [PendingOrdersListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PendingOrdersListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
