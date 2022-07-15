@@ -32,10 +32,22 @@ export class AuthGuard implements CanActivate {
       role: '',
       username: '',
     };
+
     this.data$.subscribe((data) => (value = data));
-    console.log(value);
+
+    if (value.role === '') {
+      value.role = localStorage.getItem('role') || '';
+      value.username = localStorage.getItem('nombreUsuario') || '';
+    }
     if (value.role.length === 0) {
       return this.router.navigate(['/login']).then(() => false);
+    }
+
+    if (
+      value.role === 'Mozo' &&
+      (this.router.url === '/admin' || this.router.url === '/cocina')
+    ) {
+      return this.router.navigate(['/waitress']).then(() => false);
     }
     return true;
   }

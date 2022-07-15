@@ -56,25 +56,27 @@ export class LoginComponent {
               );
               return;
             }
-            switch (data[0].role) {
+            localStorage.setItem('username', data[0].nombreUsuario);
+            localStorage.setItem('role', data[0].rol);
+            switch (data[0].rol) {
               case 'Administrador':
                 this.authService.setUser = {
                   role: 'Administrador',
-                  username: data[0].username,
+                  username: data[0].nombreUsuario,
                 };
                 this.router.navigate(['/admin']);
                 break;
               case 'Mozo':
                 this.authService.setUser = {
                   role: 'Mozo',
-                  username: data[0].username,
+                  username: data[0].nombreUsuario,
                 };
                 this.router.navigate(['/waitress']);
                 break;
               case 'Cocina':
                 this.authService.setUser = {
                   role: 'Cocina',
-                  username: data[0].username,
+                  username: data[0].nombreUsuario,
                 };
 
                 this.router.navigate(['/cocina']);

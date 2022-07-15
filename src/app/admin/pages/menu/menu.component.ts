@@ -3,6 +3,7 @@ import { ProductListComponent } from '../../component/product-list/product-list.
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-menu',
@@ -21,7 +22,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private productService: ProductService
+    private productService: ProductService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,13 @@ export class MenuComponent implements OnInit {
 
   addFoodToMenu(food: Product): void {
     this.productService.addFoodToMenu(food.idComida).subscribe((data) => {
-      console.log('Comida agregada');
+      this._snackBar.open(
+        'Se ha eliminado el producto "' + data.nombreComida + '" de la lista.',
+        'Cerrar',
+        {
+          duration: 3000,
+        }
+      );
     });
   }
 

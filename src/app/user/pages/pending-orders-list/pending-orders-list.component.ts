@@ -68,9 +68,7 @@ export class PendingOrdersListComponent implements OnInit {
     );
 
     this.timeout = setTimeout(() => {
-      this.orderService.deleteOrder(idOrder).subscribe(() => {
-        console.log('Order deleted');
-      });
+      this.orderService.deleteOrder(idOrder);
     }, this.duration + 100);
 
     this.numberPendingOrders--;

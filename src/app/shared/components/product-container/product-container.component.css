@@ -5,7 +5,7 @@
 }
 
 .food-card {
-    background-color: var(--backgroundSecondary);
+
     border-radius: 0.5rem;
     text-align: center;
     display: flex;
@@ -18,7 +18,7 @@
 }
 
 .food-card_image {
-    height: 70%;
+    min-height: 70%;
 }
 
 .food-card>div img {

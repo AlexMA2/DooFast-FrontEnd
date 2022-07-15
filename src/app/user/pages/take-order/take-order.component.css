@@ -1,13 +1,12 @@
 .take-order {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 
 .productos {
     display: flex;
     flex-direction: row;
-    flex-grow: 0.80;
+    flex-grow: 1;
     max-height: 85vh;
     justify-content: space-between;
 }
@@ -15,5 +14,6 @@
 .buttons {
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    flex-grow: 0.20;
 }

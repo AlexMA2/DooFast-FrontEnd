@@ -85,9 +85,7 @@ export class OrderDetailsComponent implements OnInit {
       const voucher = this.createVoucher();
 
       for (let item of voucher) {
-        this.orderService.addOrder(item).subscribe((response) => {
-          console.log(response);
-        });
+        this.orderService.addOrder(item)
       }
 
       this.openSnackBar('Se ha guardado correctamente', 'Cerrar');

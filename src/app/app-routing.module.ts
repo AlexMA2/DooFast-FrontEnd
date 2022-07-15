@@ -53,12 +53,12 @@ const routes: Routes = [
   },
   {
     path: 'waitress',
-    canActivate: [AuthGuard],
+
     children: WaitressRoutes,
   },
   {
     path: 'admin',
-
+    canActivate: [AuthGuard],
     children: AdminRoutes,
   },
   {

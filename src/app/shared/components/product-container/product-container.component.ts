@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { OrderData } from 'src/app/models/Order';
 import { ProductService } from 'src/app/services/product/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-container',
@@ -24,7 +25,10 @@ export class ProductContainerComponent {
 
   counter: number = 0;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   pickFood(prod: Product): void {
     let newOrder: OrderData;
@@ -55,8 +59,14 @@ export class ProductContainerComponent {
       (product) => product.idComida !== p.idComida
     );
 
-    this.productService.deleteFoodFromMenu(p.idComida).subscribe((data) => {
-      console.log(data);
+    this.productService.deleteFoodFromMenu(p.idComida).subscribe(() => {
+      this._snackBar.open(
+        'Se ha eliminado el producto "' + p.nombreComida + '" de la lista.',
+        'Cerrar',
+        {
+          duration: 3000,
+        }
+      );
     });
   }
 }
