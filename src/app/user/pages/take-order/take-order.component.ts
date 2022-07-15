@@ -24,6 +24,7 @@ export class TakeOrderComponent implements OnInit {
     fechaCreacion: new Date(),
     estadoOrden: null,
     saved: false,
+    imagen: null,
   };
   savingOrder: boolean = false;
 

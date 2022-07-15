@@ -11,6 +11,7 @@ export const orders = [
     fechaCreacion: new Date(),
     estadoOrden: 'Pendiente',
     saved: true,
+    imagen: null,
   },
   {
     idOrden: 2,
@@ -24,6 +25,7 @@ export const orders = [
     fechaCreacion: new Date(),
     estadoOrden: 'Pendiente',
     saved: true,
+    imagen: null,
   },
   {
     idOrden: 3,
@@ -37,6 +39,7 @@ export const orders = [
     fechaCreacion: new Date(),
     estadoOrden: 'Pendiente',
     saved: true,
+    imagen: null,
   },
   {
     idOrden: 4,
@@ -50,5 +53,6 @@ export const orders = [
     estadoOrden: 'Pendiente',
     saved: true,
     idPedido: '',
+    imagen: null,
   },
 ];

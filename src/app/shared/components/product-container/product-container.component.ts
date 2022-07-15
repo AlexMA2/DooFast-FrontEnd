@@ -43,6 +43,7 @@ export class ProductContainerComponent {
       estadoOrden: 'Por servir',
       idComida: prod.idComida,
       saved: false,
+      imagen: prod.imagen,
       idPedido: prod.nombreCategoria.substring(0, 2) + this.counter,
     };
 

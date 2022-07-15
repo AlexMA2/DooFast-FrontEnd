@@ -7,9 +7,16 @@
     </div>
 
     <div>
-        <img class="pending-order-image"
-            src="https://decomidaperuana.com/wp-content/uploads/2018/04/tallarines-verdes-receta-peruana.png"
-            alt="Tallarines verdes">
+        <ng-template [ngIf]="order.imagen" [ngIfElse]="noImage">
+            <img [src]="order.imagen" alt="Imagen de un plato de comida b">
+
+        </ng-template>
+
+        <ng-template #noImage>
+            <img class="pending-order-image" src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + order.nombreComida">
+        </ng-template>
+
     </div>
     <div class="pending-order-table-wrapper">
         <div class="pending-order-parallelogram">

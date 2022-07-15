@@ -16,4 +16,5 @@ export class OrderData {
   fechaCreacion: Date = new Date();
   estadoOrden: string | null = null;
   saved: boolean = false;
+  imagen: string | null = null;
 }
