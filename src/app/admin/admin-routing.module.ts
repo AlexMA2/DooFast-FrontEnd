@@ -4,6 +4,7 @@ import { EconomyComponent } from './pages/economy/economy.component';
 import { EmployeesComponent } from './pages/employees/employees.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
+import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 
 const AdminRoutes: Routes = [
   {
@@ -26,6 +27,10 @@ const AdminRoutes: Routes = [
   {
     path: 'dishes',
     component: DishesComponent,
+  },
+  {
+    path: 'dishes/newdish',
+    component: DishFormComponent,
   },
 ];
 
