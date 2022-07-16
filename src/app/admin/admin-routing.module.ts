@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EconomyComponent } from './pages/economy/economy.component';
 import { EmployeesComponent } from './pages/employees/employees.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { DishesComponent } from './pages/dishes/dishes.component';
 
 const AdminRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const AdminRoutes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
+  },
+  {
+    path: 'dishes',
+    component: DishesComponent,
   },
 ];
 
