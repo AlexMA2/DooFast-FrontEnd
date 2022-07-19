@@ -8,6 +8,7 @@ import { MenuComponent } from './admin/pages/menu/menu.component';
 import { DishesComponent } from './admin/pages/dishes/dishes.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
 import { LoginComponent } from './user/components/login/login.component';
+import { DishFormComponent } from './admin/pages/dishes/dish-form/dish-form.component';
 
 const WaitressRoutes: Routes = [
   {
@@ -46,6 +47,10 @@ const AdminRoutes: Routes = [
   {
     path: 'dishes',
     component: DishesComponent,
+  },
+  {
+    path: 'dishes/newdish',
+    component: DishFormComponent,
   },
 ];
 

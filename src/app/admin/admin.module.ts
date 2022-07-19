@@ -10,6 +10,7 @@ import { ProductListComponent } from './component/product-list/product-list.comp
 import { MatButtonModule } from '@angular/material/button';
 import { DishManagementComponent } from './dish-management/dish-management.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
+import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DishesComponent } from './pages/dishes/dishes.component';
     ProductListComponent,
     DishManagementComponent,
     DishesComponent,
+    DishFormComponent,
   ],
   imports: [
     CommonModule,
