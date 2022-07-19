@@ -35,4 +35,10 @@ export class ProductService {
       .delete(`${API_URL}/${idComida}`)
       .pipe(catchError(handleError));
   }
+
+  deleteFood(idComida: number) {
+    return this.http
+      .delete(`${API_URL_FOOD}/${idComida}`)
+      .pipe(catchError(handleError));
+  }
 }

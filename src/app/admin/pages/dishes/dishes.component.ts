@@ -39,4 +39,41 @@ export class DishesComponent implements OnInit {
     this.postres = products[3];
   }
 
+  deleteProduct(p: Product) {
+    switch (p.nombreCategoria) {
+      case 'Entrada':
+        if (this.entradas.find((x) => x.idComida === p.idComida))
+        this.productService.deleteFood(p.idComida).subscribe((data) => {
+          console.log(data);
+          this.getAllDish();
+        });
+
+        break;
+      case 'Principal':
+        if (this.platos.find((x) => x.idComida === p.idComida))
+        this.productService.deleteFood(p.idComida).subscribe((data) => {
+          console.log(data);
+          this.getAllDish();
+        });
+
+        break;
+      case 'Bebida':
+        if (this.bebidas.find((x) => x.idComida === p.idComida))
+        this.productService.deleteFood(p.idComida).subscribe((data) => {
+          console.log(data);
+          this.getAllDish();
+        });
+
+        break;
+      case 'Postre':
+        if (this.postres.find((x) => x.idComida === p.idComida))
+        this.productService.deleteFood(p.idComida).subscribe((data) => {
+          console.log(data);
+          this.getAllDish();
+        });
+
+        break;
+    }
+  }
+
 }
