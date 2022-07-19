@@ -1,21 +1,125 @@
 <!--<p>dishes works!</p>-->
-<div class="col-md-4" >
-  <div class="card text-center">
-    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-      Nombre Comida
-      <button class="btn btn-danger">
-        <i class="far fa-trash-alt"></i>
-      </button>
-    </div>
-    <img class="card-img-top" src="https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg">
-    <div class="card-body">
-      <p>Precio</p>
-      <p>Costo</p>
-      <p>Categoria</p>
-      
+<p>ENTRADAS</p>
+<div class="row">
+  <div class="col-md-3" *ngFor="let prod of entradas">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        {{prod.nombreComida}}
+        <button class="btn btn-danger">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+
+      <div class="food-card_image">
+        <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+            <img [src]="prod.imagen" alt="Imagen de un plato de comida b" width="200px">
+        </ng-template>
+
+        <ng-template #noImage>
+            <img src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + prod.nombreComida" width="100px">
+        </ng-template>
+      </div>
+
+      <div class="card-body">
+        <p>Precio: {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        <p>Costo: {{prod.costo | currency : 'PEN' : 'S/.'}}</p>
+        <p>Fecha de creación: {{prod.fechaCreacion | date: 'yyyy-MM-dd'}}</p>
+      </div>
     </div>
   </div>
-  <a href="/admin/dishes/newdish" class="btn btn-info btn-block">
-    NEW DISH
-  </a>
 </div>
+<p>PLATOS</p>
+<div class="row"> 
+  <div class="col-md-3" *ngFor="let prod of platos">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        {{prod.nombreComida}}
+        <button class="btn btn-danger">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+
+      <div class="food-card_image">
+        <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+            <img [src]="prod.imagen" alt="Imagen de un plato de comida b" width="200px">
+        </ng-template>
+
+        <ng-template #noImage>
+            <img src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + prod.nombreComida" width="100px">
+        </ng-template>
+      </div>
+
+      <div class="card-body">
+        <p>Precio: {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        <p>Costo: {{prod.costo | currency : 'PEN' : 'S/.'}}</p>
+        <p>Fecha de creación: {{prod.fechaCreacion | date: 'yyyy-MM-dd'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p>BEBIDAS</p>
+<div class="row"> 
+  <div class="col-md-3" *ngFor="let prod of bebidas">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        {{prod.nombreComida}}
+        <button class="btn btn-danger">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+
+      <div class="food-card_image">
+        <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+            <img [src]="prod.imagen" alt="Imagen de un plato de comida b" width="200px">
+        </ng-template>
+
+        <ng-template #noImage>
+            <img src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + prod.nombreComida" width="100px">
+        </ng-template>
+      </div>
+
+      <div class="card-body">
+        <p>Precio: {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        <p>Costo: {{prod.costo | currency : 'PEN' : 'S/.'}}</p>
+        <p>Fecha de creación: {{prod.fechaCreacion | date: 'yyyy-MM-dd'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p>POSTRES</p>
+<div class="row"> 
+  <div class="col-md-3" *ngFor="let prod of postres">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        {{prod.nombreComida}}
+        <button class="btn btn-danger">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+
+      <div class="food-card_image">
+        <ng-template [ngIf]="prod.imagen" [ngIfElse]="noImage">
+            <img [src]="prod.imagen" alt="Imagen de un plato de comida b" width="200px">
+        </ng-template>
+
+        <ng-template #noImage>
+            <img src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + prod.nombreComida" width="100px">
+        </ng-template>
+      </div>
+
+      <div class="card-body">
+        <p>Precio: {{prod.precio | currency : 'PEN' : 'S/.'}}</p>
+        <p>Costo: {{prod.costo | currency : 'PEN' : 'S/.'}}</p>
+        <p>Fecha de creación: {{prod.fechaCreacion | date: 'yyyy-MM-dd'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="/admin/dishes/newdish" class="btn btn-info btn-block">
+  NEW DISH
+</a>
