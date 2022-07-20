@@ -4,15 +4,28 @@
       <div class="card-body">
         <form action="">
           <div class="form-group">
-            <input type="text" name="title" placeholder="Nombre de comida" class="form-control" autofocus>
+            <input type="text" name="nombreComida" [(ngModel)]= "prod.nombreComida" placeholder="Nombre de comida" class="form-control" autofocus>
           </div>
           <div class="form-group">
-            <textarea name="description" rows="2" placeholder="Descripcion" class="form-control"></textarea>
+            <input type="file" (change)="seleccionarArchivo($event)">
           </div>
           <div class="form-group">
-            <input type="url" name="image URL" placeholder="Image" class="form-control">
+            <input type="number" name="precio" [(ngModel)]= "prod.precio" placeholder="Precio" class="form-control" autofocus>
           </div>
-          <button class="btn btn-success btn-block">
+          <div class="form-group">
+            <input type="number" name="costo" [(ngModel)]= "prod.costo" placeholder="Costo" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="radio" id="entrada" [(ngModel)]= "prod.nombreCategoria" name="nombreCategoria" value="Entrada">
+            <label for="entrada">Entrada</label><br>
+            <input type="radio" id="principal" [(ngModel)]= "prod.nombreCategoria" name="nombreCategoria" value="Principal">
+            <label for="principal">Principal</label><br>
+            <input type="radio" id="bebida" [(ngModel)]= "prod.nombreCategoria" name="nombreCategoria" value="Bebida">
+            <label for="bebida">Bebida</label><br>
+            <input type="radio" id="postre" [(ngModel)]= "prod.nombreCategoria" name="nombreCategoria" value="Postre">
+            <label for="postre">Postre</label><br>
+          </div>
+          <button class="btn btn-success btn-block" (click)="addProduct()">
             Guardar
           </button>
         </form>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product';
 import { BASE_URL } from '../BASE_URL';
@@ -27,6 +27,17 @@ export class ProductService {
   addFoodToMenu(idComida: number): Observable<Product> {
     return this.http
       .post<Product>(API_URL, { idCarta: 1, idComida })
+      .pipe(catchError(handleError));
+  }
+
+  addFood(nombreComida: string,
+  precio: number,
+  costo: number,
+  idCategoria: number, imagen: File): Observable<any> {
+    console.log(nombreComida, precio, costo, idCategoria, imagen);
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' })
+    return this.http
+      .post<any>(API_URL_FOOD, { nombreComida, precio, costo, idCategoria, imagen }, { headers })
       .pipe(catchError(handleError));
   }
 
