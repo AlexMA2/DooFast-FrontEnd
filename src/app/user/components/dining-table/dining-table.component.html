@@ -25,6 +25,49 @@
             <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Tomar orden </button>
             <button (click)="payOrder()"> Pago </button>
         </div>
-
+    </div>
+    <div *ngIf="isOrderShowed">
+        <div class="order">
+            <div style="width: 100%;">
+                <button (click)="payOrder()" class="custom_button float_left"> Editar </button>
+                <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
+            </div>
+            <div>
+                <p style="font-weight: 900;"> Entrada </p>
+                <ul>
+                    <li>
+                        <p>
+                            <span>Sopa de arroz</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span>Papa a la huancaína</span>
+                        </p>
+                    </li>
+                </ul>
+                <p style="font-weight: 900;">Plato principal </p>
+                <ul>
+                    <li>
+                        <p>
+                            <span>Tallarín saltado</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span>Rocoto relleno</span>
+                        </p>
+                    </li>
+                </ul>
+                <p style="font-weight: 900;">Postre </p>
+                <ul>
+                    <li>
+                        <p>
+                            <span>Gelatina</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
