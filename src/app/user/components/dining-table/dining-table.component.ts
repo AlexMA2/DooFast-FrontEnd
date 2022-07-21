@@ -22,7 +22,8 @@ export class DiningTableComponent {
   WAITING = WAITING;
   SERVED = SERVED;
   @Input() tableNumber!: number;
-  @Output() changeTableState = new EventEmitter<any>();
+  @Input() tableState!: number; // 0=EMPTY, 1=WAITING, 2=SERVED
+  // @Output() changeTableState = new EventEmitter<any>();
   state: string = WAITING;
   time: number = 0;
   orders?: Order[] = [];
@@ -30,6 +31,27 @@ export class DiningTableComponent {
 
   display: string = '00m 00s ';
   interval: any;
+
+  ngOnChanges(): void {
+    console.log("Mi estado es: " + this.tableState);
+    switch (this.tableState) {
+      case 0:
+        this.state = EMPTY;
+        break;
+      case 1:
+        this.state = WAITING;
+        this.startTimer();
+        break;
+      case 2:
+        this.state = SERVED;
+        this.pauseTimer();
+        break;
+      default:
+        this.state = EMPTY;
+        break;
+    }
+    console.log(this.state);
+  }
 
   startTimer() {
     this.interval = setInterval(() => {
