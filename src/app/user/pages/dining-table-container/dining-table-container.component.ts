@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { OrderData } from 'src/app/models/Order';
+import { Table } from 'src/app/models/Table';
 import { OrderService } from 'src/app/services/order/order.service';
+import { TableService } from 'src/app/services/table/table.service';
 import { orders } from '../../constants/orders-fake';
 
 @Component({
@@ -20,7 +22,10 @@ export class DiningTableContainerComponent {
   numberPendingOrders: number = 0;
   tables: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
 
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private tablesServices: TableService
+  ) {}
 
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe(
@@ -29,7 +34,6 @@ export class DiningTableContainerComponent {
         this.numberPendingOrders = data.length;
         for (let order in data) {
           this.tables[data[order].idMesa] = 1;
-          console.log('Mesas ocupadas: ' + data[order].idMesa);
         }
       },
       (error) => {
@@ -37,5 +41,11 @@ export class DiningTableContainerComponent {
         this.numberPendingOrders = orders.length;
       }
     );
+  }
+
+  getAllTables(): void {
+    this.tablesServices.getAllTables().subscribe((data) => {
+      return data;
+    });
   }
 }

@@ -1,5 +1,5 @@
 export interface Table {
-    idMesa: number;
-    numeroMesa: number;
-    estadoMesa: string;
+  idMesa: number;
+  nroMesa: number;
+  estadoMesa: string;
 }

@@ -33,8 +33,9 @@ export class DiningTableComponent {
   display: string = '00m 00s ';
   interval: any;
 
+  constructor() {}
+
   ngOnChanges(): void {
-    console.log("Mi estado es: " + this.tableState);
     switch (this.tableState) {
       case 0:
         this.state = EMPTY;
@@ -51,7 +52,6 @@ export class DiningTableComponent {
         this.state = EMPTY;
         break;
     }
-    console.log(this.state);
   }
 
   startTimer() {
@@ -77,25 +77,21 @@ export class DiningTableComponent {
   cancelOrder() {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "You won't be able to revert this!",
+      text: 'No podrás revertir esta acción',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, borralo!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          '¡Eliminado!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire('¡Eliminado!', 'Se ha eliminado la orden', 'success');
         if (this.isOrderShowed) {
           this.isOrderShowed = !this.isOrderShowed;
         }
         this.state = EMPTY;
       }
-    })
+    });
     this.state = WAITING;
     this.pauseTimer();
   }

@@ -85,7 +85,7 @@ export class OrderDetailsComponent implements OnInit {
       const voucher = this.createVoucher();
 
       for (let item of voucher) {
-        this.orderService.addOrder(item)
+        this.orderService.addOrder(item).subscribe();
       }
 
       this.openSnackBar('Se ha guardado correctamente', 'Cerrar');
@@ -172,6 +172,10 @@ export class OrderDetailsComponent implements OnInit {
           return this.isSaved(p, product);
         });
         break;
+    }
+
+    if (product.saved && product.idOrden) {
+      this.orderService.deleteOrder(product.idOrden).subscribe();
     }
   }
 
