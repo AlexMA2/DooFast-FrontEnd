@@ -18,7 +18,7 @@
         </div>
 
         <div *ngIf="state === WAITING" class="button_group">
-            <button (click)="showOrder()"> Mostrar Orden </button>
+            <button (click)="showOrder()"> {{showHideText}} </button>
             <button (click)="orderServed()"> Orden Servida </button>
         </div>
         <div *ngIf="state === SERVED" class="button_group">
@@ -26,48 +26,48 @@
             <button (click)="payOrder()"> Pago </button>
         </div>
     </div>
-    <div *ngIf="isOrderShowed">
-        <div class="order">
-            <div style="width: 100%;">
-                <button (click)="payOrder()" class="custom_button float_left"> Editar </button>
-                <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
-            </div>
-            <div>
-                <p style="font-weight: 900;"> Entrada </p>
-                <ul>
-                    <li>
-                        <p>
-                            <span>Sopa de arroz</span>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span>Papa a la huancaína</span>
-                        </p>
-                    </li>
-                </ul>
-                <p style="font-weight: 900;">Plato principal </p>
-                <ul>
-                    <li>
-                        <p>
-                            <span>Tallarín saltado</span>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span>Rocoto relleno</span>
-                        </p>
-                    </li>
-                </ul>
-                <p style="font-weight: 900;">Postre </p>
-                <ul>
-                    <li>
-                        <p>
-                            <span>Gelatina</span>
-                        </p>
-                    </li>
-                </ul>
-            </div>
+</div>
+<div *ngIf="isOrderShowed">
+    <div class="order">
+        <div style="width: 100%;">
+            <button (click)="payOrder()" class="custom_button float_left"> Editar </button>
+            <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
+        </div>
+        <div>
+            <p style="font-weight: 900;"> Entrada </p>
+            <ul>
+                <li>
+                    <p>
+                        <span>Sopa de arroz</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>Papa a la huancaína</span>
+                    </p>
+                </li>
+            </ul>
+            <p style="font-weight: 900;">Plato principal </p>
+            <ul>
+                <li>
+                    <p>
+                        <span>Tallarín saltado</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span>Rocoto relleno</span>
+                    </p>
+                </li>
+            </ul>
+            <p style="font-weight: 900;">Postre </p>
+            <ul>
+                <li>
+                    <p>
+                        <span>Gelatina</span>
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

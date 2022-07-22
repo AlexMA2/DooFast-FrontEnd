@@ -28,6 +28,7 @@ export class DiningTableComponent {
   time: number = 0;
   orders?: Order[] = [];
   isOrderShowed: boolean = false;
+  showHideText: String = 'Mostrar Orden';
 
   display: string = '00m 00s ';
   interval: any;
@@ -104,6 +105,7 @@ export class DiningTableComponent {
   }
 
   showOrder() {
+    this.showHideText = this.isOrderShowed ? 'Mostrar Orden' : 'Ocultar Orden';
     console.log('Dropdown a modal with the order to edit or cancel');
     this.isOrderShowed = !this.isOrderShowed;
   }
