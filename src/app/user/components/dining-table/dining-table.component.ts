@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EMPTY, WAITING, SERVED } from '../../constants/dining-table-states';
+import Swal from 'sweetalert2';
 
 interface Order {
   id: number;
@@ -21,12 +22,37 @@ export class DiningTableComponent {
   WAITING = WAITING;
   SERVED = SERVED;
   @Input() tableNumber!: number;
-  state: string = EMPTY;
+  @Input() tableState!: number; // 0=EMPTY, 1=WAITING, 2=SERVED
+  // @Output() changeTableState = new EventEmitter<any>();
+  state: string = WAITING;
   time: number = 0;
   orders?: Order[] = [];
+  isOrderShowed: boolean = false;
+  showHideText: String = 'Mostrar Orden';
 
   display: string = '00m 00s ';
   interval: any;
+
+  ngOnChanges(): void {
+    console.log("Mi estado es: " + this.tableState);
+    switch (this.tableState) {
+      case 0:
+        this.state = EMPTY;
+        break;
+      case 1:
+        this.state = WAITING;
+        this.startTimer();
+        break;
+      case 2:
+        this.state = SERVED;
+        this.pauseTimer();
+        break;
+      default:
+        this.state = EMPTY;
+        break;
+    }
+    console.log(this.state);
+  }
 
   startTimer() {
     this.interval = setInterval(() => {
@@ -48,8 +74,36 @@ export class DiningTableComponent {
     this.pauseTimer();
   }
 
+  cancelOrder() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          '¡Eliminado!',
+          'Your file has been deleted.',
+          'success'
+        )
+        if (this.isOrderShowed) {
+          this.isOrderShowed = !this.isOrderShowed;
+        }
+        this.state = EMPTY;
+      }
+    })
+    this.state = WAITING;
+    this.pauseTimer();
+  }
+
   showOrder() {
+    this.showHideText = this.isOrderShowed ? 'Mostrar Orden' : 'Ocultar Orden';
     console.log('Dropdown a modal with the order to edit or cancel');
+    this.isOrderShowed = !this.isOrderShowed;
   }
 
   payOrder() {
