@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+sonar-project.properties
+.scannerwork
+src/target/*
 # dependencies
 /node_modules
 

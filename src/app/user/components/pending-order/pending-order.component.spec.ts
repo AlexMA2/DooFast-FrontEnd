@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PendingOrderComponent } from './pending-order.component';
@@ -9,6 +10,7 @@ describe('PendingOrderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PendingOrderComponent],
+      providers: [Input],
     }).compileComponents();
   });
 
@@ -16,5 +18,9 @@ describe('PendingOrderComponent', () => {
     fixture = TestBed.createComponent(PendingOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
   });
 });

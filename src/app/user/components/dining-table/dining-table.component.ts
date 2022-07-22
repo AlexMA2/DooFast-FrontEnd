@@ -40,11 +40,7 @@ export class DiningTableComponent {
   }
   pauseTimer() {
     clearInterval(this.interval);
-  }
-
-  takeOrder() {
-    this.state = WAITING;
-    this.startTimer();
+    this.interval = undefined;
   }
 
   orderServed() {

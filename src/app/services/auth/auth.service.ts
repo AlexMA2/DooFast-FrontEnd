@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from '../BASE_URL';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/models/User';
+import { User, UserLogin } from 'src/app/models/User';
 
 const API_URL = BASE_URL + 'api/Auth';
 
@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post(API_URL, {
+    return this.http.post<UserLogin>(API_URL, {
       correo: email,
       contrasenia: password,
     });
