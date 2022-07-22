@@ -9,6 +9,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DishManagementComponent } from './dish-management/dish-management.component';
+import { DishesComponent } from './pages/dishes/dishes.component';
+import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { DishManagementComponent } from './dish-management/dish-management.compo
     EconomyComponent,
     ProductListComponent,
     DishManagementComponent,
+    DishesComponent,
+    DishFormComponent,
   ],
   imports: [
     CommonModule,

@@ -5,9 +5,11 @@ import { TakeOrderComponent } from './user/pages/take-order/take-order.component
 import { EconomyComponent } from './admin/pages/economy/economy.component';
 import { EmployeesComponent } from './admin/pages/employees/employees.component';
 import { MenuComponent } from './admin/pages/menu/menu.component';
+import { DishesComponent } from './admin/pages/dishes/dishes.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
 import { LoginComponent } from './user/components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { DishFormComponent } from './admin/pages/dishes/dish-form/dish-form.component';
 
 const WaitressRoutes: Routes = [
   {
@@ -42,6 +44,14 @@ const AdminRoutes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
+  },
+  {
+    path: 'dishes',
+    component: DishesComponent,
+  },
+  {
+    path: 'dishes/newdish',
+    component: DishFormComponent,
   },
 ];
 
