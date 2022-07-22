@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
   setPermissions(role: string, username: string) {
     localStorage.setItem('username', username);
     localStorage.setItem('role', role);
+
     switch (role) {
       case 'Administrador':
         this.authService.setUser = {

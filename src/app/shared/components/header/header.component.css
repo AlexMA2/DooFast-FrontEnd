@@ -35,19 +35,37 @@
     color: #fff;
 }
 
+.links {
+    height: 100%;
+}
+
 .links ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40%;
+    width: 100%;
     list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .links ul li {
-    padding: 0 0.5rem;
+    padding: 0.5rem;
     cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
 }
 
+.links ul li:hover {
+    background-color: #fff;
+
+}
+
+.links ul li:hover a {
+    color: #000;
+}
 
 .profile {
     background-color: var(--redCustom);

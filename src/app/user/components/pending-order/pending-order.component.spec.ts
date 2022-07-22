@@ -1,5 +1,5 @@
-import { Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { OrderData } from 'src/app/models/Order';
 
 import { PendingOrderComponent } from './pending-order.component';
 
@@ -10,7 +10,7 @@ describe('PendingOrderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PendingOrderComponent],
-      providers: [Input],
+      providers: [OrderData],
     }).compileComponents();
   });
 
