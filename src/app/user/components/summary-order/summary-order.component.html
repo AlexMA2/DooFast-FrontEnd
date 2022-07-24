@@ -1,0 +1,50 @@
+<div class="order-details-mini">
+
+    <div class="btns">
+        <button mat-raised-button color="primary" (click)="editOrder()"> Editar </button>
+        <button mat-raised-button color="primary" (click)="cancelOrder()"> Cancelar </button>
+    </div>
+    <div class="categories">
+
+        <div class="category">
+            <p> Entradas </p>
+            <div class="products">
+                <div *ngFor="let food of products.Entrada">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Platos Principales: </p>
+            <div class="products">
+                <div *ngFor="let food of products.Principal">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Bebidas: </p>
+            <div class="products">
+                <div *ngFor="let food of products.Bebida">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <p> Postres: </p>
+            <div class="products">
+                <div *ngFor="let food of products.Postre">
+                    <p> {{food.nombreComida}} </p>
+
+                    <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DiningTableContainerComponent } from './pages/dining-table-container/dining-table-container.component';
 import { TakeOrderComponent } from './pages/take-order/take-order.component';
-import { PendingOrdersListComponent } from './pages/pending-orders-list/pending-orders-list.component';
 
-const WaitressRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'dining-tables',
@@ -18,14 +17,10 @@ const WaitressRoutes: Routes = [
     path: 'take-order/:id',
     component: TakeOrderComponent,
   },
-  {
-    path: 'cocina',
-    component: PendingOrdersListComponent,
-  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(WaitressRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class UserRoutingModule {}

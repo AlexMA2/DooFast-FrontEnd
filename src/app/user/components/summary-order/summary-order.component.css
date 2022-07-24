@@ -1,0 +1,58 @@
+.order-details-mini {
+    position: absolute;
+    z-index: 999;
+    background-color: var(--backgroundPrimary);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.order-details-mini>div {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.custom_button {
+    width: 40%;
+    justify-content: space-around;
+    border: none;
+    background-color: #A4161A;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 10px;
+    font-family: 'Jost', sans-serif;
+    color: #fff;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.order {
+    display: flex;
+    position: absolute;
+    top: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    z-index: 10;
+    /* height: 100%; */
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}

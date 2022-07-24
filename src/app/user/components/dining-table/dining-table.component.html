@@ -1,73 +1,30 @@
 <div class="dining_table">
     <div class="dining_table_info">
         <h1>
-            {{tableNumber}}
+            {{table.nroMesa}}
         </h1>
         <div class="dining_table_state">
             <div class="dining_table_number">
                 <h4> Dining Table</h4>
             </div>
 
-            <p *ngIf="state === WAITING"> {{state}} {{display}} </p>
-            <p *ngIf="state !== WAITING"> {{state}} </p>
+            <p *ngIf="table.estadoMesa === TableState.Waiting"> {{table.estadoMesa}} {{display}} </p>
+            <p *ngIf="table.estadoMesa !== TableState.Waiting"> {{table.estadoMesa}} </p>
         </div>
     </div>
     <div class="dining_table_order">
-        <div *ngIf="state === EMPTY" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Tomar orden</button>
+        <div *ngIf="table.estadoMesa === TableState.Empty" class="button_group">
+            <button [routerLink]="['/waitress/take-order/', table.nroMesa ]"> Tomar orden</button>
         </div>
 
-        <div *ngIf="state === WAITING" class="button_group">
-            <button (click)="showOrder()"> {{showHideText}} </button>
+        <div *ngIf="table.estadoMesa === TableState.Waiting" class="button_group">
+            <button (click)="toggleOrder()"> {{showOrderButtonText}} </button>
             <button (click)="orderServed()"> Orden Servida </button>
         </div>
-        <div *ngIf="state === SERVED" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', tableNumber ]"> Tomar orden </button>
+        <div *ngIf="table.estadoMesa === TableState.Served" class="button_group">
+            <button [routerLink]="['/waitress/take-order/', table.nroMesa]"> Tomar orden </button>
             <button (click)="payOrder()"> Pago </button>
         </div>
     </div>
 </div>
-<div *ngIf="isOrderShowed">
-    <div class="order">
-        <div style="width: 100%;">
-            <button (click)="payOrder()" class="custom_button float_left"> Editar </button>
-            <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
-        </div>
-        <div>
-            <p style="font-weight: 900;"> Entrada </p>
-            <ul>
-                <li>
-                    <p>
-                        <span>Sopa de arroz</span>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <span>Papa a la huancaína</span>
-                    </p>
-                </li>
-            </ul>
-            <p style="font-weight: 900;">Plato principal </p>
-            <ul>
-                <li>
-                    <p>
-                        <span>Tallarín saltado</span>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <span>Rocoto relleno</span>
-                    </p>
-                </li>
-            </ul>
-            <p style="font-weight: 900;">Postre </p>
-            <ul>
-                <li>
-                    <p>
-                        <span>Gelatina</span>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<app-summary-order *ngIf="isOrderShowed" [table]="table" (hideOrderEv)="toggleOrder()"></app-summary-order>
