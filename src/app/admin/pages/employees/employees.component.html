@@ -1,1 +1,36 @@
-<p>employees works!</p>
+<!--<p>employees works!</p>-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="idUsuario">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombreUsuario">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nroCelular">
+    <th mat-header-cell *matHeaderCellDef> Telefono </th>
+    <td mat-cell *matCellDef="let element"> {{element.nroCelular}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="correo">
+    <th mat-header-cell *matHeaderCellDef> Correo </th>
+    <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rol">
+    <th mat-header-cell *matHeaderCellDef> Rol </th>
+    <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="idRestaurante">
+    <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+    <td mat-cell *matCellDef="let element"> {{element.idRestaurante}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
