@@ -34,37 +34,16 @@
             <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
         </div>
         <div>
-            <p style="font-weight: 900;"> Entrada </p>
+            <p style="font-weight: 900;"> Órdenes </p>
             <ul>
-                <li>
+                <li *ngFor="let order of orders">
                     <p>
-                        <span>Sopa de arroz</span>
+                        <span>{{order.nombreComida}}</span>
                     </p>
                 </li>
                 <li>
                     <p>
                         <span>Papa a la huancaína</span>
-                    </p>
-                </li>
-            </ul>
-            <p style="font-weight: 900;">Plato principal </p>
-            <ul>
-                <li>
-                    <p>
-                        <span>Tallarín saltado</span>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <span>Rocoto relleno</span>
-                    </p>
-                </li>
-            </ul>
-            <p style="font-weight: 900;">Postre </p>
-            <ul>
-                <li>
-                    <p>
-                        <span>Gelatina</span>
                     </p>
                 </li>
             </ul>

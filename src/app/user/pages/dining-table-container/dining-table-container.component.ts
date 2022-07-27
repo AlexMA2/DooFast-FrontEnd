@@ -14,6 +14,7 @@ export class DiningTableContainerComponent {
   pendingOrders!: OrderData[];
   numberPendingOrders: number = 0;
   tables: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+  orders: OrderData[][] = [[], [], [], [], [], [], [], []];
 
   constructor(private orderService: OrderService) {}
 
@@ -23,7 +24,8 @@ export class DiningTableContainerComponent {
         this.pendingOrders = data;
         this.numberPendingOrders = data.length;
         for(let order in data) {
-          this.tables[data[order].idMesa] = 1;
+          this.tables[data[order].idMesa-1] = 1;
+          this.orders[data[order].idMesa-1].push(data[order]);
           console.log("Mesas ocupadas: " + data[order].idMesa);
         }
       },

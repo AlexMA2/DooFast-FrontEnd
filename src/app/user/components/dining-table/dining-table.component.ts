@@ -1,15 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EMPTY, WAITING, SERVED } from '../../constants/dining-table-states';
 import Swal from 'sweetalert2';
-
-interface Order {
-  id: number;
-  table: number;
-  starter: string;
-  maindish: string;
-  dessert: string;
-  drink: string;
-}
+import { OrderData } from 'src/app/models/Order';
+import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-dining-table',
@@ -23,15 +16,18 @@ export class DiningTableComponent {
   SERVED = SERVED;
   @Input() tableNumber!: number;
   @Input() tableState!: number; // 0=EMPTY, 1=WAITING, 2=SERVED
+  @Input() orders: OrderData[] = [];
   // @Output() changeTableState = new EventEmitter<any>();
   state: string = WAITING;
   time: number = 0;
-  orders?: Order[] = [];
+  grupos: any[][] = [];
   isOrderShowed: boolean = false;
   showHideText: String = 'Mostrar Orden';
 
   display: string = '00m 00s ';
   interval: any;
+
+  constructor(private orderService: OrderService) { }
 
   ngOnChanges(): void {
     console.log("Mi estado es: " + this.tableState);
@@ -51,8 +47,20 @@ export class DiningTableComponent {
         this.state = EMPTY;
         break;
     }
-    console.log(this.state);
+    if (this.orders.length > 0) {
+      // create array with all orders to the table
+      //   this.orders.forEach(order => {
+      // }
+      console.log(this.state);
+    }
   }
+
+  groupArrayOfObjects(lista: any[], key: any) {
+    return lista.reduce(function (rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
 
   startTimer() {
     this.interval = setInterval(() => {
@@ -89,25 +97,40 @@ export class DiningTableComponent {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
+        //Delete all orders
+        this.orders.forEach(order => {
+          this.orderService.deleteOrder(order.idOrden!).subscribe(() => {
+            console.log("Order deleted");
+          }
+          );
+        });
+        if(this.isOrderShowed) {
+          this.showHideText = 'Mostrar Orden';
+          this.isOrderShowed = false;
+        }
+        this.state = EMPTY;
         Swal.fire(
           '¡Eliminado!',
           'Your file has been deleted.',
           'success'
-        )
-        if (this.isOrderShowed) {
-          this.isOrderShowed = !this.isOrderShowed;
-        }
-        this.state = EMPTY;
+        );
       }
     })
-    this.state = WAITING;
-    this.pauseTimer();
   }
 
   showOrder() {
+    this.grupos = this.groupArrayOfObjects(this.orders, 'idComida');
+    console.log(this.grupos);
     this.showHideText = this.isOrderShowed ? 'Mostrar Orden' : 'Ocultar Orden';
     console.log('Dropdown a modal with the order to edit or cancel');
     this.isOrderShowed = !this.isOrderShowed;
+    if (this.orders.length > 0) {
+      for (let order in this.orders) {
+        console.log(order);
+      }
+    } else {
+      console.log("vacio");
+    }
   }
 
   payOrder() {
