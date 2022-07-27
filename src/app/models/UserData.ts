@@ -1,8 +1,12 @@
 export interface UserData {
-    idUsuario: number;
-    nombreUsuario: string;
-    nroCelular: string;
-    correo: string;
-    rol: string;
-    idRestaurante: number;
-  }
+  idUsuario: number;
+  nombreLocal: string;
+  nombreRol: string;
+  usuario: string;
+  nombreUsuario: string;
+  contrasenia: string;
+  nroCelular: string;
+  correoElectronico: string;
+  fechaCreacion: string;
+  ultimoLogin: string;
+}
