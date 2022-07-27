@@ -1,0 +1,35 @@
+<!--<p>employee-form works!</p>-->
+<div class="col-md-4 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <input type="text" name="nombre" [(ngModel)]="employee.nombreUsuario" placeholder="Escriba su nombre completo" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="user" [(ngModel)]="employee.usuario" placeholder="Escriba su nombre usuario" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="email" name="correo" [(ngModel)]="employee.correoElectronico" placeholder="Escriba su correo electronico" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="password" [(ngModel)]="employee.contrasenia" placeholder="Escriba su contraseña" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="telefono" [(ngModel)]="employee.nroCelular" placeholder="Escriba su número de celular" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="radio" id="admin" [(ngModel)]= "employee.nombreRol" name="rol" value="Administrador">
+            <label for="admin">Administrador</label><br>
+            <input type="radio" id="mesero" [(ngModel)]= "employee.nombreRol" name="rol" value="Mozo">
+            <label for="mesero">Mozo</label><br>
+            <input type="radio" id="cocinero" [(ngModel)]= "employee.nombreRol" name="rol" value="Cocinero">
+            <label for="cocinero">Cocinero</label><br>
+          </div>
+          <button class="btn btn-success btn-block" (click)="saveNewUser()">
+            Guardar empleado
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

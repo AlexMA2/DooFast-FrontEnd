@@ -4,7 +4,7 @@ export interface UserData {
   nombreRol: string;
   usuario: string;
   nombreUsuario: string;
-  contraseña: string;
+  contrasenia: string;
   nroCelular: string;
   correoElectronico: string;
   fechaCreacion: string;

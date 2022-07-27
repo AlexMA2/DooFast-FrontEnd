@@ -4,6 +4,7 @@ import { DiningTableContainerComponent } from './user/pages/dining-table-contain
 import { TakeOrderComponent } from './user/pages/take-order/take-order.component';
 import { EconomyComponent } from './admin/pages/economy/economy.component';
 import { EmployeesComponent } from './admin/pages/employees/employees.component';
+import { EmployeeFormComponent } from './admin/pages/employees/employee-form/employee-form.component';
 import { MenuComponent } from './admin/pages/menu/menu.component';
 import { DishesComponent } from './admin/pages/dishes/dishes.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
@@ -40,6 +41,10 @@ const AdminRoutes: Routes = [
   {
     path: 'employees',
     component: EmployeesComponent,
+  },
+  {
+    path: 'employees/newemployee',
+    component: EmployeeFormComponent,
   },
   {
     path: 'menu',

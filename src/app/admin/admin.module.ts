@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DishManagementComponent } from './dish-management/dish-management.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
+import { EmployeeFormComponent } from './pages/employees/employee-form/employee-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component'
     DishManagementComponent,
     DishesComponent,
     DishFormComponent,
+    EmployeeFormComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +31,8 @@ import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component'
     SharedModule,
     MatDialogModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [EmployeesComponent, MenuComponent, EconomyComponent],
 })

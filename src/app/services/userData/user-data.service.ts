@@ -19,4 +19,18 @@ export class UserDataService {
   getAllUsers(): Observable<UserData[]> {
     return this.http.get<UserData[]>(API_URL).pipe(catchError(handleError));
   }
+
+  addUser(usuario: string, nombreUsuario: string, contrasenia: string, nroCelular: string,
+    correoElectronico: string, idRestaurante: number, idRol: number): Observable<any> {
+    return this.http
+      .post<any>(API_URL, { usuario, nombreUsuario, contrasenia, nroCelular, correoElectronico,
+      idRestaurante, idRol })
+      .pipe(catchError(handleError));
+  }
+
+  deleteUser(idUsuario: number) {
+    return this.http
+      .delete(`${API_URL}/${idUsuario}`)
+      .pipe(catchError(handleError));
+  }
 }
