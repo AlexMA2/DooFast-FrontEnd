@@ -10,6 +10,7 @@ import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pen
 import { LoginComponent } from './user/components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { DishFormComponent } from './admin/pages/dishes/dish-form/dish-form.component';
+import { RecordPaymentComponent } from './user/pages/record-payment/record-payment.component';
 
 const WaitressRoutes: Routes = [
   {
@@ -24,6 +25,10 @@ const WaitressRoutes: Routes = [
   {
     path: 'take-order/:id',
     component: TakeOrderComponent,
+  },
+  {
+    path: 'record-payment/:id',
+    component: RecordPaymentComponent,
   },
 ];
 

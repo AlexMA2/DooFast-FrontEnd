@@ -3,6 +3,7 @@ import { EMPTY, WAITING, SERVED } from '../../constants/dining-table-states';
 import Swal from 'sweetalert2';
 import { OrderData } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dining-table',
@@ -27,7 +28,7 @@ export class DiningTableComponent {
   display: string = '00m 00s ';
   interval: any;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnChanges(): void {
     switch (this.tableState) {
@@ -123,6 +124,7 @@ export class DiningTableComponent {
   }
 
   payOrder() {
+    this.router.navigate(['waitress/record-payment', this.tableNumber]);
     console.log('Go to the page with the amount and details to pay');
   }
 }
