@@ -33,7 +33,6 @@ export class SummaryOrderComponent implements OnInit {
       },
       () => {
         this.ordersList = loadOrders(orders);
-        console.log(this.ordersList);
       }
     );
   }

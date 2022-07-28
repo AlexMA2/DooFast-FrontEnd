@@ -27,9 +27,14 @@ export class MenuPanelComponent implements OnInit {
   error?: string;
   tableNumber: number = -1;
 
-  @Input() productToAdd?: Product;
+  totalPlates: any = {
+    Entrada: [] as Product[],
+    Principal: [] as Product[],
+    Bebida: [] as Product[],
+    Postre: [] as Product[],
+  };
+
   @Output() pedido: EventEmitter<OrderData> = new EventEmitter();
-  @Output() emitOpenModal: EventEmitter<any> = new EventEmitter();
 
   admin: boolean = false;
   savingOrder: boolean = false;
@@ -42,46 +47,13 @@ export class MenuPanelComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllProductsFromMenu();
     this.getAllProducts();
     this.tableNumber = this.route.snapshot.params.id;
     // Por hacer
     // VALIDAR SI ES ADMIN UTILIZANDO EL KEY DEL LOGIN
     if (this.router.url.split('/')[1] === 'admin') {
       this.admin = true;
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes.productToAdd);
-    if (changes.productToAdd) {
-      const p: Product = changes.productToAdd.currentValue;
-
-      if (p) {
-        this.addProductToList(p);
-      }
-    }
-  }
-
-  addProductToList(p: Product) {
-    switch (p.nombreCategoria) {
-      case 'Entrada':
-        if (!this.starters.find((x) => x.idComida === p.idComida))
-          this.starters.push(p);
-
-        break;
-      case 'Principal':
-        if (!this.mainDishes.find((x) => x.idComida === p.idComida))
-          this.mainDishes.push(p);
-
-        break;
-      case 'Bebida':
-        if (!this.drinks.find((x) => x.idComida === p.idComida))
-          this.drinks.push(p);
-        break;
-      case 'Postre':
-        if (!this.desserts.find((x) => x.idComida === p.idComida))
-          this.desserts.push(p);
-        break;
     }
   }
 
@@ -96,11 +68,7 @@ export class MenuPanelComponent implements OnInit {
     this.desserts = products[3];
   }
 
-  openModal(category: string) {
-    this.emitOpenModal.emit(category);
-  }
-
-  getAllProducts(): void {
+  getAllProductsFromMenu(): void {
     this.productService.getAll().subscribe(
       (products) => this.separateProducts(products),
       (error) => {
@@ -109,5 +77,14 @@ export class MenuPanelComponent implements OnInit {
         this.separateProducts(menu_fake);
       }
     );
+  }
+
+  getAllProducts(): void {
+    this.productService.getAllFood().subscribe((data) => {
+      this.totalPlates.Entrada = data[0];
+      this.totalPlates.Principal = data[1];
+      this.totalPlates.Bebida = data[2];
+      this.totalPlates.Postre = data[3];
+    });
   }
 }

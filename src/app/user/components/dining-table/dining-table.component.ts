@@ -67,11 +67,8 @@ export class DiningTableComponent implements OnInit {
     if (orderDeleted) {
       this.isOrderShowed = false;
       this.table.estadoMesa = TableState.Empty;
-      console.log(this.table.estadoMesa);
     }
   }
 
-  payOrder() {
-    console.log('Go to the page with the amount and details to pay');
-  }
+  payOrder() {}
 }

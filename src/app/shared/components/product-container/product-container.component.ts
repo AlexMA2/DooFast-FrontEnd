@@ -9,6 +9,8 @@ import { Product } from 'src/app/models/Product';
 import { OrderData } from 'src/app/models/Order';
 import { ProductService } from 'src/app/services/product/product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductListComponent } from 'src/app/admin/component/product-list/product-list.component';
 
 @Component({
   selector: 'app-product-container',
@@ -27,17 +29,18 @@ export class ProductContainerComponent {
   // Inputs and Outputs for Admin User
 
   @Input() admin!: boolean;
-  @Output() emitOpenModal: EventEmitter<any> = new EventEmitter();
+  @Input() totalProducts!: Product[];
+  @Output() orderToDelete: EventEmitter<OrderData> = new EventEmitter();
 
   counter: number = 0;
 
   constructor(
+    public dialog: MatDialog,
     private productService: ProductService,
     private _snackBar: MatSnackBar
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes.products);
     if (changes.products) {
       this.products = changes.products.currentValue;
     }
@@ -67,12 +70,7 @@ export class ProductContainerComponent {
     this.foodPicked.emit(newOrder);
   }
 
-  openModal(): void {
-    this.emitOpenModal.emit(this.category);
-  }
-
   deleteFoodFromMenu(p: Product): void {
-    console.log('DELETE', p);
     this.products = this.products.filter(
       (product) => product.idComida !== p.idComida
     );
@@ -85,6 +83,32 @@ export class ProductContainerComponent {
           duration: 3000,
         }
       );
+    });
+  }
+
+  addFoodToMenu(food: Product): void {
+    this.products.push(food);
+    this.productService.addFoodToMenu(food.idComida).subscribe(() => {
+      this._snackBar.open(
+        'Se ha agregado el producto "' + food.nombreComida + '" a la lista.',
+        'Cerrar',
+        {
+          duration: 3000,
+        }
+      );
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProductListComponent, {
+      width: '80vw',
+      data: this.totalProducts,
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.addFoodToMenu(result);
+      }
     });
   }
 }
