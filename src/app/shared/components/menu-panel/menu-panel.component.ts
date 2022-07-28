@@ -52,6 +52,7 @@ export class MenuPanelComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes.productToAdd);
     if (changes.productToAdd) {
       const p: Product = changes.productToAdd.currentValue;
 

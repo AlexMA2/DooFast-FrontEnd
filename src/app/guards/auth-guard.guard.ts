@@ -43,6 +43,8 @@ export class AuthGuard implements CanActivate {
       return this.router.navigate(['/login']).then(() => false);
     }
 
+    console.log(value.role);
+
     if (
       value.role === 'Mozo' &&
       (this.router.url === '/admin' || this.router.url === '/cocina')

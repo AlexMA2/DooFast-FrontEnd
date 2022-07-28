@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { OrderData } from 'src/app/models/Order';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -30,6 +36,16 @@ export class ProductContainerComponent {
     private _snackBar: MatSnackBar
   ) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes.products);
+    if (changes.products) {
+      this.products = changes.products.currentValue;
+    }
+    if (changes.category) {
+      this.category = changes.category.currentValue;
+    }
+  }
+
   pickFood(prod: Product): void {
     let newOrder: OrderData;
     newOrder = {
@@ -56,6 +72,7 @@ export class ProductContainerComponent {
   }
 
   deleteFoodFromMenu(p: Product): void {
+    console.log('DELETE', p);
     this.products = this.products.filter(
       (product) => product.idComida !== p.idComida
     );

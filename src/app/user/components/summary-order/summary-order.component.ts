@@ -5,6 +5,8 @@ import { Product } from 'src/app/models/Product';
 import { Table } from 'src/app/models/Table';
 import { OrderService } from 'src/app/services/order/order.service';
 import Swal from 'sweetalert2';
+import { loadOrders } from '../../utils/getOrdersFromDatabase';
+import { orders } from '../../constants/orders-fake';
 
 @Component({
   selector: 'app-summary-order',
@@ -13,9 +15,9 @@ import Swal from 'sweetalert2';
 })
 export class SummaryOrderComponent implements OnInit {
   @Input() table!: Table;
-  @Output() hideOrderEv = new EventEmitter();
+  @Output() hideOrderEv = new EventEmitter<boolean>();
 
-  products: any = {
+  ordersList: any = {
     Entrada: [] as Product[],
     Principal: [] as Product[],
     Bebida: [] as Product[],
@@ -27,21 +29,17 @@ export class SummaryOrderComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getOrderByTableNumber(this.table.idMesa).subscribe(
       (data) => {
-        this.separateProducts(data);
+        this.ordersList = loadOrders(data);
       },
-      (error) => {}
+      () => {
+        this.ordersList = loadOrders(orders);
+        console.log(this.ordersList);
+      }
     );
   }
 
-  separateProducts(products: OrderData[]) {
-    this.products.Entrada = products[0];
-    this.products.Principal = products[1];
-    this.products.Bebida = products[2];
-    this.products.Postre = products[3];
-  }
-
   hideOrder() {
-    this.hideOrderEv.emit();
+    this.hideOrderEv.emit(false);
   }
 
   editOrder() {
@@ -63,11 +61,10 @@ export class SummaryOrderComponent implements OnInit {
         Swal.fire('¡Eliminado!', 'Se ha eliminado la orden', 'success');
         this.orderService
           .deleteOrder(this.table.idMesa)
-          .subscribe((data) => {
-            this.hideOrder();
-          })
+          .subscribe((data) => {})
           .unsubscribe();
       }
+      this.hideOrderEv.emit(true);
     });
   }
 

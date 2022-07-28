@@ -9,7 +9,7 @@
         <div class="category">
             <p> Entradas </p>
             <div class="products">
-                <div *ngFor="let food of products.Entrada">
+                <div *ngFor="let food of ordersList.Entrada">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
@@ -19,7 +19,7 @@
         <div class="category">
             <p> Platos Principales: </p>
             <div class="products">
-                <div *ngFor="let food of products.Principal">
+                <div *ngFor="let food of ordersList.Principal">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
@@ -29,7 +29,7 @@
         <div class="category">
             <p> Bebidas: </p>
             <div class="products">
-                <div *ngFor="let food of products.Bebida">
+                <div *ngFor="let food of ordersList.Bebida">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>
@@ -39,7 +39,7 @@
         <div class="category">
             <p> Postres: </p>
             <div class="products">
-                <div *ngFor="let food of products.Postre">
+                <div *ngFor="let food of ordersList.Postre">
                     <p> {{food.nombreComida}} </p>
 
                     <p> {{food.precio | currency : 'PEN' : 'S/.'}}</p>

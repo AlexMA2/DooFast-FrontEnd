@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DishManagementComponent } from './dish-management/dish-management.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
+import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component'
     DishFormComponent,
   ],
   imports: [
+    AdminRoutingModule,
     CommonModule,
     MatTableModule,
     SharedModule,

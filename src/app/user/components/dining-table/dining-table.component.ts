@@ -20,7 +20,7 @@ interface Order {
 export class DiningTableComponent implements OnInit {
   @Input() table!: Table;
   time: number = 0;
-  orders?: Order[] = [];
+
   isOrderShowed: boolean = false;
   display: string = '00m 00s ';
   interval: any;
@@ -55,13 +55,19 @@ export class DiningTableComponent implements OnInit {
     this.pauseTimer();
   }
 
-  toggleOrder() {
+  toggleOrder(orderDeleted: boolean) {
     if (this.isOrderShowed) {
       this.isOrderShowed = false;
       this.showOrderButtonText = 'Mostrar pedido';
     } else {
       this.isOrderShowed = true;
       this.showOrderButtonText = 'Ocultar pedido';
+    }
+
+    if (orderDeleted) {
+      this.isOrderShowed = false;
+      this.table.estadoMesa = TableState.Empty;
+      console.log(this.table.estadoMesa);
     }
   }
 

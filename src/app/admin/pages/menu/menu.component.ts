@@ -32,14 +32,16 @@ export class MenuComponent implements OnInit {
 
   getAllProducts(): void {
     this.productService.getAllFood().subscribe((data) => {
+      console.log('EXEC GET ALL');
       this.separateProducts(data);
     });
   }
 
   addFoodToMenu(food: Product): void {
     this.productService.addFoodToMenu(food.idComida).subscribe((data) => {
+      console.log('ADDED', data);
       this._snackBar.open(
-        'Se ha eliminado el producto "' + data.nombreComida + '" de la lista.',
+        'Se ha agregado el producto "' + food.nombreComida + '" a la lista.',
         'Cerrar',
         {
           duration: 3000,

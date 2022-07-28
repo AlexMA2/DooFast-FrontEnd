@@ -18,7 +18,7 @@
         </div>
 
         <div *ngIf="table.estadoMesa === TableState.Waiting" class="button_group">
-            <button (click)="toggleOrder()"> {{showOrderButtonText}} </button>
+            <button (click)="toggleOrder(false)"> {{showOrderButtonText}} </button>
             <button (click)="orderServed()"> Orden Servida </button>
         </div>
         <div *ngIf="table.estadoMesa === TableState.Served" class="button_group">
@@ -27,4 +27,4 @@
         </div>
     </div>
 </div>
-<app-summary-order *ngIf="isOrderShowed" [table]="table" (hideOrderEv)="toggleOrder()"></app-summary-order>
+<app-summary-order *ngIf="isOrderShowed" [table]="table" (hideOrderEv)="toggleOrder($event)"></app-summary-order>
