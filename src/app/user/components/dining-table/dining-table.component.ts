@@ -74,6 +74,7 @@ export class DiningTableComponent {
   orderServed() {
     this.state = SERVED;
     this.pauseTimer();
+    this.isOrderShowed = false;
   }
 
   cancelOrder() {

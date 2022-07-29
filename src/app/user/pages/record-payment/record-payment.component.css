@@ -1,0 +1,159 @@
+#background {
+    position: relative;
+    border-radius: 100%;
+    height: 3000px;
+    width: 3000px;
+    left: calc(-3000px + 50%);
+    top: calc(50% - 1500px + 32px);
+    background-color: #E3DEE1;
+    z-index: -1;
+}
+
+#background-container {
+    position: relative;
+    color: #3d0d0d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#all-container {
+    margin-top: 64px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#ticket {
+    width: 80%;
+    padding: 50px;
+    z-index: 2;
+    /* background-color: #ff0000; */
+}
+
+#aditional-info {
+    width: 80%;
+    padding: 50px;
+    background-color: aqua;
+    font-family: Jost;
+    min-height: min(500px);
+    /* font-weight: 900; */
+}
+
+#boleta {
+    font-family: 'Jost';
+    font-weight: 800;
+    font-size: 2.0em;
+}
+
+#mesa {
+    font-family: 'Jost';
+    font-weight: 00;
+    font-size: 1.5em;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #3d0d0d;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.item {
+    /* background: lightgray; */
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+
+.separator {
+    margin: 0 10px 3px;
+    flex-grow: 1;
+    border-bottom: dotted 1px black;
+}
+
+.total-pagar {
+    font-family: 'Jost';
+    font-weight: 900;
+    font-size: 1.5em;
+    height: 50%;
+    background-color: #b9b9b9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around   ;
+    align-items: center;
+}
+
+.metodo-pago {
+    font-family: 'Jost';
+    font-weight: 900;
+    font-size: 1.5em;
+    height: 50%;
+    background-color: #003953;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.botones {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.df-button {
+    background-color: #E5383B;
+    border-radius: 15px;
+    font-weight: 400;
+    width: 140px;
+    height: 50px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallelogram-wrapper {
+    margin: 0.5rem 0;
+    position: relative;
+    height: 50px;
+    width: 50%;
+}
+
+.parallelogram {
+    margin: auto;
+    width: 70%;
+    height: 25px;
+    -webkit-transform: skew(-30deg);
+    transform: skew(-30deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+    background-color: #6e0002;
+    
+    height: 50px;
+    width: 150px;
+}
+
+.parallelogram-text {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFF;
+    border-radius: 0px;
+    position: absolute;
+    top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
