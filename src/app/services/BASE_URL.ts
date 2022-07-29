@@ -1,2 +1,2 @@
-export const BASE_URL = 'https://7615-190-237-151-62.sa.ngrok.io/';
-export const LOCAL_URL = 'https://localhost:44301/';
+// export const BASE_URL = 'https://7615-190-237-151-62.sa.ngrok.io/'; 
+export const BASE_URL = 'https://localhost:44301/'; //Uncomment this line to use local server

@@ -4,6 +4,12 @@ export interface Order {
   cantidad: number;
 }
 
+export interface PutOrder {
+  idOrden: number;
+  nroMesa: number;
+  estadoOrden: string;
+}
+
 export class OrderData {
   idOrden: number | null = null;
   idMesa: number = 1;
