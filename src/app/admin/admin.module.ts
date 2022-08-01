@@ -13,6 +13,7 @@ import { DishesComponent } from './pages/dishes/dishes.component';
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 import { EmployeeFormComponent } from './pages/employees/employee-form/employee-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TablesPageComponent } from './pages/tables-page/tables-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DishesComponent,
     DishFormComponent,
     EmployeeFormComponent,
+    TablesPageComponent,
   ],
   imports: [
     CommonModule,

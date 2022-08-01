@@ -12,6 +12,7 @@ import { LoginComponent } from './user/components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { DishFormComponent } from './admin/pages/dishes/dish-form/dish-form.component';
 import { RecordPaymentComponent } from './user/pages/record-payment/record-payment.component';
+import { TablesPageComponent } from './admin/pages/tables-page/tables-page.component';
 
 const WaitressRoutes: Routes = [
   {
@@ -63,6 +64,10 @@ const AdminRoutes: Routes = [
     path: 'dishes/newdish',
     component: DishFormComponent,
   },
+  {
+    path: 'tables',
+    component: TablesPageComponent,
+  },
 ];
 
 const routes: Routes = [
@@ -100,4 +105,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
