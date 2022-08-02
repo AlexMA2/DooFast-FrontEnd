@@ -1,0 +1,19 @@
+#add-table{
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: rgb(102, 102, 102);
+    border: 2px solid #000000;
+    color: #FFF;
+    width: max-content;
+    cursor: pointer;
+}
+#add-table span {
+    font-size: 25px;
+    /* background-color: aquamarine; */
+    height: 100%;
+}
+#add-table:hover {
+    background-color: rgb(202, 202, 202);
+    color: #000000;
+}
