@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderData } from 'src/app/models/Order';
+import { Table } from 'src/app/models/Table';
 import { OrderService } from 'src/app/services/order/order.service';
-import { EMPTY, WAITING, SERVED} from 'src/app/user/constants/dining-table-states';
+import { TableService } from 'src/app/services/table/table.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,124 +11,59 @@ import Swal from 'sweetalert2';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  // Angular cannot use the imported constants from constants.ts in HTML
-  EMPTY = EMPTY;
-  WAITING = WAITING;
-  SERVED = SERVED;
-  @Input() tableNumber!: number;
-  @Input() tableState!: number; // 0=EMPTY, 1=WAITING, 2=SERVED
-  @Input() orders: OrderData[] = [];
-  // @Output() changeTableState = new EventEmitter<any>();
-  state: string = WAITING;
-  time: number = 0;
-  grupos: any[][] = [];
-  isOrderShowed: boolean = false;
-  showHideText: String = 'Mostrar Orden';
 
-  display: string = '00m 00s ';
-  interval: any;
+  tableState: string = 'Vacío';
+  @Input() table!: Table;
+  @Output() updateTableState = new EventEmitter<any>();
 
-  constructor(private orderService: OrderService, private router: Router) { }
+  constructor(private tableService: TableService, private router: Router) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  ngOnChanges(): void {
-    switch (this.tableState) {
-      case 0:
-        this.state = EMPTY;
+    switch (this.table.estadoMesa) {
+      case 'VACIO':
+        this.tableState = 'Vacío';
         break;
-      case 1:
-        this.state = WAITING;
-        this.startTimer();
-        break;
-      case 2:
-        this.state = SERVED;
-        this.pauseTimer();
+      case 'EN ESPERA':
+        this.tableState = 'En espera';
         break;
       default:
-        this.state = EMPTY;
+        this.tableState = 'Vacío';
         break;
     }
   }
 
-  groupArrayOfObjects(lista: any[], key: any) {
-    return lista.reduce(function (rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x);
-      return rv;
-    }, {});
-  };
-
-  startTimer() {
-    this.interval = setInterval(() => {
-      this.time++;
-      this.display = this.transform(this.time);
-    }, 1000);
-  }
-  transform(value: number): string {
-    const minutes: number = Math.floor(value / 60);
-    return minutes + 'm ' + (value - minutes * 60) + 's';
-  }
-  pauseTimer() {
-    clearInterval(this.interval);
-    this.interval = undefined;
-  }
-
-  orderServed() {
-    this.state = SERVED;
-    this.pauseTimer();
-    this.isOrderShowed = false;
-  }
-
-  cancelOrder() {
+  deleteTable() {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: 'No podrás revertir esta acción',
+      text: "No podrás revertir esto",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, borralo!',
+      confirmButtonText: 'Si, eliminar'
     }).then((result) => {
-      if (result.isConfirmed) {
-        //Delete all orders
-        this.orders.forEach(order => {
-          this.orderService.deleteOrder(order.idOrden!).subscribe(() => {
-            console.log("Order deleted");
+      if (result.value) {
+        this.tableService.deleteTable(this.table.idMesa).subscribe(
+          (data) => {
+            this.updateTableState.emit();
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Se eliminó la mesa correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            });        
+          },
+          (error) => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'No se pudo eliminar la mesa',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }
-          );
-        });
-        if (this.isOrderShowed) {
-          this.showHideText = 'Mostrar Orden';
-          this.isOrderShowed = false;
-        }
-        this.state = EMPTY;
-        Swal.fire(
-          '¡Eliminado!',
-          'Your file has been deleted.',
-          'success'
         );
       }
     })
-  }
-
-  showOrder() {
-    this.grupos = this.groupArrayOfObjects(this.orders, 'idComida');
-    console.log(this.grupos);
-    this.showHideText = this.isOrderShowed ? 'Mostrar Orden' : 'Ocultar Orden';
-    console.log('Dropdown a modal with the order to edit or cancel');
-    this.isOrderShowed = !this.isOrderShowed;
-    if (this.orders.length > 0) {
-      for (let order in this.orders) {
-        console.log(order);
-      }
-    } else {
-      console.log("vacio");
-    }
-  }
-
-  payOrder() {
-    this.router.navigate(['waitress/record-payment', this.tableNumber]);
-    console.log('Go to the page with the amount and details to pay');
   }
 }

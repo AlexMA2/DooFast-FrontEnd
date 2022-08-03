@@ -31,17 +31,44 @@ export class TablesPageComponent implements OnInit {
     this.getTables();
   }
 
-  addTable() {
-    this.tablesServices.addTable(this.postTable).subscribe(
-      (data) => {
-        this.getTables();
+  addTableButton() {
+    Swal.fire({
+      title: 'Ingresa el número de mesa',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      showLoaderOnConfirm: true,
+      preConfirm: (idMesa) => {
+        return this.addTable(idMesa);
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Se agregó la mesa correctamente',
           showConfirmButton: false,
           timer: 1500
-        })
+        });
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'No se pudo agregar la mesa',
+        });
+      }
+    })
+  }
+
+  addTable(id: number) {
+    this.postTable.nroMesa = id;
+    this.tablesServices.addTable(this.postTable).subscribe(
+      (data) => {
+        this.getTables();
+        return true;
       },
     );
   }
@@ -54,52 +81,11 @@ export class TablesPageComponent implements OnInit {
         this.postTable.nroMesa = this.numberTables + 1;
         console.log("tables: ", this.numberTables);
         console.log(data);
+        console.log(this.postTable);
       },
     );
     this.llamados = this.llamados + 1;
     console.log("llamados: ", this.llamados);
-  }
-
-  deleteButton(tableNumber: number) {
-    Swal.fire({
-      title: '¿Seguro que quieres eliminar la mesa?',
-      text: "No podrás revertir esto",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminarla!'
-    }).then((result) => {
-      if (result.value) {
-        this.deleteTable(tableNumber);
-      }
-    })
-  }
-
-  deleteTable(tableNumber: number) {
-    this.tablesServices.deleteTable(tableNumber).subscribe(
-      (data) => {
-        this.getTables();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Se eliminó la mesa correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        });        
-        // TODO: Define what to do with the other tables when this is deleted (move them to the previous number?)
-        // TODO: Define what to do with the add button after this is deleted (Fill the empty space?)
-      },
-      (error) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'No se pudo eliminar la mesa',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    );
   }
 
   editTable(table: Table) {

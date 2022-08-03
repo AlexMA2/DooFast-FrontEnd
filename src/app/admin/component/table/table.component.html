@@ -1,51 +1,18 @@
-<div class="dining_table">
-    <div class="dining_table_info">
+<div class="table">
+    <div class="table_info">
         <h1>
-            {{tableNumber}}
+            {{table.nroMesa}}
         </h1>
-        <div class="dining_table_state">
-            <div class="dining_table_number">
+        <div class="table_state">
+            <div class="table_number">
                 <h4> Dining Table</h4>
             </div>
-            <p *ngIf="state === WAITING"> {{state}} {{display}} </p>
-            <p *ngIf="state !== WAITING"> {{state}} </p>
+            <p> {{tableState}} </p>
         </div>
     </div>
-    <div class="dining_table_order"> 
-        <div *ngIf="state === EMPTY" class="button_group">
-            <button> Tomar orden</button>
-        </div>
-
-        <div *ngIf="state === WAITING" class="button_group">
-            <button (click)="showOrder()"> {{showHideText}} </button>
-            <button (click)="orderServed()"> Orden Servida </button>
-        </div>
-        <div *ngIf="state === SERVED" class="button_group">
-            <button> Tomar orden </button>
-            <button (click)="payOrder()"> Pago </button>
-        </div>
-    </div>
-</div>
-<div *ngIf="true">
-    <div class="order">
-        <div style="width: 100%;">
-            <button (click)="payOrder()" class="custom_button float_left"> Editar </button>
-            <button (click)="cancelOrder()" class="custom_button float_right"> Eliminar </button>
-        </div>
-        <div>
-            <p style="font-weight: 900;"> Órdenes </p>
-            <ul>
-                <li *ngFor="let order of orders">
-                    <p>
-                        <span>{{order.nombreComida}}</span>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <span>Papa a la huancaína</span>
-                    </p>
-                </li>
-            </ul>
+    <div class="table_order"> 
+        <div class="button_group">
+            <button (click)="deleteTable()">Eliminar mesa</button>
         </div>
     </div>
 </div>

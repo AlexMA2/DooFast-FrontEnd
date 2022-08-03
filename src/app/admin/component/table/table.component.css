@@ -1,4 +1,4 @@
-.dining_table {
+.table {
     position: relative;
     width: 250px;
     display: flex;
@@ -10,13 +10,13 @@
     filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.25));
 }
 
-.dining_table_info {
+.table_info {
     width: 100%;
     display: flex;
     flex-direction: row;
 }
 
-.dining_table_info h1 {
+.table_info h1 {
     font-size: 3rem;
     margin: 0;
     position: relative;
@@ -31,13 +31,13 @@
     font-family: 'Jost', sans-serif;
 }
 
-.dining_table_state {
+.table_state {
     width: 155px;
     text-align: center;
     line-height: normal;
 }
 
-.dining_table_number {
+.table_number {
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
@@ -48,7 +48,7 @@
     height: 24px;
 }
 
-.dining_table_state h4 {
+.table_state h4 {
     font-family: 'Jost', sans-serif;
     color: #011627;
     margin: 0;
@@ -56,14 +56,14 @@
     font-size: 1.25rem;
 }
 
-.dining_table_state p {
+.table_state p {
     margin: 0;
     margin-top: 0.5rem;
     font-size: 1rem;
     font-family: 'Jost', sans-serif;
 }
 
-.dining_table_order {
+.table_order {
     width: 100%;
 }
 
@@ -75,7 +75,7 @@
     justify-content: space-around;
 }
 
-.dining_table_order button {
+.table_order button {
     border: none;
     background-color: #A4161A;
     font-size: 1rem;
@@ -87,61 +87,4 @@
     display: flex;
     align-items: center;
     margin: 1rem 0 0.5rem 0;
-}
-
-.custom_button {
-    width: 40%;
-    justify-content: space-around;
-    border: none;
-    background-color: #A4161A;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin: 10px;
-    font-family: 'Jost', sans-serif;
-    color: #fff;
-    border-radius: 0.25rem;
-    display: flex;
-    align-items: center;
-    margin: 1rem 0 0.5rem 0;
-}
-
-.float_right {
-    float: right;
-}
-
-.float_left {
-    float: left;
-}
-
-.order {
-    display: flex;
-    position: absolute;
-    top: 270px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    z-index: 10;
-    /* height: 100%; */
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 1px #000000 dotted ;
-    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.25));
-    padding: 20px;
-}
-
-.uno {
-    position: relative;
-    height: 100px;
-    width: 150px;
-    background-color: #000;
-}
-
-.dos {
-    position: absolute;
-    z-index: 1;
-    height: 150px;
-    width: 150px;
-    background-color: rgb(139, 139, 139);
 }
