@@ -1,0 +1,90 @@
+.table {
+    position: relative;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F3F4;
+    border-radius: 1rem;
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.25));
+}
+
+.table_info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.table_info h1 {
+    font-size: 3rem;
+    margin: 0;
+    position: relative;
+    display: block;
+    color: #fff;
+    padding: 0.85rem;
+    border-radius: 12px 0 12px 0;
+    text-align: center;
+    background-color: #A4161A;
+    width: 71px;
+    height: 67px;
+    font-family: 'Jost', sans-serif;
+}
+
+.table_state {
+    width: 155px;
+    text-align: center;
+    line-height: normal;
+}
+
+.table_number {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 24px;
+}
+
+.table_state h4 {
+    font-family: 'Jost', sans-serif;
+    color: #011627;
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.table_state p {
+    margin: 0;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Jost', sans-serif;
+}
+
+.table_order {
+    width: 100%;
+}
+
+.button_group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.table_order button {
+    border: none;
+    background-color: #A4161A;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-family: 'Jost', sans-serif;
+    color: #fff;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0.5rem 0;
+}

@@ -1,0 +1,21 @@
+#add-table{
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #e5383b;
+    border: 2px solid #000000;
+    color: #FFF;
+    width: max-content;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#add-table span {
+    font-size: 25px;
+    /* background-color: aquamarine; */
+    height: 100%;
+}
+#add-table:hover {
+    background-color: #e44e50;
+    font-size: 16px;
+    /* color: #000000; */
+}

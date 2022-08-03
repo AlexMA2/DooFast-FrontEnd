@@ -30,8 +30,9 @@
     border-radius: 50%;
 }
 
-.links ul li a {
+a {
     color: #fff;
+    text-decoration: none;
 }
 
 .links {
@@ -54,14 +55,6 @@
     font-size: 1.25rem;
 }
 
-.links ul li:hover {
-    background-color: #fff;
-
-}
-
-.links ul li:hover a {
-    color: #000;
-}
 
 .profile {
     background-color: var(--redCustom);
@@ -87,4 +80,12 @@ svg {
     height: 1.5rem;
     fill: #fff;
     margin-right: 0.5rem;
+}
+
+.active {
+    background-color: #fff;
+}
+
+.active a {
+    color: #000;
 }
