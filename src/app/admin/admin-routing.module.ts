@@ -6,6 +6,7 @@ import { EmployeeFormComponent } from './pages/employees/employee-form/employee-
 import { MenuComponent } from './pages/menu/menu.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
+import { TablesPageComponent } from './pages/tables-page/tables-page.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
+  },
+  {
+    path: 'tables',
+    component: TablesPageComponent,
   },
   {
     path: 'dishes',
