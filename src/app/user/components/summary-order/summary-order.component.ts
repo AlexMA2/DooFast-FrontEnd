@@ -62,8 +62,9 @@ export class SummaryOrderComponent implements OnInit {
           .deleteOrder(this.table.idMesa)
           .subscribe((data) => {})
           .unsubscribe();
+        this.hideOrderEv.emit(true);
       }
-      this.hideOrderEv.emit(true);
+      this.hideOrderEv.emit(false);
     });
   }
 

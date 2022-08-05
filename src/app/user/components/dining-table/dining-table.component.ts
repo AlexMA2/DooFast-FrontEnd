@@ -1,19 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TableState } from '../../constants/dining-table-states';
-import Swal from 'sweetalert2';
-import { OrderData } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';
 import { Router } from '@angular/router';
 import { Table } from 'src/app/models/Table';
-
-interface Order {
-  id: number;
-  table: number;
-  starter: string;
-  maindish: string;
-  dessert: string;
-  drink: string;
-}
 
 @Component({
   selector: 'app-dining-table',
@@ -27,7 +16,7 @@ export class DiningTableComponent implements OnInit {
   isOrderShowed: boolean = false;
   display: string = '00m 00s ';
   interval: any;
-  constructor(private orderService: OrderService, private router: Router) {}
+  constructor(private router: Router) {}
 
   TableState = TableState;
   showOrderButtonText: string = 'Mostrar pedido';
