@@ -1,0 +1,51 @@
+.form_card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--backgroundTabActive);
+    border-radius: 0.5rem;
+}
+
+.form_card>div {
+    width: 100%;
+}
+
+.card_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card_img {
+    width: 100%;
+    height: auto;
+}
+
+.card_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+    margin-top: 1rem;
+}
+
+.card_save {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_save input {
+    background-color: #16a441;
+    border-radius: 0.5rem;
+    color: #fff;
+    padding: 0.5rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    margin-top: 0.5rem;
+    width: 50%;
+}

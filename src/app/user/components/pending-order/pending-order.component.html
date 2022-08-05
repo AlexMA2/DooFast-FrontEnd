@@ -8,7 +8,7 @@
 
     <div>
         <ng-template [ngIf]="order.imagen" [ngIfElse]="noImage">
-            <img [src]="order.imagen" alt="Imagen de un plato de comida b">
+            <img class="pending-order-image" [src]="order.imagen" [alt]="'Imagen de un plato de ' + order.nombreComida">
 
         </ng-template>
 

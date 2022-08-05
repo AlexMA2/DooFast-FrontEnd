@@ -35,12 +35,26 @@ export class OrderDetailsComponent implements OnInit {
     if (orders && orders.length > 0) {
       for (let order of orders) {
         const category = order.nombreCategoria;
-        this.addOrderFromDatabase(category, order);
+        this.addOrderByCategory(category, order);
       }
     }
   }
 
-  addOrderFromDatabase(category: string, order: OrderData) {
+  /*
+    This function allows put every order into the orders details component. 
+    Pick an order and based on the category, add it to the corresponding array. Then,
+    a saved attribute is set to true to avoid adding the same order twice.
+
+    @param {OrderData} order - The order to be added to the array.
+    @param {string} category - The category of the order.
+
+    @returns {void} - Nothing is returned.
+
+    @memberOf OrderDetailsComponent
+  
+  */
+
+  addOrderByCategory(category: string, order: OrderData) {
     switch (category) {
       case 'Entrada':
         order.saved = true;

@@ -1,75 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DiningTableContainerComponent } from './user/pages/dining-table-container/dining-table-container.component';
-import { TakeOrderComponent } from './user/pages/take-order/take-order.component';
-import { EconomyComponent } from './admin/pages/economy/economy.component';
-import { EmployeesComponent } from './admin/pages/employees/employees.component';
-import { EmployeeFormComponent } from './admin/pages/employees/employee-form/employee-form.component';
-import { MenuComponent } from './admin/pages/menu/menu.component';
-import { DishesComponent } from './admin/pages/dishes/dishes.component';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
 import { LoginComponent } from './user/components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.guard';
-import { DishFormComponent } from './admin/pages/dishes/dish-form/dish-form.component';
-import { RecordPaymentComponent } from './user/pages/record-payment/record-payment.component';
-import { TablesPageComponent } from './admin/pages/tables-page/tables-page.component';
-
-const WaitressRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'dining-tables',
-    pathMatch: 'full',
-  },
-  {
-    path: 'dining-tables',
-    component: DiningTableContainerComponent,
-  },
-  {
-    path: 'take-order/:id',
-    component: TakeOrderComponent,
-  },
-  {
-    path: 'record-payment/:id',
-    component: RecordPaymentComponent,
-  },
-];
-
-const AdminRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'employees',
-    pathMatch: 'full',
-  },
-  {
-    path: 'economy',
-    component: EconomyComponent,
-  },
-  {
-    path: 'employees',
-    component: EmployeesComponent,
-  },
-  {
-    path: 'employees/newemployee',
-    component: EmployeeFormComponent,
-  },
-  {
-    path: 'menu',
-    component: MenuComponent,
-  },
-  {
-    path: 'dishes',
-    component: DishesComponent,
-  },
-  {
-    path: 'dishes/newdish',
-    component: DishFormComponent,
-  },
-  {
-    path: 'tables',
-    component: TablesPageComponent,
-  },
-];
-
 const routes: Routes = [
   {
     path: '',
@@ -79,16 +12,17 @@ const routes: Routes = [
   {
     path: 'waitress',
     canActivate: [AuthGuard],
-    children: WaitressRoutes,
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
-    children: AdminRoutes,
+
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
     path: 'cocina',
-
+    canActivate: [AuthGuard],
     component: PendingOrdersListComponent,
   },
   {
@@ -105,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

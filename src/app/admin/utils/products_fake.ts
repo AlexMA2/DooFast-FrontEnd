@@ -1,0 +1,38 @@
+export const product_fake = [
+  {
+    idComida: 1,
+    nombreComida: 'Entrada 1',
+    precio: 100,
+    costo: 50,
+    imagen: null,
+    nombreCategoria: 'Entrada',
+    fechaCreacion: new Date(),
+  },
+  {
+    idComida: 2,
+    nombreComida: 'Entrada 2',
+    precio: 100,
+    costo: 50,
+    imagen: null,
+    nombreCategoria: 'Entrada',
+    fechaCreacion: new Date(),
+  },
+  {
+    idComida: 3,
+    nombreComida: 'Plato 1',
+    precio: 100,
+    costo: 50,
+    imagen: null,
+    nombreCategoria: 'Principal',
+    fechaCreacion: new Date(),
+  },
+  {
+    idComida: 4,
+    nombreComida: 'Bebidita',
+    precio: 100,
+    costo: 50,
+    imagen: null,
+    nombreCategoria: 'Bebida',
+    fechaCreacion: new Date(),
+  },
+];

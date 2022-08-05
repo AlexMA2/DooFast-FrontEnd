@@ -17,6 +17,7 @@ import { PendingOrderComponent } from './components/pending-order/pending-order.
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecordPaymentComponent } from './pages/record-payment/record-payment.component';
+import { SummaryOrderComponent } from './components/summary-order/summary-order.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RecordPaymentComponent } from './pages/record-payment/record-payment.co
     PendingOrderComponent,
     LoginComponent,
     RecordPaymentComponent,
+    SummaryOrderComponent,
   ],
   imports: [
     CommonModule,

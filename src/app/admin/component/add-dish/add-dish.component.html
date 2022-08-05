@@ -1,0 +1,43 @@
+<form [formGroup]="formAddProduct" class="form_card" (ngSubmit)="onSubmit()">
+    <div class="card_header">
+
+        <mat-form-field hintLabel="" appearance="fill">
+            <mat-label> Nombre del producto </mat-label>
+            <input matInput #input maxlength="64" placeholder="Arroz Chaufa" formControlName="nombre">
+            <mat-hint>{{input.value?.length || 0}}/64</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> Categoria </mat-label>
+            <mat-select formControlName="categoria" name="attribute">
+                <mat-option *ngFor="let v of values" [value]="v.value">
+                    {{v.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="card_img">
+        <ngx-dropzone (change)="onSelect($event)" [multiple]="false" accept="image/jpeg,image/jpg,image/png"
+            [maxFileSize]="50_000_000">
+            <ngx-dropzone-label> Sube una imagen </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [removable]="true"
+                (removed)="onRemove(f)" [file]="f">
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+    </div>
+    <div class="card_details">
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label> Precio </mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" formControlName="precio">
+            <span matPrefix>S/.&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label> Costo </mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" formControlName="costo">
+            <span matPrefix>S/.&nbsp;</span>
+        </mat-form-field>
+    </div>
+    <div class="card_save">
+        <input type="submit" value="Guardar">
+    </div>
+</form>

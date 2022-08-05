@@ -7,7 +7,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 
-const AdminRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'employees',
@@ -40,7 +40,7 @@ const AdminRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(AdminRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class AdminRoutingModule {}
