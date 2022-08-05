@@ -3,8 +3,7 @@ export interface Product {
   nombreComida: string;
   precio: number;
   costo: number;
-  imagen: string;
-  imagePath: string;
+  imagen: string | null;
   nombreCategoria: string;
   fechaCreacion: Date;
 }

@@ -7,7 +7,6 @@ import { ProductContainerComponent } from './components/product-container/produc
 import { DisconnectedAlertComponent } from './components/disconnected-alert/disconnected-alert.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-
 @NgModule({
   declarations: [
     MenuPanelComponent,

@@ -1,10 +1,8 @@
 import {
   Component,
   OnInit,
-  Input,
   Output,
   EventEmitter,
-  SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

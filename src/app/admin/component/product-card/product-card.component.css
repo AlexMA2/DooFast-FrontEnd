@@ -1,0 +1,75 @@
+.example-card {
+    width: 300px;
+    background-color: var(--backgroundTabActive);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgb(226, 226, 226);
+    margin: 1rem;
+    padding: 0;
+}
+
+.mat-card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.image_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.details p {
+    font-size: 0.9rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.details_costo {
+    background-color: #E5383B;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+
+.details_price {
+    background-color: #16a441;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+
+.details_date {
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.mat-card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem !important;
+}
+
+.image_container {
+    height: 200px;
+}
+
+.image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}

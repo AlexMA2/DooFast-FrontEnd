@@ -1,0 +1,34 @@
+<mat-card class="example-card">
+    <mat-card-header>
+
+        <mat-card-title>{{product.nombreComida}}</mat-card-title>
+        <mat-card-subtitle>{{product.nombreCategoria }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="image_container">
+        <ng-template [ngIf]="product.imagen" [ngIfElse]="noImage">
+            <img class="food_image" mat-card-image [src]="product.imagen" alt="Imagen de un plato de comida b">
+
+        </ng-template>
+
+        <ng-template #noImage>
+            <img class="food_image" mat-card-image src="../../../../assets/products/standard_food.png"
+                [alt]="'Foto de un plato de ' + product.nombreComida">
+        </ng-template>
+    </div>
+
+    <mat-card-content class="details">
+        <p class="details_price">
+            Precio: {{product.costo | currency : 'PEN' : 'S/.'}}
+        </p>
+        <p class="details_costo">
+            Costo {{product.precio | currency : 'PEN' : 'S/.'}}
+        </p>
+        <p class="details_date">
+            {{product.fechaCreacion | date:'medium'}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="openDialog()"> Editar </button>
+        <button mat-raised-button> Eliminar </button>
+    </mat-card-actions>
+</mat-card>

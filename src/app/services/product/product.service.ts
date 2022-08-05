@@ -20,8 +20,8 @@ export class ProductService {
     return this.http.get<Product[]>(API_URL).pipe(catchError(handleError));
   }
 
-  getAllFood(): Observable<Product[]> {
-    return this.http.get<Product[]>(API_URL_FOOD).pipe(catchError(handleError));
+  getAllFood(): Observable<any[]> {
+    return this.http.get<any[]>(API_URL_FOOD).pipe(catchError(handleError));
   }
 
   addFoodToMenu(idComida: number): Observable<Product> {
@@ -33,6 +33,18 @@ export class ProductService {
   deleteFoodFromMenu(idComida: number) {
     return this.http
       .delete(`${API_URL}/${idComida}`)
+      .pipe(catchError(handleError));
+  }
+
+  addProduct(data: FormData): Observable<Product> {
+    return this.http
+      .post<Product>(API_URL_FOOD, data)
+      .pipe(catchError(handleError));
+  }
+
+  editProduct(data: FormData): Observable<Product> {
+    return this.http
+      .put<Product>(API_URL_FOOD, data)
       .pipe(catchError(handleError));
   }
 }
