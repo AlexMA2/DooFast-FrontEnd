@@ -6,10 +6,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-tables-page',
   templateUrl: './tables-page.component.html',
-  styleUrls: ['./tables-page.component.css']
+  styleUrls: ['./tables-page.component.css'],
 })
 export class TablesPageComponent implements OnInit {
-
   // date: Date = new Date();
   numberTables: number = 0;
   tables: Table[] = [];
@@ -19,9 +18,7 @@ export class TablesPageComponent implements OnInit {
   };
   llamados: number = 0;
 
-  constructor(
-    private tablesServices: TableService
-  ) { }
+  constructor(private tablesServices: TableService) {}
 
   ngOnChanges() {
     this.getTables();
@@ -36,7 +33,7 @@ export class TablesPageComponent implements OnInit {
       title: 'Ingresa el número de mesa',
       input: 'number',
       inputAttributes: {
-        autocapitalize: 'off'
+        autocapitalize: 'off',
       },
       showCancelButton: true,
       confirmButtonText: 'Aceptar',
@@ -51,7 +48,7 @@ export class TablesPageComponent implements OnInit {
           icon: 'success',
           title: 'Se agregó la mesa correctamente',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       } else {
         Swal.fire({
@@ -60,32 +57,28 @@ export class TablesPageComponent implements OnInit {
           title: 'No se pudo agregar la mesa',
         });
       }
-    })
+    });
   }
 
   addTable(id: number) {
     this.postTable.nroMesa = id;
-    this.tablesServices.addTable(this.postTable).subscribe(
-      (data) => {
-        this.getTables();
-        return true;
-      },
-    );
+    this.tablesServices.addTable(this.postTable).subscribe((data) => {
+      this.getTables();
+      return true;
+    });
   }
 
   getTables() {
-    this.tablesServices.getAllTables().subscribe(
-      (data) => {
-        this.tables = data;
-        this.numberTables = data.length;
-        this.postTable.nroMesa = this.numberTables + 1;
-        console.log("tables: ", this.numberTables);
-        console.log(data);
-        console.log(this.postTable);
-      },
-    );
+    this.tablesServices.getAllTables().subscribe((data) => {
+      this.tables = data;
+      this.numberTables = data.length;
+      this.postTable.nroMesa = this.numberTables + 1;
+      console.log('tables: ', this.numberTables);
+      console.log(data);
+      console.log(this.postTable);
+    });
     this.llamados = this.llamados + 1;
-    console.log("llamados: ", this.llamados);
+    console.log('llamados: ', this.llamados);
   }
 
   editTable(table: Table) {

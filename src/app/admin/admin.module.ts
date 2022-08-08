@@ -9,16 +9,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DishesComponent } from './pages/dishes/dishes.component';
-<<<<<<< HEAD
-import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
-
 import { EmployeeFormComponent } from './pages/employees/employee-form/employee-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablesPageComponent } from './pages/tables-page/tables-page.component';
 import { TableComponent } from './component/table/table.component';
 
-=======
->>>>>>> fix_iteration3
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductCardComponent } from './component/product-card/product-card.component';
 import { MatCardModule } from '@angular/material/card';
@@ -37,13 +32,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     EconomyComponent,
     ProductListComponent,
     DishesComponent,
-<<<<<<< HEAD
-    DishFormComponent,
     EmployeeFormComponent,
     TablesPageComponent,
     TableComponent,
-=======
->>>>>>> fix_iteration3
     ProductCardComponent,
     AddDishComponent,
   ],
