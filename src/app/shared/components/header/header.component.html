@@ -8,9 +8,11 @@
 
     <div class="links" *ngIf="user.role === 'Administrador'">
         <ul>
-            <li [routerLinkActive]="['active']" [routerLink]="['/admin/employees']"><a class="link-a"> Empleados </a></li>
-            <li [routerLinkActive]="['active']" [routerLink]="['/admin/menu']"><a class="link-a"> Menu </a></li>
-            <li [routerLinkActive]="['active']" [routerLink]="['/admin/tables']"><a class="link-a">Mesas</a></li>
+
+            <li [routerLink]="['/admin/employees']"><a> Empleados </a></li>
+            <li [routerLink]="['/admin/menu']"><a> Menu </a></li>
+            <li [routerLink]="['/admin/logistica']"><a>Logistica</a></li>
+            <li [routerLink]="['/admin/dishes']"><a> Platillos </a></li>
         </ul>
     </div>
     <div class="profile">

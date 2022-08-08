@@ -5,6 +5,28 @@
     margin-top: 20px;
 }
 
+.filters {
+    flex: 0.2;
+    padding: 0.75rem;
+}
+
+.filter_selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.product {
+    flex: 0.8
+}
+
 .dishes {
     width: 100%;
     display: flex;

@@ -5,8 +5,11 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { EmployeeFormComponent } from './pages/employees/employee-form/employee-form.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
+<<<<<<< HEAD
 import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 import { TablesPageComponent } from './pages/tables-page/tables-page.component';
+=======
+>>>>>>> fix_iteration3
 
 const routes: Routes = [
   {
@@ -37,10 +40,6 @@ const routes: Routes = [
   {
     path: 'dishes',
     component: DishesComponent,
-  },
-  {
-    path: 'dishes/newdish',
-    component: DishFormComponent,
   },
 ];
 
