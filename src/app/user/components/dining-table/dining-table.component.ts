@@ -54,7 +54,7 @@ export class DiningTableComponent implements OnInit {
 
   payOrder() {
     this.router.navigate(['waitress/record-payment', this.table.nroMesa]);
-    console.log('Go to the page with the amount and details to pay');
+
     this.pauseTimer();
   }
 

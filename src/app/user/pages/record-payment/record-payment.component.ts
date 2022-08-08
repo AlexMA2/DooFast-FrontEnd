@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-record-payment',
   templateUrl: './record-payment.component.html',
-  styleUrls: ['./record-payment.component.css']
+  styleUrls: ['./record-payment.component.css'],
 })
 export class RecordPaymentComponent implements OnInit {
   sub!: any;
@@ -18,39 +18,40 @@ export class RecordPaymentComponent implements OnInit {
   putOrders: PutOrder[] = [];
   putTable!: PutTable;
   totalPrice: number = 0;
-  paymentMethod: string = "Efectivo";
+  paymentMethod: string = 'Efectivo';
 
-  constructor(private route: ActivatedRoute, private orderService: OrderService, private tableService: TableService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService,
+    private tableService: TableService
+  ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    console.log(this.id);
+
     this.orderService.getOrderByTableNumber(Number(this.id)).subscribe(
       (data) => {
         this.orders = data;
-        console.log(this.orders);
+
         for (let i = 0; i < this.orders.length; i++) {
           this.totalPrice += this.orders[i].precio!;
           this.putOrders.push({
             idOrden: this.orders![i].idOrden!,
             nroMesa: this.orders![i].idMesa,
-            estadoOrden: 'Pagado'
+            estadoOrden: 'Pagado',
           });
         }
-        console.log("Ordenes");
-        console.log(this.putOrders);
+
         this.putTable = {
           estadoMesa: 'Libre',
           nroMesa: Number(this.id),
-          IdRestaurante: 1
+          IdRestaurante: 1,
         };
-        console.log(this.putTable);
       },
       (error) => {
         console.log(error);
       }
     );
-
   }
 
   formatDecimal(value: number) {
@@ -59,41 +60,29 @@ export class RecordPaymentComponent implements OnInit {
 
   changePaymentMethod(toEfectivo: boolean) {
     if (toEfectivo) {
-      this.paymentMethod = "efectivo";
+      this.paymentMethod = 'efectivo';
     } else {
-      this.paymentMethod = "tarjeta";
+      this.paymentMethod = 'tarjeta';
     }
   }
 
   pagar() {
     Swal.fire({
       title: 'Confirmar pago',
-      text: `Pago de S/${this.formatDecimal(this.totalPrice)} con ${this.paymentMethod} `,
+      text: `Pago de S/${this.formatDecimal(this.totalPrice)} con ${
+        this.paymentMethod
+      } `,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: '¡Confirmar!',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        // for(let i = 0; i < this.putOrders!.length; i++) {
-        //   console.log(this.putOrders![i]);
-        //   this.orderService.updateOrder(this.putOrders[i]).subscribe(
-        //     (data) => {
-        //       console.log(data);
-        //     }
-        //   );
-        // }
         this.tableService.getAllTables().subscribe(
           (data) => {
-            console.log("exito");
-            console.log(data);
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
           },
           (error) => {
             Swal.fire({
@@ -101,7 +90,7 @@ export class RecordPaymentComponent implements OnInit {
               title: 'Oops...',
               text: '¡Ocurrió un error!',
               footer: error,
-            })
+            });
           }
         );
       }

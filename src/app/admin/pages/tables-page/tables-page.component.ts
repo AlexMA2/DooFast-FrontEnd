@@ -73,12 +73,8 @@ export class TablesPageComponent implements OnInit {
       this.tables = data;
       this.numberTables = data.length;
       this.postTable.nroMesa = this.numberTables + 1;
-      console.log('tables: ', this.numberTables);
-      console.log(data);
-      console.log(this.postTable);
     });
     this.llamados = this.llamados + 1;
-    console.log('llamados: ', this.llamados);
   }
 
   editTable(table: Table) {

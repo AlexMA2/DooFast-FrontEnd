@@ -37,7 +37,6 @@ export class EmployeesComponent implements OnInit {
 
   deleteProduct(u: UserData) {
     this.userDataService.deleteUser(u.idUsuario).subscribe((data) => {
-      console.log(data);
       this.getAllUsers();
     });
   }

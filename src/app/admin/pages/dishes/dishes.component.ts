@@ -199,7 +199,13 @@ export class DishesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: FormData) => {
       if (result) {
-        this.productService.addProduct(result).subscribe((data) => {});
+        this.productService.addProduct(result).subscribe((data) => {
+          this.showSnackBar(
+            `Se ha agregado el producto ${result.get(
+              'nombreComida'
+            )} correctamente`
+          );
+        });
       }
     });
   }
