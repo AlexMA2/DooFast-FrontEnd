@@ -17,13 +17,13 @@ export class AddDishComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddDishComponent>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: Product[]
+    @Inject(MAT_DIALOG_DATA) public product: Product
   ) {}
 
   formAddProduct!: FormGroup;
   files: File[] = [];
   filter: string = '';
-
+  buttonName: string = 'Agregar';
   values: Categories[] = [
     { value: 1, name: 'Entrada' },
     { value: 2, name: 'Plato Principal' },
@@ -33,17 +33,39 @@ export class AddDishComponent implements OnInit {
 
   ngOnInit(): void {
     this.formAddProduct = this.formBuilder.group({
-      nombre: ['', Validators.maxLength(64)],
-      categoria: [1, Validators.required],
-      precio: [0.0, Validators.min(0.0)],
-      costo: [0.0, Validators.min(0.0)],
+      idComida: [this.product.idComida],
+      nombre: [this.product.nombreComida, Validators.maxLength(64)],
+      categoria: [
+        this.values.find((a) => a.name === this.product.nombreCategoria)?.value,
+        Validators.required,
+      ],
+      precio: [this.product.precio, Validators.min(0.0)],
+      costo: [this.product.costo, Validators.min(0.0)],
     });
+
+    if (this.product.idComida > 0) {
+      this.buttonName = 'Actualizar';
+    }
+
+    console.log(this.product.imagen);
+    if (this.product.imagen) {
+      this.getFileFromURL(this.product.imagen);
+    }
+  }
+
+  getFileFromURL(url: string) {
+    const image: File = new File([], url);
+    this.files.push(image);
   }
 
   onSubmit() {
     if (this.formAddProduct.valid && this.files.length === 1) {
       const fileData = this.files[0];
       const data = new FormData();
+
+      if (this.product.idComida > 0) {
+        data.append('idComida', this.formAddProduct.value.idComida);
+      }
       data.append('nombreComida', this.formAddProduct.value.nombre);
       data.append('precio', this.formAddProduct.value.precio);
       data.append('costo', this.formAddProduct.value.costo);

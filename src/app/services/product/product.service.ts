@@ -47,4 +47,10 @@ export class ProductService {
       .put<Product>(API_URL_FOOD, data)
       .pipe(catchError(handleError));
   }
+
+  deleteProduct(idProducto: number): Observable<Product> {
+    return this.http
+      .delete<Product>(`${API_URL_FOOD}/${idProducto}`)
+      .pipe(catchError(handleError));
+  }
 }

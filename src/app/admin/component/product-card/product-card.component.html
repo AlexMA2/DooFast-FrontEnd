@@ -18,10 +18,10 @@
 
     <mat-card-content class="details">
         <p class="details_price">
-            Precio: {{product.costo | currency : 'PEN' : 'S/.'}}
+            Precio: {{product.precio | currency : 'PEN' : 'S/.'}}
         </p>
         <p class="details_costo">
-            Costo {{product.precio | currency : 'PEN' : 'S/.'}}
+            Costo {{product.costo | currency : 'PEN' : 'S/.'}}
         </p>
         <p class="details_date">
             {{product.fechaCreacion | date:'medium'}}
@@ -29,6 +29,6 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button (click)="openDialog()"> Editar </button>
-        <button mat-raised-button> Eliminar </button>
+        <button mat-raised-button (click)="deleteProduct()"> Eliminar </button>
     </mat-card-actions>
 </mat-card>

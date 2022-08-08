@@ -10,20 +10,67 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
+    <div class="filter" [formGroup]="filters">
       <div *ngIf="filter === 'nombreComida'">
-        <input type="text">
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> Nombre del producto </mat-label>
+          <input matInput #input maxlength="64" placeholder="Arroz Chaufa" formControlName="name">
+          <mat-hint>{{input.value?.length || 0}}/64</mat-hint>
+        </mat-form-field>
       </div>
       <div *ngIf="filter === 'precio'">
-
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label> Precio mayor a </mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" formControlName="price">
+          <span matPrefix>S/.&nbsp;</span>
+        </mat-form-field>
       </div>
+      <div *ngIf="filter === 'costo'">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label> Costo mayor a </mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" formControlName="cost">
+          <span matPrefix>S/.&nbsp;</span>
+        </mat-form-field>
+      </div>
+      <div *ngIf="filter === 'nombreCategoria'">
+        <mat-form-field appearance="fill">
+          <mat-label> Categoria </mat-label>
+          <mat-select formControlName="category" name="attribute">
+            <mat-option *ngFor="let v of values" [value]="v.value">
+              {{v.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="filter === 'fechaCategoria'">
+        <mat-form-field appearance="fill">
+          <mat-label>Escribe un rango de fechas</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          <mat-error *ngIf="filters.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="filters.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="filterBy()" [disabled]="filter.length < 1"> Aplicar </button>
+      <button mat-raised-button (click)="cleanFilters()"> Quitar filtros </button>
     </div>
   </div>
   <div class="product">
     <button mat-raised-button color="primary" (click)="openDialog()"> Agregar un nuevo producto </button>
-    <div class="products_container">
+    <div class="products_container" *ngIf="products.length > 0;else noProducts">
 
       <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
     </div>
+    <ng-template #noProducts>
+      <h3> No se ha encontrado productos con los filtros aplicados </h3>
+    </ng-template>
   </div>
 
 </div>

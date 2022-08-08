@@ -8,9 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
-import { DishManagementComponent } from './component/dish-management/dish-management.component';
 import { DishesComponent } from './pages/dishes/dishes.component';
-import { DishFormComponent } from './pages/dishes/dish-form/dish-form.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductCardComponent } from './component/product-card/product-card.component';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,7 @@ import { MatInputModule } from '@angular/material/input';
     MenuComponent,
     EconomyComponent,
     ProductListComponent,
-    DishManagementComponent,
     DishesComponent,
-    DishFormComponent,
     ProductCardComponent,
     AddDishComponent,
   ],
@@ -47,6 +45,8 @@ import { MatInputModule } from '@angular/material/input';
     NgxDropzoneModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [EmployeesComponent, MenuComponent, EconomyComponent],
 })
