@@ -4,12 +4,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/Product';
 import { product_fake } from '../../utils/products_fake';
 import { AddDishComponent } from '../../component/add-dish/add-dish.component';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface ProductAttribute {
@@ -204,9 +199,7 @@ export class DishesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: FormData) => {
       if (result) {
-        this.productService.addProduct(result).subscribe((data) => {
-          console.log(data);
-        });
+        this.productService.addProduct(result).subscribe((data) => {});
       }
     });
   }
