@@ -34,12 +34,23 @@ export class EconomyComponent implements OnInit {
 
   dataChart = [] as any[];
 
+  showXAxis: boolean = true;
+  showYAxis: boolean = true;
+  gradient: boolean = true;
+  showLegend: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Meses';
+  showYAxisLabel: boolean = true;
+  yAxisLabel: string = 'Valores';
+  legendTitle: string = 'Ingresos y Pedidos por mes';
+
+  colorScheme = '#5AA454';
+
   ngOnInit(): void {
     this.getDataForYear(this.year);
   }
 
   onYearChanges() {
-    console.log(this.year);
     this.getDataForYear(this.year);
   }
 
@@ -71,9 +82,12 @@ export class EconomyComponent implements OnInit {
       () => {
         let info = [];
         for (let i = 0; i < 12; i++) {
-          info.push([Math.random() * 100, Math.random() * 800]);
+          info.push([
+            Math.floor(Math.random() * 100),
+            Math.floor(Math.random() * 750),
+          ]);
         }
-        this.generateDataChart(info);
+        console.log(info);
       }
     );
   }
