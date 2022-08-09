@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { TableService } from 'src/app/services/table/table.service';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
+import { TableState } from '../../constants/dining-table-states';
 
 @Component({
   selector: 'app-record-payment',
@@ -41,7 +42,7 @@ export class RecordPaymentComponent implements OnInit {
         console.log("Ordenes");
         console.log(this.putOrders);
         this.putTable = {
-          estadoMesa: 'VACIO',
+          estadoMesa: TableState.Empty,
           nroMesa: Number(this.id),
           IdRestaurante: 1
         };
