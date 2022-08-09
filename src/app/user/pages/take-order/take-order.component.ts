@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderData } from 'src/app/models/Order';
+import { TableService } from 'src/app/services/table/table.service';
+import { PutTable } from 'src/app/models/Table';
+import { TableState } from '../../constants/dining-table-states';
 
 @Component({
   selector: 'app-take-order',
@@ -27,11 +30,17 @@ export class TakeOrderComponent implements OnInit {
     imagen: null,
   };
   savingOrder: boolean = false;
+  putTable!: PutTable;
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute) {}
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private tableService: TableService ) {}
 
   ngOnInit(): void {
     this.tableNumber = this.route.snapshot.params.id;
+    this.putTable = {
+      estadoMesa: TableState.Waiting,
+      nroMesa: this.tableNumber,
+      IdRestaurante: 1
+    };
   }
 
   getFoodPicked(product: OrderData) {
@@ -50,6 +59,12 @@ export class TakeOrderComponent implements OnInit {
   }
 
   saveOrder(): void {
+    this.updateTable();
     this.savingOrder = true;
   }
+
+  updateTable() {
+    this.tableService.updateTable(this.putTable).subscribe();
+  }
+
 }
