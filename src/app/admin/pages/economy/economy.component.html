@@ -23,8 +23,8 @@
             <h2> Pedidos atendidos y dinero ganado en el mes </h2>
             <mat-form-field appearance="fill">
                 <mat-label> Mes </mat-label>
-                <mat-select [(ngModel)]="month" name="Enero">
-                    <mat-option *ngFor="let m of monthNames" [value]="m.value">
+                <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="select($event.value)">
+                    <mat-option *ngFor="let m of monthNames" [value]="m.value" [disabled]="m.value > maxMonth">
                         {{m.name}}
                     </mat-option>
                 </mat-select>

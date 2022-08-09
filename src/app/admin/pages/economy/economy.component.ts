@@ -17,6 +17,8 @@ export class EconomyComponent implements OnInit {
   year = new Date().getFullYear();
   month = new Date().getMonth() + 1;
 
+  maxMonth: number = 12;
+
   monthNames: MonthName[] = [
     { value: 1, name: 'Enero' },
     { value: 2, name: 'Febrero' },
@@ -50,26 +52,43 @@ export class EconomyComponent implements OnInit {
   lineChartData: any[] = [];
 
   ngOnInit(): void {
-    this.generateRandomValues();
+    this.generateRandomValues(1);
+    this.generateRandomValues(2);
+    if (this.year === new Date().getFullYear()) {
+      this.maxMonth = new Date().getMonth() + 1;
+    }
   }
 
   onYearChanges() {
+    let actualYear = new Date().getFullYear();
+    if (this.year > actualYear) {
+      this.year = actualYear;
+    }
+    if (this.year !== actualYear) {
+      this.maxMonth = 12;
+    }
     this.getDataForYear(this.year);
   }
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  select(ev: any) {
+    console.log('select', ev);
+    let actualMonth = new Date().getMonth() + 1;
+    if (this.month > actualMonth) {
+      console.log('MAYOR', this.month, actualMonth);
+      this.month = actualMonth;
+    }
+    this.getDataForMonth(ev);
   }
 
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
+  onSelect(data: any): void {}
 
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
+  onActivate(data: any): void {}
+
+  onDeactivate(data: any): void {}
 
   generateDataChart(year: number, values: any[]) {
+    console.log('GENERATING DATA CHART', year);
+    this.dataChart = [];
     let maxMonth: number = 11;
     if (year === new Date().getFullYear()) {
       maxMonth = new Date().getMonth();
@@ -92,6 +111,7 @@ export class EconomyComponent implements OnInit {
   }
 
   generateLineChartData(month: number, values: any[]) {
+    this.lineChartData = [];
     let maxDayPerMonth: any = {
       1: 31,
       2: 28,
@@ -138,8 +158,8 @@ export class EconomyComponent implements OnInit {
       (data) => {
         this.generateDataChart(anio, data);
       },
-      () => {
-        console.log('error');
+      (error) => {
+        this.generateRandomValues(1);
       }
     );
   }
@@ -150,20 +170,25 @@ export class EconomyComponent implements OnInit {
         this.generateLineChartData(month, data);
       },
       () => {
-        console.log('error');
+        this.generateRandomValues(2);
       }
     );
   }
 
-  generateRandomValues() {
-    let info = [];
-    for (let i = 0; i < 32; i++) {
+  generateRandomValues(type: number) {
+    let info: any[] = [];
+
+    for (let i = 0; i < 31; i++) {
       info.push([
         Math.floor(Math.random() * 300) + 10,
         Math.floor(Math.random() * 100) + 10,
       ]);
     }
-    this.generateDataChart(this.year, info);
-    this.generateLineChartData(this.month, info);
+
+    if (type === 1) {
+      this.generateDataChart(this.year, info);
+    } else if (type === 2) {
+      this.generateLineChartData(this.month, info);
+    }
   }
 }
