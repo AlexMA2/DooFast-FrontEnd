@@ -30,4 +30,10 @@ export class OrdersHistoryService {
       .get<any>(`${API_URL}/year/${year}`)
       .pipe(catchError(handleError));
   }
+
+  getDataForMonth(month: number): Observable<any> {
+    return this.http
+      .get<any>(`${API_URL}/month/${month}`)
+      .pipe(catchError(handleError));
+  }
 }

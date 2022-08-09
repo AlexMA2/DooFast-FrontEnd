@@ -1,4 +1,4 @@
-<div>
+<div class="economy">
     <div class="grouped-horizontal-bar-chart">
         <div class="title">
             <h2> Pedidos atendidos y dinero ganado en el año</h2>
@@ -10,11 +10,11 @@
             </mat-form-field>
         </div>
         <div class="chart">
-            <ngx-charts-bar-vertical-2d [view]="[1200,800]" [results]="dataChart" [gradient]="gradient"
-                [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
-                [legendTitle]="legendTitle">
-
+            <ngx-charts-bar-vertical-2d [view]="[1200, 600]" [results]="dataChart" [xAxis]="true" [yAxis]="true"
+                [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                [xAxisLabel]="barVerticalChartOptions.xAxisLabel" [yAxisLabel]="barVerticalChartOptions.yAxisLabel"
+                [legendTitle]="barVerticalChartOptions.legendTitle" (select)="onSelect($event)"
+                (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
             </ngx-charts-bar-vertical-2d>
         </div>
     </div>
@@ -31,7 +31,12 @@
             </mat-form-field>
         </div>
         <div class="chart">
-
+            <ngx-charts-line-chart [view]="[1200, 600]" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                [xAxis]="true" [yAxis]="true" [xAxisLabel]="lineChartOptions.xAxisLabel"
+                [yAxisLabel]="lineChartOptions.yAxisLabel" [timeline]="true" [results]="lineChartData"
+                [legendTitle]="lineChartOptions.legendTitle" (select)="onSelect($event)" (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)">
+            </ngx-charts-line-chart>
         </div>
     </div>
     <div class="top-products">
