@@ -4,6 +4,7 @@ import { OrderData, PutOrder } from 'src/app/models/Order';
 import { PutTable } from 'src/app/models/Table';
 import { OrderService } from 'src/app/services/order/order.service';
 import { TableService } from 'src/app/services/table/table.service';
+import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,12 +16,12 @@ export class RecordPaymentComponent implements OnInit {
   sub!: any;
   id!: string;
   orders?: OrderData[];
-  putOrders: PutOrder[] = [];
+  putOrders: PutOrder[] = []; // En caso de que se quiera actualizar el estado de las órdenes en lugar de eliminarlas
   putTable!: PutTable;
   totalPrice: number = 0;
   paymentMethod: string = "Efectivo";
 
-  constructor(private route: ActivatedRoute, private orderService: OrderService, private tableService: TableService) { }
+  constructor(private _location: Location, private route: ActivatedRoute, private orderService: OrderService, private tableService: TableService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
@@ -40,7 +41,7 @@ export class RecordPaymentComponent implements OnInit {
         console.log("Ordenes");
         console.log(this.putOrders);
         this.putTable = {
-          estadoMesa: 'Libre',
+          estadoMesa: 'VACIO',
           nroMesa: Number(this.id),
           IdRestaurante: 1
         };
@@ -77,34 +78,42 @@ export class RecordPaymentComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        // for(let i = 0; i < this.putOrders!.length; i++) {
-        //   console.log(this.putOrders![i]);
-        //   this.orderService.updateOrder(this.putOrders[i]).subscribe(
-        //     (data) => {
-        //       console.log(data);
-        //     }
-        //   );
-        // }
-        this.tableService.getAllTables().subscribe(
+        // Eliminar las órdenes de la mesa
+        for (let i = 0; i < this.orders!.length; i++) {
+          console.log(this.putOrders![i]);
+          this.orderService.deleteOrder(this.orders![i].idOrden!).subscribe(
+            (data) => {
+              console.log(data);
+            }
+          );
+        }
+        // Actualizar el estado de la mesa
+        this.tableService.updateTable(this.putTable).subscribe(
           (data) => {
-            console.log("exito");
             console.log(data);
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
-          },
-          (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: '¡Ocurrió un error!',
-              footer: error,
-            })
           }
         );
+        Swal.fire(
+          '¡Pagada!',
+          'Se ha marcado la orden como pagada',
+          'success'
+        ).then(() => {          
+          this._location.back();
+        });
       }
     });
   }
 }
+
+// Swal.fire(
+//   'Deleted!',
+//   'Your file has been deleted.',
+//   'success'
+// )
+
+// Swal.fire({
+//   icon: 'error',
+//   title: 'Oops...',
+//   text: '¡Ocurrió un error!',
+//   footer: error,
+// })
