@@ -1,7 +1,7 @@
 <div class="economy">
     <div class="grouped-horizontal-bar-chart">
         <div class="title">
-            <h2> Pedidos atendidos y dinero ganado en el año</h2>
+            <h2> Pedidos atendidos e ingreos generados en el año</h2>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label> Año </mat-label>
                 <input matInput type="number" class="example-right-align" (change)="onYearChanges()" placeholder="2022"
@@ -20,7 +20,7 @@
     </div>
     <div class="line-chart">
         <div class="title">
-            <h2> Pedidos atendidos y dinero ganado en el mes </h2>
+            <h2> Pedidos atendidos e ingreos generados en el mes </h2>
             <mat-form-field appearance="fill">
                 <mat-label> Mes </mat-label>
                 <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="select($event.value)">

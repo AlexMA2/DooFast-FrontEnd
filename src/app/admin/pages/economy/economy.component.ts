@@ -52,8 +52,8 @@ export class EconomyComponent implements OnInit {
   lineChartData: any[] = [];
 
   ngOnInit(): void {
-    this.generateRandomValues(1);
-    this.generateRandomValues(2);
+    this.getDataForYear(this.year);
+    this.getDataForMonth(this.month);
     if (this.year === new Date().getFullYear()) {
       this.maxMonth = new Date().getMonth() + 1;
     }
@@ -71,10 +71,8 @@ export class EconomyComponent implements OnInit {
   }
 
   select(ev: any) {
-    console.log('select', ev);
     let actualMonth = new Date().getMonth() + 1;
     if (this.month > actualMonth) {
-      console.log('MAYOR', this.month, actualMonth);
       this.month = actualMonth;
     }
     this.getDataForMonth(ev);
@@ -87,7 +85,6 @@ export class EconomyComponent implements OnInit {
   onDeactivate(data: any): void {}
 
   generateDataChart(year: number, values: any[]) {
-    console.log('GENERATING DATA CHART', year);
     this.dataChart = [];
     let maxMonth: number = 11;
     if (year === new Date().getFullYear()) {
