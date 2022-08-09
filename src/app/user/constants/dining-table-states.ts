@@ -3,3 +3,9 @@ export enum TableState {
   Waiting = 'Esperando',
   Served = 'Servido',
 }
+
+// export enum TableState {
+//   Empty = 'VACIO',
+//   Waiting = 'EN ESPERA',
+//   Served = 'SERVIDO',
+// }

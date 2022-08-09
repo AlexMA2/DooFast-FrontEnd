@@ -22,7 +22,7 @@
             <button (click)="orderServed()"> Orden Servida </button>
         </div>
         <div *ngIf="table.estadoMesa === TableState.Served" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', table.nroMesa]"> Tomar orden </button>
+            <button (click)="toggleTableState(TableState.Waiting)"> Deshacer </button>
             <button [routerLink]="['/waitress/pay-order/', table.nroMesa]"> Pago </button>
         </div>
     </div>

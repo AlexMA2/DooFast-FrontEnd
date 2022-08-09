@@ -24,6 +24,13 @@ export class SummaryOrderComponent implements OnInit {
     Postre: [] as Product[],
   };
 
+  ordersShowed: any = {
+    Entrada: [] as OrderShowed[],
+    Principal: [] as OrderShowed[],
+    Bebida: [] as OrderShowed[],
+    Postre: [] as OrderShowed[],
+  }
+
   constructor(private router: Router, private orderService: OrderService) {}
 
   ngOnInit(): void {
@@ -36,6 +43,20 @@ export class SummaryOrderComponent implements OnInit {
       }
     );
   }
+
+  fillOrdersShowed() {
+    for (let category in this.ordersList) {
+      for (let order of this.ordersList[category]) {
+        this.ordersShowed[category].push({
+          product: order,
+          quantity: order.cantidad,
+          price: order.precio,
+        });
+      }
+    }
+  }
+
+
 
   hideOrder() {
     this.hideOrderEv.emit(false);
@@ -72,3 +93,10 @@ export class SummaryOrderComponent implements OnInit {
     this.hideOrderEv.unsubscribe();
   }
 }
+
+export interface OrderShowed{
+  name: string;
+  quantity: number;
+  totalPrice: number;
+}
+
