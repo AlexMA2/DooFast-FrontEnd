@@ -8,6 +8,10 @@
 
 }
 
+.grouped-horizontal-bar-chart {
+    margin-top: 500px;
+}
+
 .economy>div {
     display: flex;
     flex-direction: column;
