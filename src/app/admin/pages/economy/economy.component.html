@@ -40,11 +40,11 @@
         </div>
     </div>
     <div class="top-products">
-        <h1> Top Productos más vendidos por categoría </h1>
+        <h1 class="title"> Top Productos más vendidos por categoría </h1>
         <div class="top-products__categories">
             <div>
                 <p> Entradas </p>
-                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <table mat-table [dataSource]="foodsDataSource.starters" matSort class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="position">
@@ -76,7 +76,7 @@
             </div>
             <div>
                 <p> Platos Principales </p>
-                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <table mat-table [dataSource]="foodsDataSource.dishes" matSort class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="position">
@@ -108,7 +108,7 @@
             </div>
             <div>
                 <p> Bebidas </p>
-                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <table mat-table [dataSource]="foodsDataSource.drinks" matSort class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="position">
@@ -140,7 +140,7 @@
             </div>
             <div>
                 <p> Postres </p>
-                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <table mat-table [dataSource]="foodsDataSource.desserts" matSort class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="position">

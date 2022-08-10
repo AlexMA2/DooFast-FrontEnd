@@ -1,17 +1,16 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { OrdersHistoryService } from 'src/app/services/orders-history/orders-history.service';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {
+  MatTableDataSource,
+  _MatTableDataSource,
+} from '@angular/material/table';
+import { TopProduct } from 'src/app/models/TopProduct';
+import { TopProductFake } from '../../utils/topProducts_fake';
 
 interface MonthName {
   value: number;
   name: string;
-}
-
-interface TopProduct {
-  position: number;
-  nombreComida: string;
-  cantidad: number;
 }
 
 const ELEMENT_DATA: TopProduct[] = [
@@ -37,6 +36,22 @@ export class EconomyComponent implements OnInit {
   month = new Date().getMonth() + 1;
   displayedColumns: string[] = ['position', 'nombreComida', 'cantidad'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  foodsDataSource = {
+    starters: new MatTableDataSource(
+      ELEMENT_DATA
+    ) as MatTableDataSource<TopProduct>,
+    dishes: new MatTableDataSource(
+      ELEMENT_DATA
+    ) as MatTableDataSource<TopProduct>,
+    drinks: new MatTableDataSource(
+      ELEMENT_DATA
+    ) as MatTableDataSource<TopProduct>,
+    desserts: new MatTableDataSource(
+      ELEMENT_DATA
+    ) as MatTableDataSource<TopProduct>,
+  };
+
   maxMonth: number = 12;
   @ViewChild(MatSort) sort!: MatSort;
   monthNames: MonthName[] = [
@@ -77,6 +92,8 @@ export class EconomyComponent implements OnInit {
     if (this.year === new Date().getFullYear()) {
       this.maxMonth = new Date().getMonth() + 1;
     }
+
+    this.getHistoryProducts();
   }
 
   ngAfterViewInit() {
@@ -90,6 +107,10 @@ export class EconomyComponent implements OnInit {
     }
     if (this.year !== actualYear) {
       this.maxMonth = 12;
+    }
+    if (this.year === actualYear) {
+      this.maxMonth = new Date().getMonth() + 1;
+      this.month = this.maxMonth;
     }
     this.getDataForYear(this.year);
   }
@@ -179,7 +200,7 @@ export class EconomyComponent implements OnInit {
       (data) => {
         this.generateDataChart(anio, data);
       },
-      (error) => {
+      () => {
         this.generateRandomValues(1);
       }
     );
@@ -192,6 +213,27 @@ export class EconomyComponent implements OnInit {
       },
       () => {
         this.generateRandomValues(2);
+      }
+    );
+  }
+
+  getHistoryProducts() {
+    this.orderHistoryService.getHistoryProducts().subscribe(
+      (data) => {
+        this.foodsDataSource.starters = new MatTableDataSource(data[0]);
+        this.foodsDataSource.dishes = new MatTableDataSource(data[1]);
+        this.foodsDataSource.drinks = new MatTableDataSource(data[2]);
+        this.foodsDataSource.desserts = new MatTableDataSource(data[3]);
+      },
+      () => {
+        this.foodsDataSource.starters = new MatTableDataSource(
+          TopProductFake[0]
+        );
+        this.foodsDataSource.dishes = new MatTableDataSource(TopProductFake[1]);
+        this.foodsDataSource.drinks = new MatTableDataSource(TopProductFake[2]);
+        this.foodsDataSource.desserts = new MatTableDataSource(
+          TopProductFake[3]
+        );
       }
     );
   }
