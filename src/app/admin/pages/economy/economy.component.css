@@ -54,3 +54,35 @@ th.mat-sort-header-sorted {
     align-items: center;
     margin: 0.25rem 0.5rem;
 }
+
+.sticky-panel {
+    position: -webkit-sticky;
+    position: sticky;
+    margin: 1rem;
+    z-index: 999;
+    padding: 0.5rem;
+    width: 200px;
+    border-radius: 1rem;
+    background: #8a2387;
+    background: linear-gradient(320deg, #f27121, #e94057, #8a2387);
+
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(16.5px);
+    -webkit-backdrop-filter: blur(16.5px);
+    border: 1px solid rgba(204, 55, 102, 0.3);
+}
+
+.sticky-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sticky-panel ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}

@@ -1,7 +1,20 @@
+<div class="sticky-panel">
+    <ul>
+        <li>
+            <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por año </a>
+        </li>
+        <li>
+            <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por mes </a>
+        </li>
+        <li>
+            <a href="admin/economy#top-products"> Top Productos </a>
+        </li>
+    </ul>
+</div>
 <div class="economy">
-    <div class="grouped-horizontal-bar-chart">
+    <div class="grouped-horizontal-bar-chart" id="bar-chart">
         <div class="title">
-            <h2> Pedidos atendidos e ingreos generados en el año</h2>
+            <h2> Pedidos realizados e ingresos generados en el año</h2>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label> Año </mat-label>
                 <input matInput type="number" class="example-right-align" (change)="onYearChanges()" placeholder="2022"
@@ -18,9 +31,9 @@
             </ngx-charts-bar-vertical-2d>
         </div>
     </div>
-    <div class="line-chart">
+    <div class="line-chart" id="line-chart">
         <div class="title">
-            <h2> Pedidos atendidos e ingreos generados en el mes </h2>
+            <h2> Pedidos realizados e ingresos generados en el mes </h2>
             <mat-form-field appearance="fill">
                 <mat-label> Mes </mat-label>
                 <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="select($event.value)">
@@ -39,7 +52,7 @@
             </ngx-charts-line-chart>
         </div>
     </div>
-    <div class="top-products">
+    <div class="top-products" id="top-products">
         <h1 class="title"> Top Productos más vendidos por categoría </h1>
         <div class="top-products__categories">
             <div>
