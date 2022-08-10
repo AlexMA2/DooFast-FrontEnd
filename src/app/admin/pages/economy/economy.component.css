@@ -4,12 +4,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
-
-}
-
-.grouped-horizontal-bar-chart {
-    margin-top: 500px;
 }
 
 .economy>div {
@@ -33,4 +27,30 @@
 .title h2 {
     font-size: 1.5rem;
     margin-right: 1rem;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.top-products__categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.top-products__categories>div {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.25rem 0.5rem;
 }

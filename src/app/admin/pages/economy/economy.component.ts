@@ -1,10 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { OrdersHistoryService } from 'src/app/services/orders-history/orders-history.service';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 interface MonthName {
   value: number;
   name: string;
 }
+
+interface TopProduct {
+  position: number;
+  nombreComida: string;
+  cantidad: number;
+}
+
+const ELEMENT_DATA: TopProduct[] = [
+  { position: 1, nombreComida: 'Producto 1', cantidad: 100 },
+  { position: 2, nombreComida: 'Producto 2', cantidad: 90 },
+  { position: 3, nombreComida: 'Producto 3', cantidad: 80 },
+  { position: 4, nombreComida: 'Producto 4', cantidad: 60 },
+  { position: 5, nombreComida: 'Producto 5', cantidad: 50 },
+  { position: 6, nombreComida: 'Producto 6', cantidad: 30 },
+  { position: 7, nombreComida: 'Producto 7', cantidad: 25 },
+  { position: 8, nombreComida: 'Producto 8', cantidad: 18 },
+];
 
 @Component({
   selector: 'app-economy',
@@ -16,9 +35,10 @@ export class EconomyComponent implements OnInit {
 
   year = new Date().getFullYear();
   month = new Date().getMonth() + 1;
-
+  displayedColumns: string[] = ['position', 'nombreComida', 'cantidad'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   maxMonth: number = 12;
-
+  @ViewChild(MatSort) sort!: MatSort;
   monthNames: MonthName[] = [
     { value: 1, name: 'Enero' },
     { value: 2, name: 'Febrero' },
@@ -57,6 +77,10 @@ export class EconomyComponent implements OnInit {
     if (this.year === new Date().getFullYear()) {
       this.maxMonth = new Date().getMonth() + 1;
     }
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   onYearChanges() {
