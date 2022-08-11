@@ -23,6 +23,8 @@ export class EmployeeFormComponent implements OnInit {
     fechaCreacion: '',
     ultimoLogin: '',
   }
+
+  edit: boolean = false;
   
   constructor(
     private userDataService: UserDataService, 
@@ -31,6 +33,18 @@ export class EmployeeFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const params = this.activatedRoute.snapshot.params;
+    if (params.idUsuario) {
+      this.userDataService.getUser(params.idUsuario)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.employee = res;
+            this.edit = true;
+          },
+          err => console.log(err)
+        )
+    }
   }
 
   saveNewUser() {
@@ -59,8 +73,49 @@ export class EmployeeFormComponent implements OnInit {
           )
 
         break;
-      case 'Cocinero':
+      case 'Cocina':
         this.userDataService.addUser(this.employee.usuario, this.employee.nombreUsuario, 
+          this.employee.contrasenia, this.employee.nroCelular, this.employee.correoElectronico, 1, 3)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/admin/employees']);
+            },
+            err => console.error(err)
+          )
+
+        break;
+    }
+  }
+
+  updateUser() {
+    switch (this.employee.nombreRol) {
+      case 'Administrador':
+        this.userDataService.updateUser(this.employee.idUsuario, this.employee.usuario, this.employee.nombreUsuario, 
+          this.employee.contrasenia, this.employee.nroCelular, this.employee.correoElectronico, 1, 1)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/admin/employees']);
+            },
+            err => console.error(err)
+          )
+
+        break;
+      case 'Mozo':
+        this.userDataService.updateUser(this.employee.idUsuario, this.employee.usuario, this.employee.nombreUsuario, 
+          this.employee.contrasenia, this.employee.nroCelular, this.employee.correoElectronico, 1, 2)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/admin/employees']);
+            },
+            err => console.error(err)
+          )
+
+        break;
+      case 'Cocina':
+        this.userDataService.updateUser(this.employee.idUsuario, this.employee.usuario, this.employee.nombreUsuario, 
           this.employee.contrasenia, this.employee.nroCelular, this.employee.correoElectronico, 1, 3)
           .subscribe(
             res => {

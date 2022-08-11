@@ -23,10 +23,10 @@
             <label for="admin">Administrador</label><br>
             <input type="radio" id="mesero" [(ngModel)]= "employee.nombreRol" name="rol" value="Mozo">
             <label for="mesero">Mozo</label><br>
-            <input type="radio" id="cocinero" [(ngModel)]= "employee.nombreRol" name="rol" value="Cocinero">
-            <label for="cocinero">Cocinero</label><br>
+            <input type="radio" id="cocinero" [(ngModel)]= "employee.nombreRol" name="rol" value="Cocina">
+            <label for="cocinero">Cocina</label><br>
           </div>
-          <button class="btn btn-success btn-block" (click)="saveNewUser()">
+          <button class="btn btn-success btn-block" (click)="edit ? updateUser() : saveNewUser()">
             Guardar empleado
           </button>
         </form>
