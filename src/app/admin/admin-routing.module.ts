@@ -26,6 +26,10 @@ const routes: Routes = [
     component: EmployeeFormComponent,
   },
   {
+    path: 'employees/updateemployee/:idUsuario',
+    component: EmployeeFormComponent,
+  },
+  {
     path: 'menu',
     component: MenuComponent,
   },

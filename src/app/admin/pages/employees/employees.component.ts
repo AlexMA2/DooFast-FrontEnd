@@ -21,6 +21,7 @@ export class EmployeesComponent implements OnInit {
       'correo',
       'rol',
       'local',
+      'update',
       'delete',
     ];
     this.getAllUsers();

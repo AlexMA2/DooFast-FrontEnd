@@ -32,6 +32,13 @@
     <td mat-cell *matCellDef="let element"> {{element.nombreLocal}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef> Modificar </th>
+    <mat-cell *matCellDef="let row" >
+      <a [routerLink]="['/admin/employees/updateemployee', row.idUsuario]" class="btn btn-info btn-block" style="background-color: green;">Modificar</a>
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef> Eliminar </th>
     <mat-cell *matCellDef="let row" >

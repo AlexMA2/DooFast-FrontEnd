@@ -16,6 +16,10 @@ export class UserDataService {
 
   constructor(private http: HttpClient) {}
 
+  getUser(idUsuario: number): Observable<UserData> {
+    return this.http.get<UserData>(`${API_URL}/${idUsuario}`).pipe(catchError(handleError));
+  }
+
   getAllUsers(): Observable<UserData[]> {
     return this.http.get<UserData[]>(API_URL).pipe(catchError(handleError));
   }
@@ -31,6 +35,15 @@ export class UserDataService {
   deleteUser(idUsuario: number) {
     return this.http
       .delete(`${API_URL}/${idUsuario}`)
+      .pipe(catchError(handleError));
+  }
+
+  updateUser(idUsuario: number, usuario: string, nombreUsuario: string, contrasenia: string, nroCelular: string,
+    correoElectronico: string, idRestaurante: number, idRol: number): Observable<any> {
+      console.log(idUsuario);
+    return this.http
+      .put<any>(`${API_URL}/${idUsuario}`, {idUsuario, usuario, nombreUsuario, contrasenia, nroCelular, correoElectronico,
+      idRestaurante, idRol })
       .pipe(catchError(handleError));
   }
 }
