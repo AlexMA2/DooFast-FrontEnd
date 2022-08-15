@@ -5,8 +5,9 @@ import { BASE_URL } from '../BASE_URL';
 import { handleError } from '../handleError';
 import { catchError } from 'rxjs/operators';
 import { TopProduct } from 'src/app/models/TopProduct';
+import { EconomicData } from 'src/app/models/EconomicData';
 
-const API_URL = BASE_URL + 'api/history';
+const API_URL = BASE_URL + 'api/Balance';
 
 @Injectable({
   providedIn: 'root',
@@ -14,27 +15,15 @@ const API_URL = BASE_URL + 'api/history';
 export class OrdersHistoryService {
   constructor(private http: HttpClient) {}
 
-  getIncomeForYear(year: number): Observable<any> {
+  getDataForYear(year: number): Observable<EconomicData[]> {
     return this.http
-      .get<any>(`${API_URL}/year/${year}`)
-      .pipe(catchError(handleError));
-  }
-
-  getOrdersForYear(year: number): Observable<any> {
-    return this.http
-      .get<any>(`${API_URL}/year/${year}`)
-      .pipe(catchError(handleError));
-  }
-
-  getDataForYear(year: number): Observable<any> {
-    return this.http
-      .get<any>(`${API_URL}/year/${year}`)
+      .get<EconomicData[]>(`${API_URL}?anio=${year}`)
       .pipe(catchError(handleError));
   }
 
   getDataForMonth(month: number): Observable<any> {
     return this.http
-      .get<any>(`${API_URL}/month/${month}`)
+      .get<any>(`${API_URL}?mes=${month}`)
       .pipe(catchError(handleError));
   }
 

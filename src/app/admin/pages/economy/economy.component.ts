@@ -7,6 +7,7 @@ import {
 } from '@angular/material/table';
 import { TopProduct } from 'src/app/models/TopProduct';
 import { TopProductFake } from '../../utils/topProducts_fake';
+import { EconomicData } from 'src/app/models/EconomicData';
 
 interface MonthName {
   value: number;
@@ -115,19 +116,13 @@ export class EconomyComponent implements OnInit {
     this.getDataForYear(this.year);
   }
 
-  select(ev: any) {
+  onMonthChanges(ev: any) {
     let actualMonth = new Date().getMonth() + 1;
     if (this.month > actualMonth) {
       this.month = actualMonth;
     }
     this.getDataForMonth(ev);
   }
-
-  onSelect(data: any): void {}
-
-  onActivate(data: any): void {}
-
-  onDeactivate(data: any): void {}
 
   generateDataChart(year: number, values: any[]) {
     this.dataChart = [];
@@ -198,12 +193,25 @@ export class EconomyComponent implements OnInit {
   getDataForYear(anio: number) {
     this.orderHistoryService.getDataForYear(anio).subscribe(
       (data) => {
-        this.generateDataChart(anio, data);
+        console.log(data);
+        this.transformDataForYear(anio, data);
       },
       () => {
         this.generateRandomValues(1);
       }
     );
+  }
+
+  transformDataForYear(anio: number, data: EconomicData[]) {
+    let arrayData: number[][] = [];
+    for (let i = 0; i < 12; i++) {
+      arrayData.push([0, 0]);
+    }
+    for (let i = 0; i < data.length; i++) {
+      arrayData[data[i].mes - 1] = [data[i].TotalMes, data[i].CantidadPedidos];
+    }
+
+    this.generateDataChart(anio, arrayData);
   }
 
   getDataForMonth(month: number) {

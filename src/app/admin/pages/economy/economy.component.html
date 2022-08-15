@@ -26,8 +26,7 @@
             <ngx-charts-bar-vertical-2d [view]="[1200, 600]" [results]="dataChart" [xAxis]="true" [yAxis]="true"
                 [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
                 [xAxisLabel]="barVerticalChartOptions.xAxisLabel" [yAxisLabel]="barVerticalChartOptions.yAxisLabel"
-                [legendTitle]="barVerticalChartOptions.legendTitle" (select)="onSelect($event)"
-                (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                [legendTitle]="barVerticalChartOptions.legendTitle">
             </ngx-charts-bar-vertical-2d>
         </div>
     </div>
@@ -36,7 +35,7 @@
             <h2> Pedidos realizados e ingresos generados en el mes </h2>
             <mat-form-field appearance="fill">
                 <mat-label> Mes </mat-label>
-                <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="select($event.value)">
+                <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="onMonthChanges($event.value)">
                     <mat-option *ngFor="let m of monthNames" [value]="m.value" [disabled]="m.value > maxMonth">
                         {{m.name}}
                     </mat-option>
@@ -47,8 +46,7 @@
             <ngx-charts-line-chart [view]="[1200, 600]" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
                 [xAxis]="true" [yAxis]="true" [xAxisLabel]="lineChartOptions.xAxisLabel"
                 [yAxisLabel]="lineChartOptions.yAxisLabel" [timeline]="true" [results]="lineChartData"
-                [legendTitle]="lineChartOptions.legendTitle" (select)="onSelect($event)" (activate)="onActivate($event)"
-                (deactivate)="onDeactivate($event)">
+                [legendTitle]="lineChartOptions.legendTitle">
             </ngx-charts-line-chart>
         </div>
     </div>
