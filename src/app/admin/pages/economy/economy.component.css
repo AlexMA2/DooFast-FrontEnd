@@ -56,8 +56,9 @@ th.mat-sort-header-sorted {
 }
 
 .sticky-panel {
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
+    top: 30px;
+    left: 0;
     margin: 1rem;
     z-index: 999;
     padding: 0.5rem;
@@ -65,8 +66,6 @@ th.mat-sort-header-sorted {
     border-radius: 1rem;
     background: #8a2387;
     background: linear-gradient(320deg, #f27121, #e94057, #8a2387);
-
-
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(16.5px);
     -webkit-backdrop-filter: blur(16.5px);
@@ -85,4 +84,9 @@ th.mat-sort-header-sorted {
     font-weight: 400;
     text-align: center;
     text-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.information-panel {
+    min-height: 85vh;
+    margin-bottom: 2rem;
 }

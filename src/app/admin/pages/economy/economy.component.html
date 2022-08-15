@@ -4,7 +4,7 @@
             <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por año </a>
         </li>
         <li>
-            <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por mes </a>
+            <a href="admin/economy#line-chart"> Pedidos realizados e ingresos generados por mes </a>
         </li>
         <li>
             <a href="admin/economy#top-products"> Top Productos </a>
@@ -12,7 +12,7 @@
     </ul>
 </div>
 <div class="economy">
-    <div class="grouped-horizontal-bar-chart" id="bar-chart">
+    <div class="information-panel grouped-horizontal-bar-chart" id="bar-chart">
         <div class="title">
             <h2> Pedidos realizados e ingresos generados en el año</h2>
             <mat-form-field appearance="fill" floatLabel="always">
@@ -30,7 +30,7 @@
             </ngx-charts-bar-vertical-2d>
         </div>
     </div>
-    <div class="line-chart" id="line-chart">
+    <div class="information-panel line-chart" id="line-chart">
         <div class="title">
             <h2> Pedidos realizados e ingresos generados en el mes </h2>
             <mat-form-field appearance="fill">
@@ -50,7 +50,7 @@
             </ngx-charts-line-chart>
         </div>
     </div>
-    <div class="top-products" id="top-products">
+    <div class="information-panel top-products" id="top-products">
         <h1 class="title"> Top Productos más vendidos por categoría </h1>
         <div class="top-products__categories">
             <div>
