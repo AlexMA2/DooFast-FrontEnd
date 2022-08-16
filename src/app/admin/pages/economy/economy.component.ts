@@ -207,7 +207,6 @@ export class EconomyComponent implements OnInit {
   getHistoryProducts() {
     this.orderHistoryService.getHistoryProducts().subscribe(
       (data) => {
-        console.log(data);
         this.foodsDataSource.push({
           category: 'Entradas',
           products: new MatTableDataSource(data[0]),
