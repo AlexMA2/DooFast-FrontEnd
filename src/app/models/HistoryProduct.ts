@@ -4,5 +4,5 @@ export interface HistoryProduct {
   nombreCategoria: string;
   cantidad: number;
   estado: string;
-  fecha: Date;
+  fechaRegistro: Date;
 }

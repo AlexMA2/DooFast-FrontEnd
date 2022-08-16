@@ -5,25 +5,19 @@ import {
   MatTableDataSource,
   _MatTableDataSource,
 } from '@angular/material/table';
-import { TopProduct } from 'src/app/models/TopProduct';
 import { TopProductFake } from '../../utils/topProducts_fake';
 import { EconomicData } from 'src/app/models/EconomicData';
+import { HistoryProduct } from 'src/app/models/HistoryProduct';
 
 interface MonthName {
   value: number;
   name: string;
 }
 
-const ELEMENT_DATA: TopProduct[] = [
-  { position: 1, nombreComida: 'Producto 1', cantidad: 100 },
-  { position: 2, nombreComida: 'Producto 2', cantidad: 90 },
-  { position: 3, nombreComida: 'Producto 3', cantidad: 80 },
-  { position: 4, nombreComida: 'Producto 4', cantidad: 60 },
-  { position: 5, nombreComida: 'Producto 5', cantidad: 50 },
-  { position: 6, nombreComida: 'Producto 6', cantidad: 30 },
-  { position: 7, nombreComida: 'Producto 7', cantidad: 25 },
-  { position: 8, nombreComida: 'Producto 8', cantidad: 18 },
-];
+interface TopProductsCategory {
+  category: string;
+  products: MatTableDataSource<HistoryProduct>;
+}
 
 @Component({
   selector: 'app-economy',
@@ -35,23 +29,13 @@ export class EconomyComponent implements OnInit {
 
   year = new Date().getFullYear();
   month = new Date().getMonth() + 1;
-  displayedColumns: string[] = ['position', 'nombreComida', 'cantidad'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = [
+    'idHistorialPedido',
+    'nombreComida',
+    'cantidad',
+  ];
 
-  foodsDataSource = {
-    starters: new MatTableDataSource(
-      ELEMENT_DATA
-    ) as MatTableDataSource<TopProduct>,
-    dishes: new MatTableDataSource(
-      ELEMENT_DATA
-    ) as MatTableDataSource<TopProduct>,
-    drinks: new MatTableDataSource(
-      ELEMENT_DATA
-    ) as MatTableDataSource<TopProduct>,
-    desserts: new MatTableDataSource(
-      ELEMENT_DATA
-    ) as MatTableDataSource<TopProduct>,
-  };
+  foodsDataSource = [] as TopProductsCategory[];
 
   maxMonth: number = 12;
   @ViewChild(MatSort) sort!: MatSort;
@@ -95,10 +79,6 @@ export class EconomyComponent implements OnInit {
     }
 
     this.getHistoryProducts();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
   }
 
   onYearChanges() {
@@ -193,7 +173,6 @@ export class EconomyComponent implements OnInit {
   getDataForYear(anio: number) {
     this.orderHistoryService.getDataForYear(anio).subscribe(
       (data) => {
-        console.log(data);
         this.transformDataForYear(anio, data);
       },
       () => {
@@ -228,20 +207,41 @@ export class EconomyComponent implements OnInit {
   getHistoryProducts() {
     this.orderHistoryService.getHistoryProducts().subscribe(
       (data) => {
-        this.foodsDataSource.starters = new MatTableDataSource(data[0]);
-        this.foodsDataSource.dishes = new MatTableDataSource(data[1]);
-        this.foodsDataSource.drinks = new MatTableDataSource(data[2]);
-        this.foodsDataSource.desserts = new MatTableDataSource(data[3]);
+        console.log(data);
+        this.foodsDataSource.push({
+          category: 'Entradas',
+          products: new MatTableDataSource(data[0]),
+        });
+        this.foodsDataSource.push({
+          category: 'Platos Principales',
+          products: new MatTableDataSource(data[1]),
+        });
+        this.foodsDataSource.push({
+          category: 'Bebidas',
+          products: new MatTableDataSource(data[2]),
+        });
+        this.foodsDataSource.push({
+          category: 'Postres',
+          products: new MatTableDataSource(data[3]),
+        });
       },
       () => {
-        this.foodsDataSource.starters = new MatTableDataSource(
-          TopProductFake[0]
-        );
-        this.foodsDataSource.dishes = new MatTableDataSource(TopProductFake[1]);
-        this.foodsDataSource.drinks = new MatTableDataSource(TopProductFake[2]);
-        this.foodsDataSource.desserts = new MatTableDataSource(
-          TopProductFake[3]
-        );
+        this.foodsDataSource.push({
+          category: 'Entradas',
+          products: new MatTableDataSource(TopProductFake[0]),
+        });
+        this.foodsDataSource.push({
+          category: 'Platos Principales',
+          products: new MatTableDataSource(TopProductFake[1]),
+        });
+        this.foodsDataSource.push({
+          category: 'Bebidas',
+          products: new MatTableDataSource(TopProductFake[2]),
+        });
+        this.foodsDataSource.push({
+          category: 'Postres',
+          products: new MatTableDataSource(TopProductFake[3]),
+        });
       }
     );
   }
