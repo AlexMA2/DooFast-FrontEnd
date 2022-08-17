@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PendingOrdersListComponent } from './user/pages/pending-orders-list/pending-orders-list.component';
 import { LoginComponent } from './user/components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { IsLogGuard } from './guards/is-log.guard';
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [IsLogGuard],
     component: LoginComponent,
   },
   {
