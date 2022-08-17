@@ -3,9 +3,7 @@
         <li>
             <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por año </a>
         </li>
-        <li>
-            <a href="admin/economy#line-chart"> Pedidos realizados e ingresos generados por mes </a>
-        </li>
+
         <li>
             <a href="admin/economy#top-products"> Top Productos </a>
         </li>
@@ -30,26 +28,7 @@
             </ngx-charts-bar-vertical-2d>
         </div>
     </div>
-    <div class="information-panel line-chart" id="line-chart">
-        <div class="title">
-            <h2> Pedidos realizados e ingresos generados en el mes </h2>
-            <mat-form-field appearance="fill">
-                <mat-label> Mes </mat-label>
-                <mat-select [(ngModel)]="month" name="Enero" (selectionChange)="onMonthChanges($event.value)">
-                    <mat-option *ngFor="let m of monthNames" [value]="m.value" [disabled]="m.value > maxMonth">
-                        {{m.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="chart">
-            <ngx-charts-line-chart [view]="[1200, 600]" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
-                [xAxis]="true" [yAxis]="true" [xAxisLabel]="lineChartOptions.xAxisLabel"
-                [yAxisLabel]="lineChartOptions.yAxisLabel" [timeline]="true" [results]="lineChartData"
-                [legendTitle]="lineChartOptions.legendTitle">
-            </ngx-charts-line-chart>
-        </div>
-    </div>
+
     <div class="information-panel top-products" id="top-products">
         <h1 class="title"> Top Productos más vendidos por categoría </h1>
         <div class="top-products__categories">
