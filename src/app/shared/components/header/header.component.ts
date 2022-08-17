@@ -21,4 +21,9 @@ export class HeaderComponent implements OnInit {
       this.user = data;
     });
   }
+
+  cerrarSesion() {
+    this.router.navigate(['/login']);
+    localStorage.clear();
+  }
 }
