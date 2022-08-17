@@ -47,7 +47,6 @@ export class AddDishComponent implements OnInit {
       this.buttonName = 'Actualizar';
     }
 
-    console.log(this.product.imagen);
     if (this.product.imagen) {
       this.getFileFromURL(this.product.imagen);
     }

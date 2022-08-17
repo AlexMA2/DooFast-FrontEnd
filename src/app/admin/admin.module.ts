@@ -24,6 +24,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxChartsModule,
+    MatSortModule,
   ],
   exports: [EmployeesComponent, MenuComponent, EconomyComponent],
 })

@@ -14,9 +14,7 @@ export function handleError(error: HttpErrorResponse) {
     );
   }
   // return an observable with a user-facing error message
-  console.log("error");
-  console.log(error);
-  console.log("error");
+
   return throwError(
     'No se pudo conectar con el servidor. Por favor intente más tarde.'
   );

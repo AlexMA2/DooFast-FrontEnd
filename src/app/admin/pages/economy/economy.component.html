@@ -1,1 +1,71 @@
-<p>economy works!</p>
+<div class="sticky-panel">
+    <ul>
+        <li>
+            <a href="admin/economy#bar-chart"> Pedidos realizados e ingresos generados por año </a>
+        </li>
+
+        <li>
+            <a href="admin/economy#top-products"> Top Productos </a>
+        </li>
+    </ul>
+</div>
+<div class="economy">
+    <div class="information-panel grouped-horizontal-bar-chart" id="bar-chart">
+        <div class="title">
+            <h2> Pedidos realizados e ingresos generados en el año</h2>
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label> Año </mat-label>
+                <input matInput type="number" class="example-right-align" (change)="onYearChanges()" placeholder="2022"
+                    [(ngModel)]="year">
+
+            </mat-form-field>
+        </div>
+        <div class="chart">
+            <ngx-charts-bar-vertical-2d [view]="[1200, 600]" [results]="dataChart" [xAxis]="true" [yAxis]="true"
+                [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                [xAxisLabel]="barVerticalChartOptions.xAxisLabel" [yAxisLabel]="barVerticalChartOptions.yAxisLabel"
+                [legendTitle]="barVerticalChartOptions.legendTitle">
+            </ngx-charts-bar-vertical-2d>
+        </div>
+    </div>
+
+    <div class="information-panel top-products" id="top-products">
+        <h1 class="title"> Top Productos más vendidos por categoría </h1>
+        <div class="top-products__categories">
+            <div *ngFor="let fds of foodsDataSource">
+                <p> {{fds.category}} </p>
+                <table mat-table [dataSource]="fds.products" matSort class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="idHistorialPedido">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+                            No.
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.idHistorialPedido}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="nombreComida">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+                            Nombre
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.nombreComida}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="cantidad">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+                            Cantidad
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
