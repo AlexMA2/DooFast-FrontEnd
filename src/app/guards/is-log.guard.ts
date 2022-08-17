@@ -30,7 +30,7 @@ export class IsLogGuard implements CanActivate {
 
     value.role = localStorage.getItem('role') || '';
     value.username = localStorage.getItem('username') || '';
-
+    console.log(value.role);
     if (value.role.length === 0 || value.username.length === 0) {
       return true;
     } else {
@@ -39,10 +39,11 @@ export class IsLogGuard implements CanActivate {
           return this.router.navigate(['/waitress']).then(() => false);
         case 'Cocinero':
           return this.router.navigate(['/cocina']).then(() => false);
-        case 'Admin':
+        case 'Administrador':
           return this.router.navigate(['/admin']).then(() => false);
+        default:
+          return true;
       }
-      return true;
     }
   }
 }

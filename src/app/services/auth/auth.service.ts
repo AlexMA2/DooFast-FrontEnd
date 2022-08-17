@@ -29,6 +29,13 @@ export class AuthService {
     this.user.next(user);
   }
 
+  logout() {
+    this.user.next({
+      role: '',
+      username: '',
+    });
+  }
+
   get getUser() {
     return this.user.asObservable();
   }

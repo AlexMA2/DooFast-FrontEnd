@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   private data$!: Observable<User>;
   user!: User;
+  logged: boolean = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -19,11 +20,16 @@ export class HeaderComponent implements OnInit {
     this.data$ = this.auth.getUser;
     this.data$.subscribe((data) => {
       this.user = data;
+      this.logged = true;
     });
   }
 
   cerrarSesion() {
     this.router.navigate(['/login']);
+    this.auth.logout();
+    this.user.role = '';
+    this.user.username = '';
+    this.logged = false;
     localStorage.clear();
   }
 }

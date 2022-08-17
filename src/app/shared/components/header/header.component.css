@@ -89,3 +89,10 @@ svg {
 .active a {
     color: #000;
 }
+
+.cerrar-sesion {
+    background-color: var(--redCustom);
+    padding: 0.25rem;
+    color: #fff;
+    border: none;
+}
