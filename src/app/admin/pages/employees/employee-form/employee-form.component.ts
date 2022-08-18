@@ -1,9 +1,8 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/models/UserData';
 import { UserDataService } from 'src/app/services/userData/user-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { UpdateUser } from 'src/app/models/User';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
@@ -64,21 +63,20 @@ export class EmployeeFormComponent implements OnInit {
 
   saveNewUser() {
     const userParameters = this.editUserParameters[this.employee.nombreRol];
+    const updateUser: UpdateUser = {
+      usuario: this.employee.usuario,
+      nombreUsuario: this.employee.nombreUsuario,
+      contrasenia: this.employee.contrasenia,
+      nroCelular: this.employee.nroCelular,
+      correoElectronico: this.employee.correoElectronico,
+      idRestaurante: 1,
+      idRol: userParameters.idRol,
+    };
 
     if (userParameters) {
-      this.userDataService
-        .addUser(
-          this.employee.usuario,
-          this.employee.nombreUsuario,
-          this.employee.contrasenia,
-          this.employee.nroCelular,
-          this.employee.correoElectronico,
-          1,
-          userParameters.idRol
-        )
-        .subscribe(() => {
-          this.router.navigate([userParameters.link]);
-        });
+      this.userDataService.addUser(updateUser).subscribe(() => {
+        this.router.navigate([userParameters.link]);
+      });
     }
   }
 
@@ -88,18 +86,19 @@ export class EmployeeFormComponent implements OnInit {
       this.employee.contrasenia === ''
         ? this.encryptedPassword
         : this.employee.contrasenia;
+
+    const updateUser: UpdateUser = {
+      usuario: this.employee.usuario,
+      nombreUsuario: this.employee.nombreUsuario,
+      contrasenia: newPassword,
+      nroCelular: this.employee.nroCelular,
+      correoElectronico: this.employee.correoElectronico,
+      idRestaurante: 1,
+      idRol: userParameters.idRol,
+    };
     if (userParameters) {
       this.userDataService
-        .updateUser(
-          this.employee.idUsuario,
-          this.employee.usuario,
-          this.employee.nombreUsuario,
-          newPassword,
-          this.employee.nroCelular,
-          this.employee.correoElectronico,
-          1,
-          userParameters.idRol
-        )
+        .updateUser(this.employee.idUsuario, updateUser)
         .subscribe(() => {
           this.router.navigate([userParameters.link]);
         });

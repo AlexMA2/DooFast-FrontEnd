@@ -1,6 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderData } from 'src/app/models/Order';
 import { Product } from 'src/app/models/Product';
 import { PutTable, Table } from 'src/app/models/Table';
 import { OrderService } from 'src/app/services/order/order.service';
@@ -25,18 +24,21 @@ export class SummaryOrderComponent implements OnInit {
     Bebida: [] as Product[],
     Postre: [] as Product[],
   };
-  // orders!: OrderData[];
 
   ordersShowed: any = {
     Entrada: [] as OrderShowed[],
     Principal: [] as OrderShowed[],
     Bebida: [] as OrderShowed[],
     Postre: [] as OrderShowed[],
-  }
+  };
 
   putTable!: PutTable;
 
-  constructor(private router: Router, private orderService: OrderService, private tableService: TableService) {}
+  constructor(
+    private router: Router,
+    private orderService: OrderService,
+    private tableService: TableService
+  ) {}
 
   ngOnInit(): void {
     this.orderService.getOrderByTableNumber(this.table.idMesa).subscribe(
@@ -50,7 +52,7 @@ export class SummaryOrderComponent implements OnInit {
     this.putTable = {
       estadoMesa: TableState.Empty,
       nroMesa: this.table.idMesa,
-      IdRestaurante: 1
+      IdRestaurante: 1,
     };
   }
 
@@ -65,8 +67,6 @@ export class SummaryOrderComponent implements OnInit {
       }
     }
   }
-
-
 
   hideOrder() {
     this.hideOrderEv.emit(false);
@@ -88,24 +88,22 @@ export class SummaryOrderComponent implements OnInit {
       cancelButtonText: 'No, dejalo',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('¡Eliminado!', 'Se ha eliminado la orden', 'success');
         this.orderService
           .deleteOrder(this.table.idMesa)
-          .subscribe((data) => {})
+          .subscribe(() => {
+            Swal.fire('¡Eliminado!', 'Se ha eliminado la orden', 'success');
+          })
           .unsubscribe();
-        this.tableService.updateTable(this.putTable).subscribe((data) => {});
-        this.deleteOrders();
+        this.tableService
+          .updateTable(this.putTable)
+          .subscribe((data) => {
+            console.log(data);
+          })
+          .unsubscribe();
         this.hideOrderEv.emit(true);
       }
       this.hideOrderEv.emit(false);
     });
-  }
-
-  deleteOrders() {
-    for(let order in this.ordersShowed.Entrada) {
-      //TODO: delete orders from database
-      console.log("Falta implementar el borrado de las ordenes de la base de datos");
-    }
   }
 
   ngOnDestroy(): void {
@@ -113,9 +111,8 @@ export class SummaryOrderComponent implements OnInit {
   }
 }
 
-export interface OrderShowed{
+export interface OrderShowed {
   name: string;
   quantity: number;
   totalPrice: number;
 }
-

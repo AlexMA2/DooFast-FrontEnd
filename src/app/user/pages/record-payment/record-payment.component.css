@@ -10,7 +10,6 @@
 }
 
 #background-container {
-    position: relative;
     color: #3d0d0d;
     position: absolute;
     top: 0;
@@ -38,19 +37,16 @@
     width: 80%;
     padding: 50px;
     /* background-color: aqua; */
-    font-family: Jost;
     min-height: min(500px);
     /* font-weight: 900; */
 }
 
 #boleta {
-    font-family: 'Jost';
     font-weight: 800;
     font-size: 2.0em;
 }
 
 #mesa {
-    font-family: 'Jost';
     font-weight: 600;
     font-size: 1.5em;
 }
@@ -64,7 +60,6 @@
 }
 
 .item {
-    /* background: lightgray; */
     height: 30px;
     width: 100%;
     display: flex;
@@ -80,27 +75,23 @@
 }
 
 .total-pagar {
-    font-family: 'Jost';
     font-weight: 900;
     font-size: 1.5em;
     height: 50%;
     max-height: 600px;
-    /* background-color: #b9b9b9; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around   ;
+    justify-content: space-around;
     align-items: center;
 }
 
 .metodo-pago {
-    font-family: 'Jost';
     font-weight: 800;
     font-size: 1.5em;
     height: 50%;
-    /* background-color: #003953; */
     display: flex;
     flex-direction: row;
-    justify-content: space-around   ;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -154,7 +145,6 @@
     border-radius: 0px;
     position: absolute;
     top: 2px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

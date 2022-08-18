@@ -1,7 +1,6 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { OrderService } from './order.service';
-import { Order, OrderData } from 'src/app/models/Order';
+import { OrderData } from 'src/app/models/Order';
 import { asyncData } from '../asyncData';
 
 describe('OrderService', () => {

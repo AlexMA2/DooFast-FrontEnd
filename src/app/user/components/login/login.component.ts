@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
 
   valids: any = {
-    correo: false as Boolean,
-    password: false as Boolean,
+    correo: false as boolean,
+    password: false as boolean,
   };
 
   constructor(

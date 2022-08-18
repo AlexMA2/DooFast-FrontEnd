@@ -11,7 +11,7 @@ import { AddDishComponent } from '../../component/add-dish/add-dish.component';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
   @Input() product!: Product;
 
   constructor(
@@ -19,8 +19,6 @@ export class ProductCardComponent implements OnInit {
     private productService: ProductService,
     private _snackBar: MatSnackBar
   ) {}
-
-  ngOnInit(): void {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddDishComponent, {

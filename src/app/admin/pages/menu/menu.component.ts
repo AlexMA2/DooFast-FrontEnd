@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Product } from 'src/app/models/Product';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-menu',

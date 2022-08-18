@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostTable, PutTable, Table } from 'src/app/models/Table';
+import { PostTable, Table } from 'src/app/models/Table';
 import { TableService } from 'src/app/services/table/table.service';
 import Swal from 'sweetalert2';
 
@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tables-page.component.css'],
 })
 export class TablesPageComponent implements OnInit {
-  // date: Date = new Date();
   numberTables: number = 0;
   tables: Table[] = [];
   postTable: PostTable = {

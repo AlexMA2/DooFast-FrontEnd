@@ -90,23 +90,4 @@ describe('Testing LoginComponent', () => {
     expect(localStorage.getItem('username')).toEqual('Luis Martinez');
     expect(localStorage.getItem('role')).toEqual('ADMINISTRADOR');
   });
-
-  // it('should call auth login method', () => {
-  //   component.formLogin.controls['correo'].setValue('mamani.alex1@doofast.com');
-  //   component.formLogin.controls['password'].setValue('1234567890');
-
-  //   const role = 'ADMINISTRADOR';
-  //   const username = 'Luis Martinez';
-
-  //   const getUserSpy = spyOn(mockedAuthService, 'getUser');
-  //   getUserSpy.and.returnValue(
-  //     of({
-  //       role,
-  //       username,
-  //     })
-  //   );
-
-  //   component.Login();
-  //   expect(mockedAuthService.getUser).toHaveBeenCalledTimes(1);
-  // });
 });

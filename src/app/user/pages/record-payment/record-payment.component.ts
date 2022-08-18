@@ -39,8 +39,8 @@ export class RecordPaymentComponent implements OnInit {
         for (let i = 0; i < this.orders.length; i++) {
           this.totalPrice += this.orders[i].precio!;
           this.putOrders.push({
-            idOrden: this.orders![i].idOrden!,
-            nroMesa: this.orders![i].idMesa,
+            idOrden: this.orders[i].idOrden!,
+            nroMesa: this.orders[i].idMesa,
             estadoOrden: 'Pagado',
           });
         }
@@ -84,13 +84,15 @@ export class RecordPaymentComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         // Eliminar las órdenes de la mesa
-        for (let i = 0; i < this.orders!.length; i++) {
-          console.log(this.putOrders![i]);
-          this.orderService
-            .deleteOrder(this.orders![i].idOrden!)
-            .subscribe((data) => {
-              console.log(data);
-            });
+        if (this.orders) {
+          for (let i = 0; i < this.orders.length; i++) {
+            console.log(this.putOrders[i]);
+            this.orderService
+              .deleteOrder(this.orders[i].idOrden!)
+              .subscribe((data) => {
+                console.log(data);
+              });
+          }
         }
         // Actualizar el estado de la mesa
         this.tableService.updateTable(this.putTable).subscribe((data) => {

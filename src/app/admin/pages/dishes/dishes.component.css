@@ -23,10 +23,6 @@
     width: 100%;
 }
 
-.product {
-    flex: 0.8
-}
-
 .dishes {
     width: 100%;
     display: flex;
@@ -42,4 +38,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 0.8
 }

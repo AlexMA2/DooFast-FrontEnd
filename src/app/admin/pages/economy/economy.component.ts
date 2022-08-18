@@ -1,10 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { OrdersHistoryService } from 'src/app/services/orders-history/orders-history.service';
-import { MatSort, Sort } from '@angular/material/sort';
-import {
-  MatTableDataSource,
-  _MatTableDataSource,
-} from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { TopProductFake } from '../../utils/topProducts_fake';
 import { EconomicData } from 'src/app/models/EconomicData';
 import { HistoryProduct } from 'src/app/models/HistoryProduct';
@@ -141,8 +138,8 @@ export class EconomyComponent implements OnInit {
     for (let i = 0; i < 12; i++) {
       arrayData.push([0, 0]);
     }
-    for (let i = 0; i < data.length; i++) {
-      arrayData[data[i].mes - 1] = [data[i].TotalMes, data[i].CantidadPedidos];
+    for (let value of data) {
+      arrayData[value.mes - 1] = [value.TotalMes, value.CantidadPedidos];
     }
 
     this.generateDataChart(anio, arrayData);

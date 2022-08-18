@@ -23,7 +23,6 @@ describe('TakeOrderComponent', () => {
   });
 
   it('should call openDialog', () => {
-    const fixture = TestBed.createComponent(TakeOrderComponent);
     const app = fixture.componentInstance;
     app.openDialog();
     fixture.detectChanges();
@@ -33,5 +32,9 @@ describe('TakeOrderComponent', () => {
     expect(popUpHeader.innerText).toEqual(
       '¿Estás seguro de salir sin guardar?'
     );
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });
