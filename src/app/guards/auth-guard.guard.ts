@@ -19,6 +19,12 @@ export class AuthGuard implements CanActivate {
 
   private data$!: Observable<User>;
 
+  authorizedRoutes: any = {
+    Administrador: ['admin', 'waitress', 'cocina'],
+    Cocina: ['cocina'],
+    Mozo: ['waitress'],
+  };
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -42,12 +48,18 @@ export class AuthGuard implements CanActivate {
     if (value.role.length === 0) {
       return this.router.navigate(['/login']).then(() => false);
     }
-    if (
-      value.role === 'Mozo' &&
-      (this.router.url === '/admin' || this.router.url === '/cocina')
-    ) {
-      return this.router.navigate(['/waitress']).then(() => false);
+
+    if (!this.isAuthorized(value.role, state.url)) {
+      return this.router.navigate(['/login']).then(() => false);
     }
     return true;
+  }
+
+  isAuthorized(rol: string, url: string) {
+    url = url.split('/')[1];
+    if (this.authorizedRoutes[rol].includes(url)) {
+      return true;
+    }
+    return false;
   }
 }

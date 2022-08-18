@@ -34,7 +34,8 @@
         <div class="top-products__categories">
             <div *ngFor="let fds of foodsDataSource">
                 <p> {{fds.category}} </p>
-                <table mat-table [dataSource]="fds.products" matSort class="mat-elevation-z8">
+                <table mat-table [dataSource]="fds.products" aria-label="Tabla de Top Productos" matSort
+                    class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="idHistorialPedido">

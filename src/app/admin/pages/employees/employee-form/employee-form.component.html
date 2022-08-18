@@ -1,35 +1,48 @@
 <!--<p>employee-form works!</p>-->
 <div class="col-md-4 offset-md-2">
-    <div class="card">
-      <div class="card-body">
-        <form action="">
-          <div class="form-group">
-            <input type="text" name="nombre" [(ngModel)]="employee.nombreUsuario" placeholder="Escriba su nombre completo" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="text" name="user" [(ngModel)]="employee.usuario" placeholder="Escriba su nombre usuario" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="email" name="correo" [(ngModel)]="employee.correoElectronico" placeholder="Escriba su correo electronico" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="text" name="password" [(ngModel)]="employee.contrasenia" placeholder="Escriba su contraseña" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="telefono" [(ngModel)]="employee.nroCelular" placeholder="Escriba su número de celular" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <input type="radio" id="admin" [(ngModel)]= "employee.nombreRol" name="rol" value="Administrador">
-            <label for="admin">Administrador</label><br>
-            <input type="radio" id="mesero" [(ngModel)]= "employee.nombreRol" name="rol" value="Mozo">
-            <label for="mesero">Mozo</label><br>
-            <input type="radio" id="cocinero" [(ngModel)]= "employee.nombreRol" name="rol" value="Cocina">
-            <label for="cocinero">Cocina</label><br>
-          </div>
-          <button class="btn btn-success btn-block" (click)="edit ? updateUser() : saveNewUser()">
-            Guardar empleado
-          </button>
-        </form>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <form action="" class="form">
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> Nombre Completo </mat-label>
+          <input matInput type="text" name="nombre" [(ngModel)]="employee.nombreUsuario" placeholder="John Perez">
+        </mat-form-field>
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> Usuario </mat-label>
+          <input matInput type="text" name="user" [(ngModel)]="employee.usuario" placeholder="John123">
+        </mat-form-field>
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> Correo Electr&oacute;nico </mat-label>
+          <input matInput type="email" name="correo" [(ngModel)]="employee.correoElectronico"
+            placeholder="john.perez4@doofast.com">
+        </mat-form-field>
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> Contraseña </mat-label>
+          <input matInput type="text" name="password" [(ngModel)]="employee.contrasenia" placeholder="FAf12G1¬0a@f">
+        </mat-form-field>
+        <mat-form-field hintLabel="" appearance="fill">
+          <mat-label> N&uacute;mero de Tel&eacute;fono </mat-label>
+          <input matInput type="tel" name="telefono" [(ngModel)]="employee.nroCelular" placeholder="992-464-781">
+        </mat-form-field>
+
+        <div class="form-group">
+          <h4> Rol del Empleado </h4>
+          <input type="radio" id="admin" [(ngModel)]="employee.nombreRol" name="rol" value="Administrador">
+          <label for="admin">&nbsp;Administrador</label><br>
+          <input type="radio" id="mesero" [(ngModel)]="employee.nombreRol" name="rol" value="Mozo">
+          <label for="mesero">&nbsp;Mozo</label><br>
+          <input type="radio" id="cocinero" [(ngModel)]="employee.nombreRol" name="rol" value="Cocina">
+          <label for="cocinero">&nbsp;Cocina</label><br>
+        </div>
+        <button class="btn btn-success btn-block" (click)="edit ? updateUser() : saveNewUser()">
+          Guardar empleado
+        </button>
+        <button>
+          <a routerLink="/admin/employees" class="btn btn-danger btn-block">
+            Cancelar
+          </a>
+        </button>
+      </form>
     </div>
   </div>
+</div>
