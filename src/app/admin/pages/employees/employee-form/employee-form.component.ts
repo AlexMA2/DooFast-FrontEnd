@@ -49,15 +49,12 @@ export class EmployeeFormComponent implements OnInit {
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
     if (params.idUsuario) {
-      this.userDataService.getUser(params.idUsuario).subscribe(
-        (res) => {
-          this.encryptedPassword = res.contrasenia;
-          res.contrasenia = '';
-          this.employee = res;
-          this.edit = true;
-        },
-        (err) => console.log(err)
-      );
+      this.userDataService.getUser(params.idUsuario).subscribe((res) => {
+        this.encryptedPassword = res.contrasenia;
+        res.contrasenia = '';
+        this.employee = res;
+        this.edit = true;
+      });
     }
   }
 

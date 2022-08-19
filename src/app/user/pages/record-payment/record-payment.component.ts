@@ -32,8 +32,9 @@ export class RecordPaymentComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
 
-    this.orderService.getOrderByTableNumber(Number(this.id)).subscribe(
-      (data) => {
+    this.orderService
+      .getOrderByTableNumber(Number(this.id))
+      .subscribe((data) => {
         this.orders = data;
 
         for (let i = 0; i < this.orders.length; i++) {
@@ -50,11 +51,7 @@ export class RecordPaymentComponent implements OnInit {
           nroMesa: Number(this.id),
           IdRestaurante: 1,
         };
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      });
   }
 
   formatDecimal(value: number) {
@@ -86,7 +83,6 @@ export class RecordPaymentComponent implements OnInit {
         // Eliminar las órdenes de la mesa
         if (this.orders) {
           for (let i = 0; i < this.orders.length; i++) {
-            console.log(this.putOrders[i]);
             this.orderService
               .deleteOrder(this.orders[i].idOrden!)
               .subscribe((data) => {

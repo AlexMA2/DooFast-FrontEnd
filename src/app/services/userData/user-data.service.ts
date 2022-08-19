@@ -39,7 +39,6 @@ export class UserDataService {
   }
 
   updateUser(idUsuario: number, updateUser: UpdateUser): Observable<any> {
-    console.log(idUsuario);
     return this.http
       .put<any>(`${API_URL}/${idUsuario}`, { idUsuario, ...updateUser })
       .pipe(catchError(handleError));
