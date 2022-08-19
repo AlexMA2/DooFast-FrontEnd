@@ -37,11 +37,11 @@ export class RecordPaymentComponent implements OnInit {
       .subscribe((data) => {
         this.orders = data;
 
-        for (let i = 0; i < this.orders.length; i++) {
-          this.totalPrice += this.orders[i].precio!;
+        for (let order of this.orders) {
+          this.totalPrice += order.precio || 0;
           this.putOrders.push({
-            idOrden: this.orders[i].idOrden!,
-            nroMesa: this.orders[i].idMesa,
+            idOrden: order.idOrden || 0,
+            nroMesa: order.idMesa,
             estadoOrden: 'Pagado',
           });
         }
@@ -105,16 +105,3 @@ export class RecordPaymentComponent implements OnInit {
     });
   }
 }
-
-// Swal.fire(
-//   'Deleted!',
-//   'Your file has been deleted.',
-//   'success'
-// )
-
-// Swal.fire({
-//   icon: 'error',
-//   title: 'Oops...',
-//   text: '¡Ocurrió un error!',
-//   footer: error,
-// })
