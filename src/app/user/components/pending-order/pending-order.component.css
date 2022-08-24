@@ -25,6 +25,10 @@
     border-radius: 5px 5px 0px 0px;
 }
 
+.image__container {
+    height: 215px;
+}
+
 .pending-order-image {
     width: 100%;
     height: 100%;

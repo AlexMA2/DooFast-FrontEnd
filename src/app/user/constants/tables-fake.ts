@@ -1,32 +1,16 @@
 export const TablesFake = [
   {
     idMesa: 1,
-    IdRestaurante: 1,
-    nroMesa: 1,
+    nroAsientos: 5,
     estadoMesa: 'Vacio',
+    nroMesa: 1,
+    IdRestaurante: 1,
   },
   {
-    idMesa: 2,
-    nroMesa: 2,
+    idMesa: 1,
+    nroAsientos: 5,
+    estadoMesa: 'Vacio',
+    nroMesa: 1,
     IdRestaurante: 1,
-    estadoMesa: 'Esperando',
-  },
-  {
-    idMesa: 15,
-    nroMesa: 3,
-    IdRestaurante: 1,
-    estadoMesa: 'Esperando',
-  },
-  {
-    idMesa: 32,
-    IdRestaurante: 1,
-    nroMesa: 4,
-    estadoMesa: 'Servido',
-  },
-  {
-    idMesa: 15,
-    IdRestaurante: 1,
-    nroMesa: 5,
-    estadoMesa: 'Esperando',
   },
 ];

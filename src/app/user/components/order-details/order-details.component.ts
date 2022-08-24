@@ -3,6 +3,7 @@ import { Order, OrderData } from 'src/app/models/Order';
 import { OrderService } from 'src/app/services/order/order.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Table } from 'src/app/models/Table';
 
 @Component({
   selector: 'app-order-details',

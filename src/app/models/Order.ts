@@ -6,7 +6,6 @@ export interface Order {
 
 export interface PutOrder {
   idOrden: number;
-  nroMesa: number;
   estadoOrden: string;
 }
 

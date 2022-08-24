@@ -14,7 +14,7 @@
     </div>
     <div class="dining_table_order">
         <div *ngIf="table.estadoMesa === TableState.Empty" class="button_group">
-            <button [routerLink]="['/waitress/take-order/', table.nroMesa ]"> Tomar orden</button>
+            <button [routerLink]="['/waitress/take-order/', table.idMesa ]"> Tomar orden</button>
         </div>
 
         <div *ngIf="table.estadoMesa === TableState.Waiting" class="button_group">
@@ -23,7 +23,7 @@
         </div>
         <div *ngIf="table.estadoMesa === TableState.Served" class="button_group">
             <button (click)="toggleTableState(TableState.Waiting)"> Deshacer </button>
-            <button [routerLink]="['/waitress/pay-order/', table.nroMesa]"> Pago </button>
+            <button [routerLink]="['/waitress/pay-order/', table.idMesa]"> Pago </button>
         </div>
     </div>
 </div>

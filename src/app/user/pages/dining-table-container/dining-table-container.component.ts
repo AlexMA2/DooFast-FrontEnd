@@ -31,6 +31,9 @@ export class DiningTableContainerComponent {
   getAllTables(): void {
     this.tablesServices.getAllTables().subscribe(
       (data) => {
+        for (let i = 0; i < data.length; i++) {
+          data[i].nroMesa = i + 1;
+        }
         this.tables = data;
       },
       () => {

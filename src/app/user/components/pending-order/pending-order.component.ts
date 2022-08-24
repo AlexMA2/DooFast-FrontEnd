@@ -21,7 +21,7 @@ export class PendingOrderComponent {
   startTimer() {
     setInterval(() => {
       if (this.time > 3600) {
-        alert('MUCHO TIEMPO');
+        this.removeOrder();
       }
       this.time++;
       this.DisplayedTime = this.transform(this.time);

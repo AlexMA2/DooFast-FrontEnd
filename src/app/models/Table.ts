@@ -1,5 +1,6 @@
 export interface Table {
   idMesa: number;
+  nroAsientos: number;
   estadoMesa: string;
   nroMesa: number;
   IdRestaurante: number;
@@ -7,11 +8,12 @@ export interface Table {
 
 export interface PutTable {
   estadoMesa: string;
-  nroMesa: number;
-  IdRestaurante: number;
+  idMesa: number;
+  nroAsientos: number;
 }
 
 export interface PostTable {
   nroMesa: number;
   idRestaurante: number;
+  nroAsientos: number;
 }

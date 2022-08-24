@@ -32,14 +32,19 @@ export class TakeOrderComponent implements OnInit {
   savingOrder: boolean = false;
   putTable!: PutTable;
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, private tableService: TableService ) {}
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private tableService: TableService
+  ) {}
 
   ngOnInit(): void {
     this.tableNumber = this.route.snapshot.params.id;
+
     this.putTable = {
       estadoMesa: TableState.Waiting,
-      nroMesa: this.tableNumber,
-      IdRestaurante: 1
+      idMesa: this.tableNumber,
+      nroAsientos: 1,
     };
   }
 
@@ -66,5 +71,4 @@ export class TakeOrderComponent implements OnInit {
   updateTable() {
     this.tableService.updateTable(this.putTable).subscribe();
   }
-
 }

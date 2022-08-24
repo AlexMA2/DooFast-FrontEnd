@@ -4,6 +4,8 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { orders } from '../../constants/orders-fake';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TableState } from '../../constants/dining-table-states';
+import { OrderState } from '../../constants/order-states';
 
 @Component({
   selector: 'app-pending-orders-list',
@@ -12,10 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PendingOrdersListComponent implements OnInit {
   isServerOn!: boolean | null;
-  pendingOrders!: OrderData[];
+  pendingOrders: OrderData[] = [];
   numberPendingOrders: number = 0;
   timeout: any;
-  duration: number = 40000;
+  duration: number = 2000;
 
   ordenRemoved?: OrderData | null;
   indexOrdenRemoved: number = 0;
@@ -28,9 +30,12 @@ export class PendingOrdersListComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe(
       (data) => {
-        this.pendingOrders = data;
+        this.pendingOrders = data.filter(
+          (o) => o.estadoOrden === OrderState.toServe
+        );
+        console.log(this.pendingOrders);
         this.isServerOn = true;
-        this.numberPendingOrders = data.length;
+        this.numberPendingOrders = this.pendingOrders.length;
       },
       (error) => {
         this.isServerOn = false;
@@ -63,12 +68,15 @@ export class PendingOrdersListComponent implements OnInit {
       return o.idOrden === idOrder;
     });
 
-    this.pendingOrders = this.pendingOrders.filter(
-      (o) => o.idOrden !== idOrder
-    );
+    this.pendingOrders = this.pendingOrders.filter((o) => {
+      console.log(o, idOrder);
+      return o.idOrden !== idOrder;
+    });
 
     this.timeout = setTimeout(() => {
-      this.orderService.deleteOrder(idOrder);
+      this.orderService
+        .updateOrder({ idOrden: idOrder, estadoOrden: OrderState.toPay })
+        .subscribe((data) => console.log(data));
     }, this.duration + 100);
 
     this.numberPendingOrders--;

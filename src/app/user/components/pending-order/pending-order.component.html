@@ -2,11 +2,11 @@
     <div class="pending-order-title">
 
         <div class="dining_table_state">
-            <h2> {{ order.nombreComida }} </h2>
+            <h2> {{ order.nombreComida }} (x{{order.cantidad}})</h2>
         </div>
     </div>
 
-    <div>
+    <div class="image__container">
         <ng-template [ngIf]="order.imagen" [ngIfElse]="noImage">
             <img class="pending-order-image" [src]="order.imagen" [alt]="'Imagen de un plato de ' + order.nombreComida">
 

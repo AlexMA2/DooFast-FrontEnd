@@ -27,9 +27,14 @@ export class OrderService {
   }
 
   deleteOrder(id: number): Observable<OrderData> {
-    return this.http.delete<OrderData>(`${API_URL}/${id.toString()}`);
+    console.log(`${API_URL}/${id}`);
+    return this.http.delete<OrderData>(`${API_URL}/${id}`);
   }
-  
+
+  deleteAllOrders(idMesa: number): Observable<string> {
+    return this.http.delete<string>(`${API_URL}?nroMesa=${idMesa}`);
+  }
+
   updateOrder(order: PutOrder): Observable<PutOrder> {
     return this.http.put<PutOrder>(`${API_URL}`, order);
   }

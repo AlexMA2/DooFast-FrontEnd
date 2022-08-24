@@ -32,6 +32,8 @@ export class SummaryOrderComponent implements OnInit {
     Postre: [] as OrderShowed[],
   };
 
+  idsOrders: Array<number> = [];
+
   putTable!: PutTable;
 
   constructor(
@@ -51,8 +53,8 @@ export class SummaryOrderComponent implements OnInit {
     );
     this.putTable = {
       estadoMesa: TableState.Empty,
-      nroMesa: this.table.idMesa,
-      IdRestaurante: 1,
+      idMesa: this.table.idMesa,
+      nroAsientos: 10,
     };
   }
 
@@ -73,7 +75,7 @@ export class SummaryOrderComponent implements OnInit {
   }
 
   editOrder() {
-    this.router.navigate(['/waitress/take-order/', this.table.nroMesa]);
+    this.router.navigate(['/waitress/take-order/', this.table.idMesa]);
   }
 
   cancelOrder() {
@@ -89,20 +91,15 @@ export class SummaryOrderComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.orderService
-          .deleteOrder(this.table.idMesa)
-          .subscribe(() => {
-            Swal.fire('¡Eliminado!', 'Se ha eliminado la orden', 'success');
-          })
-          .unsubscribe();
-        this.tableService
-          .updateTable(this.putTable)
+          .deleteAllOrders(this.table.idMesa)
           .subscribe((data) => {
-            console.log(data);
-          })
-          .unsubscribe();
+            Swal.fire('¡Eliminado!', data, 'success');
+          });
+        this.tableService.updateTable(this.putTable).subscribe((data) => {
+          console.log(data);
+        });
         this.hideOrderEv.emit(true);
       }
-      this.hideOrderEv.emit(false);
     });
   }
 

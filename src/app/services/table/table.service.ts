@@ -31,8 +31,8 @@ export class TableService {
       .pipe(catchError(handleError));
   }
 
-  addTable(table: PostTable): Observable<PostTable> {
-    return this.http.post<PostTable>(API_URL, table);
+  addTable(nroAsientos: number): Observable<PostTable> {
+    return this.http.post<PostTable>(API_URL, { nroAsientos: nroAsientos });
   }
 
   getTableByNumber(tableNumber: number): Observable<Table> {

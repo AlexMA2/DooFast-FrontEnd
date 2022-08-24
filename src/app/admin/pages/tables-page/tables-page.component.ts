@@ -14,6 +14,7 @@ export class TablesPageComponent implements OnInit {
   postTable: PostTable = {
     nroMesa: 0,
     idRestaurante: 1,
+    nroAsientos: 0,
   };
   llamados: number = 0;
 
@@ -29,7 +30,7 @@ export class TablesPageComponent implements OnInit {
 
   addTableButton() {
     Swal.fire({
-      title: 'Ingresa el número de mesa',
+      title: 'Ingresa el número de asientos',
       input: 'number',
       inputAttributes: {
         autocapitalize: 'off',
@@ -37,8 +38,9 @@ export class TablesPageComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Aceptar',
       showLoaderOnConfirm: true,
-      preConfirm: (idMesa) => {
-        return this.addTable(idMesa);
+      preConfirm: (nroAsientos) => {
+        console.log(nroAsientos);
+        return this.addTable(nroAsientos);
       },
     }).then((result) => {
       if (result.isConfirmed) {
@@ -59,21 +61,23 @@ export class TablesPageComponent implements OnInit {
     });
   }
 
-  addTable(id: number) {
-    this.postTable.nroMesa = id;
-    this.tablesServices.addTable(this.postTable).subscribe((data) => {
+  addTable(nroAsientos: number = 1) {
+    console.log(nroAsientos);
+    this.tablesServices.addTable(nroAsientos).subscribe((data) => {
       this.getTables();
+      console.log(data);
       return true;
     });
   }
 
   getTables() {
     this.tablesServices.getAllTables().subscribe((data) => {
+      for (let i = 0; i < data.length; i++) {
+        data[i].nroMesa = i + 1;
+      }
+
       this.tables = data;
-      this.numberTables = data.length;
-      this.postTable.nroMesa = this.numberTables + 1;
     });
-    this.llamados = this.llamados + 1;
   }
 
   editTable(table: Table) {

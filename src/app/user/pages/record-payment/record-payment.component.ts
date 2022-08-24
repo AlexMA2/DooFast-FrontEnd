@@ -7,6 +7,7 @@ import { TableService } from 'src/app/services/table/table.service';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import { TableState } from '../../constants/dining-table-states';
+import { OrderState } from '../../constants/order-states';
 
 @Component({
   selector: 'app-record-payment',
@@ -41,15 +42,14 @@ export class RecordPaymentComponent implements OnInit {
           this.totalPrice += order.precio || 0;
           this.putOrders.push({
             idOrden: order.idOrden || 0,
-            nroMesa: order.idMesa,
-            estadoOrden: 'Pagado',
+            estadoOrden: OrderState.paid,
           });
         }
 
         this.putTable = {
           estadoMesa: TableState.Empty,
-          nroMesa: Number(this.id),
-          IdRestaurante: 1,
+          idMesa: Number(this.id),
+          nroAsientos: 10,
         };
       });
   }
